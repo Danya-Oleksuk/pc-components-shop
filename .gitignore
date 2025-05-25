@@ -12,4 +12,4 @@ __pycache__/
 */migrations/__pycache__/
 .idea
 
-products_images/
+/products_images/
