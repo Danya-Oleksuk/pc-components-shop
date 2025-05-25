@@ -1,0 +1,32 @@
+[
+{
+  "model": "products.productspecification",
+  "pk": 1,
+  "fields": {
+    "product": 23,
+    "spec_name": "Мощность",
+    "spec_value": "850 Вт",
+    "spec_value_numeric": "850.00"
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 2,
+  "fields": {
+    "product": 23,
+    "spec_name": "Стандарт",
+    "spec_value": "ATX 3.0",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 3,
+  "fields": {
+    "product": 23,
+    "spec_name": "Сертификат",
+    "spec_value": "80 PLUS Gold",
+    "spec_value_numeric": null
+  }
+}
+]
