@@ -17,6 +17,8 @@ class MainPageView(TemplateView):
 class ProductDetailView(DetailView):
     template_name = 'products/detail.html'
     model = Product
+    slug_field = 'slug'
+    slug_url_kwarg = 'product_slug'
 
 class ProductsListView(ListView):
     template_name = 'products/products_list.html'

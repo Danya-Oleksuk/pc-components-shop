@@ -45,7 +45,7 @@
 {% endblock %}
 
 {% block content %}
-    <a href="javascript:history.back()" class="back-btn d-inline-flex align-items-center text-decoration-none">
+    <a href="{% url "main_page" %}" class="back-btn d-inline-flex align-items-center text-decoration-none">
         <i class="bi bi-arrow-left-short fs-4"></i>
         <span class="ms-2">Назад</span>
     </a>
@@ -106,7 +106,7 @@
                             <div class="d-flex justify-content-between align-items-center">
                                 <span class="h5 text-primary">{{ product.price }} грн</span>
                                 <div class="card-clickable-area"
-                     onclick="window.location.href='{% url 'product_detail' product.id %}'"></div>
+                     onclick="window.location.href='{% url 'product_detail' product_slug=product.slug%}'"></div>
                             </div>
                         </div>
                     </div>

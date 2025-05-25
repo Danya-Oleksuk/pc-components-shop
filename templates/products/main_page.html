@@ -71,7 +71,7 @@
         <div class="col">
             <div class="card product-card h-100">
                 <div class="card-clickable-area"
-                     onclick="window.location.href='{% url 'product_detail' product.id %}'"></div>
+                     onclick="window.location.href='{% url 'product_detail' product_slug=product.slug %}'"></div>
 
                 <div class="product-img-container">
                     {% if product.image %}

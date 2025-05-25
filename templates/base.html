@@ -17,8 +17,10 @@
     <header class="sticky-top">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-                <a class="navbar-brand" href="/">PC Components Store</a>
-
+            <a href="/" class="navbar-brand d-flex flex-column align-items-start me-3">
+                <span class="fs-10 fw-bold">PC Components Store</span>
+                <a href="{% url 'catalog' %}" class="fs-6 text-light text-decoration-none">Каталог</a>
+            </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
