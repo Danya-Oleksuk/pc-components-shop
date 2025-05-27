@@ -73,13 +73,32 @@
     <div class="row">
         <div class="col-lg-3">
             <div class="filter-card">
-                <h5>Категории</h5>
+                    <h5>Фільтр за ціною</h5>
+                    <form method="get">
+                        <input type="hidden" name="category" value="{{ request.GET.category }}">
+
+                        <div class="mb-3">
+                            <label for="min_price" class="form-label">Мінімальна ціна</label>
+                            <input type="number" name="min_price" class="form-control" id="min_price"
+                                   value="{{ request.GET.min_price }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="max_price" class="form-label">Максимальна ціна</label>
+                            <input type="number" name="max_price" class="form-control" id="max_price"
+                                   value="{{ request.GET.max_price }}">
+                        </div>
+                        <button type="submit" class="btn btn-primary w-100">Застосувати</button>
+                    </form>
+            </div>
+            <div class="filter-card">
+                <h5>Категорії</h5>
                 <div class="list-group">
                     {% for category in categories %}
-                    <a href="?category={{ category.slug }}"
-                       class="list-group-item list-group-item-action {% if request.GET.category == category.slug %}active{% endif %}">
+                    <a href="?category={{ category.name }}{% if request.GET.min_price %}&min_price={{ request.GET.min_price }}{% endif %}{% if request.GET.max_price %}&max_price={{ request.GET.max_price }}{% endif %}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}"
+                       class="list-group-item list-group-item-action">
                         {{ category.name }}
                     </a>
+
                     {% endfor %}
                 </div>
             </div>

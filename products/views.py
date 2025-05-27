@@ -30,13 +30,20 @@ class ProductsListView(ListView):
 
     def get_queryset(self):
         queryset = super().get_queryset()
+
         category = self.request.GET.get('category')
         search = self.request.GET.get('search')
+        min_price = self.request.GET.get('min_price')
+        max_price = self.request.GET.get('max_price')
 
         if category:
-            queryset = queryset.filter(category__slug=category)
+            queryset = queryset.filter(category__name=category)
         if search:
             queryset = queryset.filter(name__icontains=search)
+        if min_price:
+            queryset = queryset.filter(price__gte=min_price)
+        if max_price:
+            queryset = queryset.filter(price__lte=max_price)
 
         return queryset
 
