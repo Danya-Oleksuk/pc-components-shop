@@ -1,47 +1,80 @@
 {% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block styles %}
+<style>
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 136px); /* подбирается под высоту header + footer */
+        background-color: #f4f4f9;
+    }
+
+    .login-container {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 { text-align: center; }
+    label { display: block; margin: 8px 0 4px; }
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover { background-color: #45a049; }
+    .register-link { text-align: center; margin-top: 10px; }
+</style>
+{% endblock %}
+
 {% block content %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f9; margin: 0; padding: 0; }
-        .container { width: 100%; max-width: 400px; margin: 50px auto; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        h2 { text-align: center; }
-        label { display: block; margin: 8px 0 4px; }
-        input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; }
-        button { width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; }
-        button:hover { background-color: #45a049; }
-        .register-link { text-align: center; margin-top: 10px; }
-    </style>
+<div class="login-container">
+    <h2>Login</h2>
 
-    <div class="container">
-        <h2>Login</h2>
-        {% if form.errors %}
-          <ul>
-            {% for field in form %}
-              {% for error in field.errors %}
-                <li>{{ field.label }}: {{ error }}</li>
-              {% endfor %}
-            {% endfor %}
-            {% for error in form.non_field_errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-        {% endif %}
+    {% if form.errors %}
+      <ul>
+        {% for field in form %}
+          {% for error in field.errors %}
+            <li>{{ field.label }}: {{ error }}</li>
+          {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
 
-        <form action="{% url 'users:login' %}" method="post">
-            {% csrf_token %}
+    <form action="{% url 'users:login' %}" method="post">
+        {% csrf_token %}
 
-            <label for="{{ form.username.id_for_label }}">Електронна пошта</label>
-            {{ form.username }}
+        <label for="{{ form.username.id_for_label }}">Електронна пошта</label>
+        {{ form.username }}
 
-            <label for="{{ form.password.id_for_label }}">Пароль</label>
-            {{ form.password }}
+        <label for="{{ form.password.id_for_label }}">Пароль</label>
+        {{ form.password }}
 
-            <button type="submit">Login</button>
-        </form>
-        <div class="register-link">
-            <p>Немає аккаунту? <a href="{% url 'users:register' %}">Зареєструйтесь тут</a></p>
-        </div>
+        <button type="submit">Увійти</button>
+    </form>
+
+    <div class="register-link">
+        <p>Немає аккаунту? <a href="{% url 'users:register' %}">Зареєструйтесь тут</a></p>
     </div>
+</div>
 {% endblock %}

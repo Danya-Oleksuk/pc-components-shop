@@ -1,49 +1,81 @@
 {% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block styles %}
+<style>
+    main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: calc(100vh - 136px); /* Высота хедера + футера */
+        background-color: #f4f4f9;
+    }
+
+    .register-container {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    h2 { text-align: center; }
+    label { display: block; margin: 8px 0 4px; }
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button:hover { background-color: #45a049; }
+    .login-link { text-align: center; margin-top: 10px; }
+</style>
+{% endblock %}
+
 {% block content %}
+<div class="register-container">
+    <h2>Register</h2>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <style>
-        body { font-family: Arial, sans-serif; background-color: #f4f4f9; margin: 0; padding: 0; }
-        .container { width: 100%; max-width: 400px; margin: 50px auto; padding: 20px; background-color: white; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        h2 { text-align: center; }
-        label { display: block; margin: 8px 0 4px; }
-        input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ddd; border-radius: 4px; }
-        button { width: 100%; padding: 10px; background-color: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; }
-        button:hover { background-color: #45a049; }
-        .login-link { text-align: center; margin-top: 10px; }
-    </style>
+    {% if form.errors %}
+      <ul>
+        {% for field in form %}
+          {% for error in field.errors %}
+            <li>{{ field.label }}: {{ error }}</li>
+          {% endfor %}
+        {% endfor %}
+        {% for error in form.non_field_errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
 
-    <div class="container">
-        <h2>Register</h2>
-        {% if form.errors %}
-          <ul>
-            {% for field in form %}
-              {% for error in field.errors %}
-                <li>{{ field.label }}: {{ error }}</li>
-              {% endfor %}
-            {% endfor %}
-            {% for error in form.non_field_errors %}
-              <li>{{ error }}</li>
-            {% endfor %}
-          </ul>
-        {% endif %}
+    <form action="{% url 'users:register' %}" method="post">
+        {% csrf_token %}
 
-        <form action="{% url 'users:register' %}" method="post">
-            {% csrf_token %}
+        <label for="{{ form.email.id_for_label }}">Електронна пошта</label>
+        {{ form.email }}
 
-            <label for="{{ form.email.id_for_label }}">Електронна пошта</label>
-            {{ form.email }}
+        <label for="{{ form.password1.id_for_label }}">Пароль</label>
+        {{ form.password1 }}
 
-            <label for="{{ form.password1.id_for_label }}">Пароль</label>
-            {{ form.password1 }}
+        <label for="{{ form.password2.id_for_label }}">Підтвердьте пароль</label>
+        {{ form.password2 }}
 
-            <label for="еу">Підтвердьте пароль</label>
-            {{ form.password2 }}
+        <button type="submit">Зареєструватись</button>
+    </form>
 
-            <button type="submit">Register</button>
-        </form>
     <div class="login-link">
         <p>Вже маєте обліковий запис? <a href="{% url 'users:login' %}">Увійдіть тут</a></p>
     </div>
