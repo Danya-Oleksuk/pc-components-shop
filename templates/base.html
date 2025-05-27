@@ -19,7 +19,7 @@
             <div class="container-fluid">
                 <a href="/" class="navbar-brand d-flex flex-column align-items-start me-3">
                     <span class="fs-10 fw-bold">PC Components Store</span>
-                    <a href="{% url 'catalog' %}" class="fs-6 text-light text-decoration-none">Каталог</a>
+                    <a href="{% url 'products:catalog' %}" class="fs-6 text-light text-decoration-none">Каталог</a>
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
@@ -31,12 +31,16 @@
                             <a href="{% url 'users:profile' %}" class="btn btn-outline-light me-2">
                                 <i class="bi bi-person-circle"></i> Профіль
                             </a>
+                            <form action="{% url 'users:logout' %}" method="post">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-outline-light me-2">Вихід</button>
+                            </form>
                         {% else %}
                             <a href="{% url 'users:login' %}" class="btn btn-outline-light me-2">Вхід</a>
                             <a href="{% url 'users:register' %}" class="btn btn-light">Реєстрація</a>
                         {% endif %}
 
-                        <a href="{% url 'cart' %}" class="btn btn-outline-light ms-3">
+                        <a href="{% url 'products:cart' %}" class="btn btn-outline-light ms-3">
                             <i class="bi bi-cart3"></i>
                             <span class="badge bg-danger" id="cart-counter">0</span>
                         </a>

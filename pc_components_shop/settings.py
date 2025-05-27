@@ -13,7 +13,11 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# User
+AUTH_USER_MODEL = 'users.User'
 
+LOGIN_URL = '/user/login/'
+LOGIN_REDIRECT_URL = '/'
 # Application definition
 
 INSTALLED_APPS = [
@@ -126,3 +130,11 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'componentsshopemail@gmail.com'
 EMAIL_HOST_PASSWORD = 'lmqs fele rvju htwn'
+
+# Celery configuration
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'

@@ -58,7 +58,7 @@
     <div class="catalog-promo text-center">
         <h2 class="catalog-title">Ознайомтесь з повним каталогом товарів</h2>
         <p class="lead mb-4">Більше 10 позицій комплектуючих для вашого ПК</p>
-        <a href="{% url 'catalog' %}" class="btn btn-primary btn-lg">
+        <a href="{% url 'products:catalog' %}" class="btn btn-primary btn-lg">
             Перейти в каталог <i class="bi bi-arrow-right"></i>
         </a>
     </div>
@@ -71,7 +71,7 @@
         <div class="col">
             <div class="card product-card h-100">
                 <div class="card-clickable-area"
-                     onclick="window.location.href='{% url 'product_detail' product_slug=product.slug %}'"></div>
+                     onclick="window.location.href='{% url 'products:product_detail' product_slug=product.slug %}'"></div>
 
                 <div class="product-img-container">
                     {% if product.image %}
