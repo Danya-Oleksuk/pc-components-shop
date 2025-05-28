@@ -4,6 +4,7 @@
     {% if cart %}
         {% for cart_item in cart %}
         <h2>{{ cart_item.product }} - {{ cart_item.product.price }} - {{ cart_item.total_price }} - {{ cart_item.quantity }}</h2>
+            <a href="{% url "cart:cart_remove" cart_item.id %}">Удалить товар</a>
         {% endfor %}
     {% else %}
         <h1>Товаров пока нету!</h1>
