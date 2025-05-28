@@ -57,10 +57,14 @@
             <div class="cart-item-card">
                 <div class="d-flex justify-content-between align-items-center">
                     <div>
-                        <div class="cart-item-header">{{ cart_item.product.name }}</div>
+                        <div class="cart-item-header">
+                            <a href="{% url 'products:product_detail' product_slug=cart_item.product.slug %}">
+                                {{ cart_item.product.name }}
+                            </a>
+                        </div>
                         <p class="mb-1">Ціна за одиницю: <strong>{{ cart_item.product.price }} грн</strong></p>
                         <p class="mb-1">Кількість: <strong>{{ cart_item.quantity }}</strong></p>
-                        <p class="mb-1">Сума: <strong>{{ cart_item.total_price }} грн</strong></p>
+                        <p class="mb-1">Повна сума: <strong>{{ cart_item.total_price }} грн</strong></p>
                     </div>
                     <div>
                         <a href="{% url "cart:cart_remove" cart_item.id %}" class="remove-btn">
