@@ -100,7 +100,7 @@
             </div>
 
             <div class="mt-5">
-                <a href="{% url 'cart:cart_add' product.id %}"
+                <a href="{% if user.is_authenticated %}{% url 'cart:cart_add' product.id %}{% else %}{% url 'users:login' %}{% endif %}"
                                class="btn btn-primary btn-lg w-100 add-to-cart"
                                onclick="event.stopPropagation()">
                                В корзину
