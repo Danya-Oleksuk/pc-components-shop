@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if cart %}
+        {% for cart_item in cart %}
+        <h2>{{ cart_item }}</h2>
+        {% endfor %}
+    {% else %}
+        <h1>Товаров пока нету!</h1>
+    {% endif %}
+{% endblock %}

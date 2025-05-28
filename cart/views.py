@@ -1,3 +1,7 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Cart
+
+def cart_list(request):
+    cart = Cart.objects.filter(user=request.user)
+    return render(request, "cart/cart.html", context={"cart": cart})
