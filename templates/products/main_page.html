@@ -88,11 +88,11 @@
                     <div class="mt-auto">
                         <div class="d-flex justify-content-between align-items-center">
                             <p class="price mb-0">{{ product.price }} грн</p>
-                            <button class="btn btn-primary add-to-cart"
-                                    data-product-id="{{ product.id }}"
-                                    onclick="event.stopPropagation()">
-                                В корзину
-                            </button>
+                            <a href="{% url 'cart:cart_add' product.id %}"
+                               class="btn btn-primary add-to-cart"
+                               onclick="event.stopPropagation()">
+                               В корзину
+                            </a>
                         </div>
                     </div>
                 </div>

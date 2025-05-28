@@ -3,7 +3,7 @@
 {% block content %}
     {% if cart %}
         {% for cart_item in cart %}
-        <h2>{{ cart_item }}</h2>
+        <h2>{{ cart_item.product }} - {{ cart_item.product.price }} - {{ cart_item.total_price }} - {{ cart_item.quantity }}</h2>
         {% endfor %}
     {% else %}
         <h1>Товаров пока нету!</h1>
