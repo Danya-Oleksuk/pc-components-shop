@@ -1,8 +1,10 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 from .models import Cart
 
+@login_required(login_url="/user/login", redirect_field_name=None)
 def cart_list(request):
     cart = Cart.objects.filter(user=request.user)
     return render(request, "cart/cart.html", context={"cart": cart})

@@ -1,12 +1,82 @@
 {% extends "base.html" %}
 
+{% block styles %}
+<style>
+    .cart-container {
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .cart-item-card {
+        border: 1px solid #dee2e6;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease;
+    }
+
+    .cart-item-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .cart-item-header {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #0d6efd;
+    }
+
+    .cart-total {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin-top: 2rem;
+        text-align: right;
+        color: #198754;
+    }
+
+    .remove-btn {
+        color: #dc3545;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.2s ease;
+    }
+
+    .remove-btn:hover {
+        color: #a71d2a;
+        text-decoration: underline;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
+<div class="container cart-container">
+    <h1 class="mb-4">Ваш кошик</h1>
+
     {% if cart %}
         {% for cart_item in cart %}
-        <h2>{{ cart_item.product }} - {{ cart_item.product.price }} - {{ cart_item.total_price }} - {{ cart_item.quantity }}</h2>
-            <a href="{% url "cart:cart_remove" cart_item.id %}">Удалить товар</a>
+            <div class="cart-item-card">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="cart-item-header">{{ cart_item.product.name }}</div>
+                        <p class="mb-1">Ціна за одиницю: <strong>{{ cart_item.product.price }} грн</strong></p>
+                        <p class="mb-1">Кількість: <strong>{{ cart_item.quantity }}</strong></p>
+                        <p class="mb-1">Сума: <strong>{{ cart_item.total_price }} грн</strong></p>
+                    </div>
+                    <div>
+                        <a href="{% url "cart:cart_remove" cart_item.id %}" class="remove-btn">
+                            <i class="bi bi-trash3-fill"></i> Видалити
+                        </a>
+                    </div>
+                </div>
+            </div>
         {% endfor %}
+
+        <div class="cart-total">
+            Загальна сума: {{ cart_total_price }} грн
+        </div>
     {% else %}
-        <h1>Товаров пока нету!</h1>
+        <h3>🛒 Ваш кошик порожній!</h3>
+        <p class="lead">Додайте товари з <a href="{% url 'products:catalog' %}">каталогу</a>.</p>
     {% endif %}
+</div>
 {% endblock %}
