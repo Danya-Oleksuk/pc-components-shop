@@ -78,6 +78,13 @@
         <div class="cart-total">
             Загальна сума: {{ user_cart_total }} грн
         </div>
+
+        <div class="text-end mt-4">
+            <a href="#" class="btn btn-success btn-lg">
+                Оформити замовлення
+            </a>
+        </div>
+
     {% else %}
         <h3>🛒 Ваш кошик порожній!</h3>
         <p class="lead">Додайте товари з <a href="{% url 'products:catalog' %}">каталогу</a>.</p>
