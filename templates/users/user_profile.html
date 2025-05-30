@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block styles %}
+<style>
+    .profile-header {
+        background: linear-gradient(45deg, #0d6efd, #6610f2);
+        padding: 4rem 0;
+        color: white;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+
+    .profile-card {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+    }
+
+    .profile-card h4 {
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    .profile-info p {
+        margin-bottom: 0.5rem;
+    }
+
+    .edit-btn {
+        margin-top: 1.5rem;
+    }
+
+    .back-btn {
+        background: #f8f9fa;
+        border: 2px solid #0d6efd;
+        border-radius: 50px;
+        padding: 10px 25px;
+        transition: all 0.3s ease;
+        margin-bottom: 2rem;
+    }
+    .back-btn:hover {
+        background: #0d6efd;
+        color: white !important;
+        transform: translateX(-5px);
+    }
+
+    .specs-list li {
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        justify-content: space-between;
+    }
+    .specs-list li:last-child {
+        border-bottom: none;
+    }
+
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="profile-header">
+    <h1 class="display-4">Профіль користувача</h1>
+    <p class="lead">Перегляньте або змініть свої дані</p>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <a href="javascript:history.back()" class="back-btn d-inline-flex align-items-center text-decoration-none">
+                <i class="bi bi-arrow-left-short fs-4"></i>
+                <span class="ms-2">Назад</span>
+            </a>
+            <div class="profile-card text-center">
+                <h4>{{ user.get_full_name|default:user.username }}</h4>
+
+                <div class="profile-info text-start mt-4">
+                    <p><strong>Email:</strong> {{ user.email }}</p>
+                    <p><strong>Ім’я користувача:</strong> {{ user.username }}</p>
+                    <p><strong>Дата приєднання:</strong> {{ user.date_joined|date:"d.m.Y" }}</p>
+                </div>
+
+                <a href="" class="btn btn-primary edit-btn">
+                    Редагувати профіль
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
