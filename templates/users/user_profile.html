@@ -78,7 +78,9 @@
                     <p><strong>Ім’я користувача:</strong> {{ user.username }}</p>
                     <p><strong>Дата приєднання:</strong> {{ user.date_joined|date:"d.m.Y" }}</p>
                 </div>
-
+                <a href="{% url 'orders:my_orders' %}" class="btn btn-primary edit-btn">
+                    История заказов
+                </a>
                 <a href="" class="btn btn-primary edit-btn">
                     Редагувати профіль
                 </a>
