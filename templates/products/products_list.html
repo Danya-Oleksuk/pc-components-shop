@@ -7,18 +7,30 @@
         padding: 4rem 0;
         margin-bottom: 3rem;
         color: white;
+        border-radius: 10px 10px 0 0;
     }
+
+    .catalog-header h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
     .product-card {
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         height: 100%;
         border: 1px solid #dee2e6;
-        border-radius: 8px;
+        border-radius: 12px;
         overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
     }
+
     .product-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
     }
+
     .product-img-container {
         height: 200px;
         display: flex;
@@ -26,66 +38,109 @@
         justify-content: center;
         background: #f8f9fa;
     }
+
+    .product-img-container img {
+        object-fit: contain;
+        max-height: 100%;
+        max-width: 100%;
+    }
+
     .filter-card {
         background: #fff;
         border-radius: 10px;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         padding: 1.5rem;
         margin-bottom: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
 
-    .product-img-container {
-    height: 150px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f8f9fa;
-    overflow: hidden;
-}
+    .filter-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
 
-.product-img-container img {
-    object-fit: contain;
-    max-height: 100%;
-    max-width: 100%;
-}
+    .filter-card h5 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
 
-.card a.stretched-link {
-    z-index: 1;
-}
+    .product-card .card-body {
+        padding: 1.5rem;
+    }
 
+    .product-card .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
 
+    .product-card .card-text {
+        color: #6c757d;
+    }
+
+    .product-card .btn-outline-primary {
+        font-size: 1.2rem;
+        padding: 0.5rem 1.2rem;
+        transition: all 0.3s ease;
+    }
+
+    .product-card .btn-outline-primary:hover {
+        background-color: #0d6efd;
+        color: white;
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+    }
+
+    .pagination .page-item.disabled .page-link {
+        color: #6c757d;
+    }
+
+    @media (max-width: 768px) {
+        .catalog-header h1 {
+            font-size: 2rem;
+        }
+
+        .product-card .card-body {
+            padding: 1rem;
+        }
+
+        .product-card .card-title {
+            font-size: 1.125rem;
+        }
+    }
 </style>
 {% endblock %}
 
 {% block content %}
-    <a href="{% url "products:main_page" %}" class="back-btn d-inline-flex align-items-center text-decoration-none">
+    <a href="{% url 'products:main_page' %}" class="back-btn d-inline-flex align-items-center text-decoration-none">
         <i class="bi bi-arrow-left-short fs-4"></i>
         <span class="ms-2">Назад</span>
     </a>
-<div class="catalog-header">
-    <div class="container text-center">
-        <h1 class="display-4 mb-3">Каталог товарів</h1>
-        <form class="mt-4" method="get">
-            <div class="d-flex justify-content-center">
-                <div class="input-group shadow-sm" style="max-width: 500px; width: 100%;">
-                    <input type="text"
-                           name="search"
-                           class="form-control rounded-start"
-                           placeholder="Пошук товарів..."
-                           value="{{ request.GET.search }}">
-                    <button class="btn btn-success rounded-end" type="submit">
-                        <i class="bi bi-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-3">
-            <div class="filter-card">
+    <div class="catalog-header">
+        <div class="container text-center">
+            <h1 class="display-4 mb-3">Каталог товарів</h1>
+            <form class="mt-4" method="get">
+                <div class="d-flex justify-content-center">
+                    <div class="input-group shadow-sm" style="max-width: 500px; width: 100%;">
+                        <input type="text" name="search" class="form-control rounded-start" placeholder="Пошук товарів..."
+                               value="{{ request.GET.search }}">
+                        <button class="btn btn-success rounded-end" type="submit">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <div class="filter-card">
                     <h5>Фільтр за ціною</h5>
                     <form method="get">
                         <input type="hidden" name="category" value="{{ request.GET.category }}">
@@ -102,138 +157,129 @@
                         </div>
                         <button type="submit" class="btn btn-primary w-100">Застосувати</button>
                     </form>
-            </div>
-            <div class="filter-card">
-                <h5>Категорії</h5>
-                <div class="list-group">
-                    {% for category in categories %}
-                    <a href="?category={{ category.name }}{% if request.GET.min_price %}&min_price={{ request.GET.min_price }}{% endif %}{% if request.GET.max_price %}&max_price={{ request.GET.max_price }}{% endif %}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}"
-                       class="list-group-item list-group-item-action">
-                        {{ category.name }}
-                    </a>
-
-                    {% endfor %}
                 </div>
-            </div>
-        </div>
 
-        <div class="col-lg-9">
-            <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
-                {% for product in products %}
-                    <div class="col">
-                        <div class="card product-card h-100 position-relative">
-                            <a href="{% url 'products:product_detail' product_slug=product.slug %}" class="stretched-link"></a>
-
-                            <div class="product-img-container">
-                                {% if product.image %}
-                                <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
-                                {% else %}
-                                <div class="text-muted">Нет изображения</div>
-                                {% endif %}
-                            </div>
-
-                            <div class="card-body d-flex flex-column justify-content-between">
-                                <div>
-                                    <h5 class="card-title">{{ product.name }}</h5>
-                                    <p class="card-text text-muted">{{ product.short_description|truncatechars:100 }}</p>
-                                </div>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <span class="h5 text-primary mb-0">{{ product.price }} грн</span>
-                                    <a href="{% if user.is_authenticated %}{% url 'cart:cart_add' product.id %}{% else %}{% url 'users:login' %}{% endif %}" class="btn btn-outline-primary px-3 py-2 z-1"
-                                       style="position: relative; z-index: 2; font-size: 1rem;">
-                                        <i class="bi bi-cart-plus"></i>
-                                    </a>
-                            </div>
-                        </div>
+                <div class="filter-card">
+                    <h5>Категорії</h5>
+                    <div class="list-group">
+                        {% for category in categories %}
+                            <a href="?category={{ category.name }}{% if request.GET.min_price %}&min_price={{ request.GET.min_price }}{% endif %}{% if request.GET.max_price %}&max_price={{ request.GET.max_price }}{% endif %}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}"
+                               class="list-group-item list-group-item-action">
+                                {{ category.name }}
+                            </a>
+                        {% endfor %}
                     </div>
                 </div>
-
-                {% empty %}
-                <div class="col-12 text-center py-5">
-                    <h3>Товары не найдены</h3>
-                </div>
-                {% endfor %}
             </div>
 
-            {% if is_paginated %}
-                <nav class="mt-5" aria-label="Page navigation">
-                    <ul class="pagination justify-content-center">
-                        {% if page_obj.has_previous %}
-                            <li class="page-item">
-                                <a class="page-link"
-                                   href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
-                                    Назад
-                                </a>
-                            </li>
-                        {% endif %}
+            <div class="col-lg-9">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+                    {% for product in products %}
+                        <div class="col">
+                            <div class="card product-card h-100 position-relative">
+                                <a href="{% url 'products:product_detail' product_slug=product.slug %}" class="stretched-link"></a>
 
-                        {% if page_obj.paginator.num_pages > 5 %}
-                            {% if page_obj.number > 3 %}
-                                <li class="page-item">
-                                    <a class="page-link"
-                                       href="?page=1{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">1</a>
-                                </li>
-                                {% if page_obj.number > 4 %}
-                                    <li class="page-item disabled"><span class="page-link">...</span></li>
-                                {% endif %}
-                            {% endif %}
-
-                            {% for num in page_obj.paginator.page_range %}
-                                {% if num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
-                                    {% if num == page_obj.number %}
-                                        <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                                <div class="product-img-container">
+                                    {% if product.image %}
+                                        <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
                                     {% else %}
-                                        <li class="page-item">
-                                            <a class="page-link"
-                                               href="?page={{ num }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
-                                                {{ num }}
-                                            </a>
-                                        </li>
+                                        <div class="text-muted">Нет изображения</div>
                                     {% endif %}
-                                {% endif %}
-                            {% endfor %}
+                                </div>
 
-                            {% if page_obj.number < page_obj.paginator.num_pages|add:"-2" %}
-                                {% if page_obj.number < page_obj.paginator.num_pages|add:"-3" %}
-                                    <li class="page-item disabled"><span class="page-link">...</span></li>
-                                {% endif %}
+                                <div class="card-body d-flex flex-column justify-content-between">
+                                    <div>
+                                        <h5 class="card-title">{{ product.name }}</h5>
+                                        <p class="card-text text-muted">{{ product.short_description|truncatechars:100 }}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mt-3">
+                                        <span class="h5 text-primary mb-0">{{ product.price }} грн</span>
+                                        <a href="{% if user.is_authenticated %}{% url 'cart:cart_add' product.id %}{% else %}{% url 'users:login' %}{% endif %}" class="btn btn-outline-primary px-3 py-2 z-1">
+                                            <i class="bi bi-cart-plus"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="col-12 text-center py-5">
+                            <h3>Товары не найдены</h3>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                {% if is_paginated %}
+                    <nav class="mt-5" aria-label="Page navigation">
+                        <ul class="pagination justify-content-center">
+                            {% if page_obj.has_previous %}
                                 <li class="page-item">
                                     <a class="page-link"
-                                       href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
-                                        {{ page_obj.paginator.num_pages }}
+                                       href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
+                                        Назад
                                     </a>
                                 </li>
                             {% endif %}
 
-                        {% else %}
-                            {% for num in page_obj.paginator.page_range %}
-                                {% if page_obj.number == num %}
-                                    <li class="page-item active">
-                                        <span class="page-link">{{ num }}</span>
-                                    </li>
-                                {% else %}
+                            {% if page_obj.paginator.num_pages > 5 %}
+                                {% if page_obj.number > 3 %}
                                     <li class="page-item">
+                                        <a class="page-link"
+                                           href="?page=1{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">1</a>
+                                    </li>
+                                    {% if page_obj.number > 4 %}
+                                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                                    {% endif %}
+                                {% endif %}
+
+                                {% for num in page_obj.paginator.page_range %}
+                                    {% if num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
+                                        {% if num == page_obj.number %}
+                                            <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                                        {% else %}
+                                            <li class="page-item">
+                                                <a class="page-link"
+                                                   href="?page={{ num }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
+                                                    {{ num }}
+                                                </a>
+                                            </li>
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+
+                                {% if page_obj.number < page_obj.paginator.num_pages|add:"-2" %}
+                                    {% if page_obj.number < page_obj.paginator.num_pages|add:"-3" %}
+                                        <li class="page-item disabled"><span class="page-link">...</span></li>
+                                    {% endif %}
+                                    <li class="page-item">
+                                        <a class="page-link"
+                                           href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
+                                            {{ page_obj.paginator.num_pages }}
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            {% else %}
+                                {% for num in page_obj.paginator.page_range %}
+                                    <li class="page-item{% if num == page_obj.number %} active{% endif %}">
                                         <a class="page-link"
                                            href="?page={{ num }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
                                             {{ num }}
                                         </a>
                                     </li>
-                                {% endif %}
-                            {% endfor %}
-                        {% endif %}
+                                {% endfor %}
+                            {% endif %}
 
-                        {% if page_obj.has_next %}
-                            <li class="page-item">
-                                <a class="page-link"
-                                   href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
-                                    Вперед
-                                </a>
-                            </li>
-                        {% endif %}
-                    </ul>
-                </nav>
-            {% endif %}
+                            {% if page_obj.has_next %}
+                                <li class="page-item">
+                                    <a class="page-link"
+                                       href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
+                                        Вперёд
+                                    </a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    </nav>
+                {% endif %}
+            </div>
         </div>
     </div>
-</div>
 {% endblock %}
