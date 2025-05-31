@@ -1,7 +1,8 @@
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, FormView
+from django.views.generic import FormView, TemplateView
 
 from cart.models import Cart
+
 from .forms import OrderForm
 from .models import Order
 
@@ -12,12 +13,14 @@ class MyOrdesView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['orders'] = Order.objects.filter(user=self.request.user)
+        context["orders"] = Order.objects.filter(user=self.request.user)
 
         return context
 
+
 class SuccessTemplateView(TemplateView):
-    template_name = 'orders/success.html'
+    template_name = "orders/success.html"
+
 
 class CheckoutView(FormView):
     template_name = "orders/checkout.html"
@@ -28,17 +31,17 @@ class CheckoutView(FormView):
         context = super().get_context_data(**kwargs)
 
         cart = Cart.objects.filter(user=self.request.user)
-        context['cart'] = cart
-        context['user_cart_total'] = sum(i.total_price for i in cart)
+        context["cart"] = cart
+        context["user_cart_total"] = sum(i.total_price for i in cart)
 
         return context
 
     def form_valid(self, form):
         order = form.save(commit=False)
         order.user = self.request.user
-        order.first_name = form.cleaned_data['first_name']
-        order.last_name = form.cleaned_data['last_name']
-        order.address = form.cleaned_data['address']
+        order.first_name = form.cleaned_data["first_name"]
+        order.last_name = form.cleaned_data["last_name"]
+        order.address = form.cleaned_data["address"]
         order.status = Order.CREATED
         order.update_after_payment()
 

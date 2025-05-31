@@ -1,40 +1,41 @@
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import DetailView, ListView, TemplateView
 
-from .models import Product, Category
+from .models import Category, Product
 
 
 class MainPageView(TemplateView):
-    template_name = 'products/main_page.html'
+    template_name = "products/main_page.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        random_products = Product.objects.order_by('?')[:3]
-        context['random_products'] = random_products
+        random_products = Product.objects.order_by("?")[:3]
+        context["random_products"] = random_products
 
         return context
 
+
 class ProductDetailView(DetailView):
-    template_name = 'products/detail.html'
+    template_name = "products/detail.html"
     model = Product
-    slug_field = 'slug'
-    slug_url_kwarg = 'product_slug'
+    slug_field = "slug"
+    slug_url_kwarg = "product_slug"
+
 
 class ProductsListView(ListView):
-    template_name = 'products/products_list.html'
+    template_name = "products/products_list.html"
     model = Product
     paginate_by = 9
-    ordering = ['name']
-    context_object_name = 'products'
-
+    ordering = ["name"]
+    context_object_name = "products"
 
     def get_queryset(self):
         queryset = super().get_queryset()
 
-        category = self.request.GET.get('category')
-        search = self.request.GET.get('search')
-        min_price = self.request.GET.get('min_price')
-        max_price = self.request.GET.get('max_price')
+        category = self.request.GET.get("category")
+        search = self.request.GET.get("search")
+        min_price = self.request.GET.get("min_price")
+        max_price = self.request.GET.get("max_price")
 
         if category:
             queryset = queryset.filter(category__name=category)
@@ -50,5 +51,5 @@ class ProductsListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['categories'] = Category.objects.all()
+        context["categories"] = Category.objects.all()
         return context
