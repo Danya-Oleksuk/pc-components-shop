@@ -1,37 +1,51 @@
-<!-- my_orders.html -->
 {% extends "base.html" %}
 
 {% block content %}
-    <h1 class="text-center mt-5" >Мої замовлення</h1>
+<div class="container my-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="text-primary fw-bold">Мої замовлення</h1>
+        <a href="{% url 'users:profile' %}" class="btn btn-outline-primary d-inline-flex align-items-center gap-2 shadow-sm rounded-pill px-4 py-2">
+            <i class="bi bi-arrow-left"></i> Назад
+        </a>
+    </div>
 
     {% if orders %}
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>№</th>
-                    <th>Ім’я</th>
-                    <th>Прізвище</th>
-                    <th>Адреса</th>
-                    <th>Статус</th>
-                    <th>Загальна сума</th>
-                    <th>Дата</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for order in orders %}
-                    <tr>
-                        <td>{{ order.id }}</td>
-                        <td>{{ order.first_name }}</td>
-                        <td>{{ order.last_name }}</td>
-                        <td>{{ order.address }}</td>
-                        <td>{{ order.get_status_display }}</td>
-                        <td>{{ order.total_price }}</td>
-                        <td>{{ order.created_at }}</td>
-                    </tr>
-                {% endfor %}
-            </tbody>
-        </table>
+        <div class="card shadow-sm">
+            <div class="card-body p-4">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>№</th>
+                                <th>Ім’я</th>
+                                <th>Прізвище</th>
+                                <th>Адреса</th>
+                                <th>Статус</th>
+                                <th>Загальна сума</th>
+                                <th>Дата</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                                <tr>
+                                    <td>{{ order.id }}</td>
+                                    <td>{{ order.first_name }}</td>
+                                    <td>{{ order.last_name }}</td>
+                                    <td>{{ order.address }}</td>
+                                    <td>{{ order.get_status_display }}</td>
+                                    <td>{{ order.total_price }}</td>
+                                    <td>{{ order.created_at }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     {% else %}
-        <p>У вас немає замовлень.</p>
+        <div class="alert alert-info mt-4" role="alert">
+            У вас немає замовлень.
+        </div>
     {% endif %}
+</div>
 {% endblock %}
