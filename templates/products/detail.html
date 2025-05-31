@@ -3,53 +3,95 @@
 {% block styles %}
 <style>
     .product-detail-container {
-        margin-top: 2rem;
-        padding: 20px;
+        margin-top: 3rem;
+        padding-bottom: 4rem;
     }
+
     .back-btn {
-        background: #f8f9fa;
-        border: 2px solid #0d6efd;
-        border-radius: 50px;
-        padding: 10px 25px;
+        border: 1px solid var(--bs-primary);
+        border-radius: 30px;
+        padding: 8px 20px;
+        background-color: #fff;
+        color: var(--bs-primary);
+        text-transform: uppercase;
+        font-weight: 500;
         transition: all 0.3s ease;
-        margin-bottom: 2rem;
+        display: inline-flex;
+        align-items: center;
     }
+
     .back-btn:hover {
-        background: #0d6efd;
-        color: white !important;
+        background-color: var(--bs-primary);
+        color: #fff !important;
         transform: translateX(-5px);
     }
+
     .product-image {
-        max-width: 100%;
+        width: 100%;
         height: auto;
-        border-radius: 15px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        border-radius: 16px;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
     }
+
+    .price-tag {
+        font-size: 2.25rem;
+        color: var(--bs-primary);
+        font-weight: 700;
+        margin-top: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .description p {
+        font-size: 1.1rem;
+        color: #555;
+    }
+
     .specs-list {
         list-style: none;
-        padding-left: 0;
+        padding: 0;
+        margin-top: 1.5rem;
     }
+
     .specs-list li {
-        padding: 10px 0;
-        border-bottom: 1px solid #eee;
+        padding: 12px 0;
+        border-bottom: 1px solid #ddd;
         display: flex;
         justify-content: space-between;
+        font-size: 1rem;
     }
+
     .specs-list li:last-child {
         border-bottom: none;
     }
-    .price-tag {
-        font-size: 2.5rem;
-        color: #0d6efd;
-        font-weight: bold;
-        margin: 1rem 0;
+
+    .add-to-cart {
+        font-size: 1.1rem;
+        padding: 14px;
+        border-radius: 12px;
+        transition: background-color 0.3s ease;
     }
+
+    .add-to-cart:hover {
+        background-color: #0b5ed7;
+    }
+
+    .product-image {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+    background-color: #f8f9fa;
+    border-radius: 16px;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+
     @media (max-width: 768px) {
-        .product-image {
-            margin-top: 2rem;
+        .product-detail-container {
+            padding: 0 1rem;
         }
+
         .price-tag {
-            font-size: 2rem;
+            font-size: 1.8rem;
         }
     }
 </style>
@@ -57,36 +99,31 @@
 
 {% block content %}
 <div class="container product-detail-container">
-    <a href="javascript:history.back()" class="back-btn d-inline-flex align-items-center text-decoration-none">
+    <a href="javascript:history.back()" class="back-btn mb-4">
         <i class="bi bi-arrow-left-short fs-4"></i>
         <span class="ms-2">Назад</span>
     </a>
 
-    <div class="row">
+    <div class="row g-5">
         <div class="col-lg-6">
-            <div class="product-image-wrapper">
-                {% if product.image %}
-                    <img src="{{ product.image.url }}" class="product-image" alt="{{ product.name }}">
-                {% else %}
-                    <img src="https://via.placeholder.com/600" class="product-image" alt="No image">
-                {% endif %}
-            </div>
+            {% if product.image %}
+                <img src="{{ product.image.url }}" class="product-image" alt="{{ product.name }}">
+            {% else %}
+                <img src="https://via.placeholder.com/600" class="product-image" alt="No image">
+            {% endif %}
         </div>
 
         <div class="col-lg-6">
-            <h1 class="mb-4">{{ product.name }}</h1>
+            <h1 class="fw-bold mb-3">{{ product.name }}</h1>
+            <div class="price-tag">{{ product.price }} грн</div>
 
-            <div class="price-tag">
-                {{ product.price }} грн
-            </div>
-
-            <div class="description mb-5">
-                <h4>Опис товару</h4>
-                <p class="lead">{{ product.description }}</p>
+            <div class="description mb-4">
+                <h5 class="mb-2">Опис товару</h5>
+                <p>{{ product.description }}</p>
             </div>
 
             <div class="specifications">
-                <h4 class="mb-4">Характеристики</h4>
+                <h5 class="mb-3">Характеристики</h5>
                 <ul class="specs-list">
                     <li>
                         <span>Категорія:</span>
@@ -99,12 +136,12 @@
                 </ul>
             </div>
 
-            <div class="mt-5">
+            <div class="mt-4">
                 <a href="{% if user.is_authenticated %}{% url 'cart:cart_add' product.id %}{% else %}{% url 'users:login' %}{% endif %}"
-                               class="btn btn-primary btn-lg w-100 add-to-cart"
-                               onclick="event.stopPropagation()">
-                               В корзину
-                            </a>
+                   class="btn btn-primary add-to-cart w-100"
+                   onclick="event.stopPropagation()">
+                   Додати в корзину
+                </a>
             </div>
         </div>
     </div>
