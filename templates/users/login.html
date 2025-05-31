@@ -11,7 +11,7 @@
     }
 
     .auth-wrapper {
-        min-height: calc(100vh - 120px);
+        min-height: calc(100vh - 120px); /* учитываем хедер и футер */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -39,6 +39,20 @@
         font-weight: 500;
         margin-bottom: 0.5rem;
         color: #555;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        margin-bottom: 1rem;
+        transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+        border-color: #4CAF50;
+        outline: none;
     }
 
     .btn-login {
