@@ -3,16 +3,16 @@
 {% block styles %}
 <style>
     .cart-container {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
+        padding: 3rem 1rem;
     }
 
     .cart-item-card {
         border: 1px solid #dee2e6;
-        border-radius: 10px;
+        border-radius: 12px;
         padding: 1.5rem;
         margin-bottom: 1.5rem;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        background-color: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
         transition: transform 0.2s ease;
     }
 
@@ -21,56 +21,67 @@
     }
 
     .cart-item-header {
-        font-size: 1.5rem;
-        font-weight: bold;
+        font-size: 1.3rem;
+        font-weight: 600;
         color: #0d6efd;
+    }
+
+    .cart-item-img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        margin-right: 1.5rem;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        padding: 0.5rem;
     }
 
     .cart-total {
         font-size: 1.8rem;
         font-weight: bold;
-        margin-top: 2rem;
         text-align: right;
         color: #198754;
+        margin-top: 2rem;
     }
 
     .remove-btn {
         color: #dc3545;
+        font-weight: 500;
         text-decoration: none;
-        font-weight: bold;
         transition: all 0.2s ease;
     }
 
     .remove-btn:hover {
-        color: #a71d2a;
         text-decoration: underline;
+        color: #a71d2a;
     }
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="container cart-container">
-    <h1 class="mb-4">Ваш кошик</h1>
 
     {% if cart %}
+        <h1 class="mb-4 text-center">Ваш кошик</h1>
         {% for cart_item in cart %}
-            <div class="cart-item-card">
-                <div class="d-flex justify-content-between align-items-center">
-                    <div>
-                        <div class="cart-item-header">
-                            <a href="{% url 'products:product_detail' product_slug=cart_item.product.slug %}">
-                                {{ cart_item.product.name }}
-                            </a>
-                        </div>
-                        <p class="mb-1">Ціна за одиницю: <strong>{{ cart_item.product.price }} грн</strong></p>
-                        <p class="mb-1">Кількість: <strong>{{ cart_item.quantity }}</strong></p>
-                        <p class="mb-1">Повна сума: <strong>{{ cart_item.total_price }} грн</strong></p>
-                    </div>
-                    <div>
-                        <a href="{% url "cart:cart_remove" cart_item.id %}" class="remove-btn">
-                            <i class="bi bi-trash3-fill"></i> Видалити
+            <div class="cart-item-card d-flex flex-column flex-md-row align-items-md-center">
+                <img src="{{ cart_item.product.image.url|default:'https://via.placeholder.com/100' }}" alt="{{ cart_item.product.name }}" class="cart-item-img">
+
+                <div class="flex-grow-1">
+                    <div class="cart-item-header">
+                        <a href="{% url 'products:product_detail' product_slug=cart_item.product.slug %}">
+                            {{ cart_item.product.name }}
                         </a>
                     </div>
+                    <p class="mb-1">Ціна: <strong>{{ cart_item.product.price }} грн</strong></p>
+                    <p class="mb-1">Кількість: <strong>{{ cart_item.quantity }}</strong></p>
+                    <p class="mb-1">Сума: <strong>{{ cart_item.total_price }} грн</strong></p>
+                </div>
+
+                <div class="ms-md-4 mt-3 mt-md-0 text-md-end">
+                    <a href="{% url 'cart:cart_remove' cart_item.id %}" class="remove-btn">
+                        <i class="bi bi-trash3-fill"></i> Видалити
+                    </a>
                 </div>
             </div>
         {% endfor %}
@@ -80,14 +91,16 @@
         </div>
 
         <div class="text-end mt-4">
-            <a href="{% url 'orders:checkout' %}" class="btn btn-success btn-lg">
+            <a href="{% url 'orders:checkout' %}" class="btn btn-success btn-lg px-4 py-2">
                 Оформити замовлення
             </a>
         </div>
 
     {% else %}
-        <h3>🛒 Ваш кошик порожній!</h3>
-        <p class="lead">Додайте товари з <a href="{% url 'products:catalog' %}">каталогу</a>.</p>
+        <div class="text-center mt-5">
+            <h3>🛒 Ваш кошик порожній</h3>
+            <p class="lead">Перейдіть до <a href="{% url 'products:catalog' %}">каталогу товарів</a>, щоб додати щось.</p>
+        </div>
     {% endif %}
 </div>
 {% endblock %}
