@@ -2,60 +2,125 @@
 
 {% block styles %}
 <style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f4f6f8;
+    }
+
     .checkout-container {
-        padding-top: 3rem;
-        padding-bottom: 3rem;
+        padding: 4rem 0;
     }
 
-    .checkout-form {
-        background-color: #f8f9fa;
+    .checkout-form, .order-summary {
+        background-color: #ffffff;
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .checkout-form:hover,
+    .order-summary:hover {
+        transform: translateY(-2px);
+    }
+
+    h2, h4 {
+        font-weight: 600;
+        color: #333;
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: #555;
+        margin-bottom: 0.3rem;
+    }
+
+    .form-control {
         border-radius: 10px;
-        padding: 2rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        border: 1px solid #ced4da;
+        padding: 0.75rem;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
     }
 
-    .order-summary {
-        background-color: #fff;
-        border: 1px solid #dee2e6;
-        border-radius: 10px;
-        padding: 2rem;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    .order-summary h4 {
-        margin-bottom: 1.5rem;
+    .form-control:focus {
+        border-color: #20c997;
+        box-shadow: 0 0 0 0.2rem rgba(32, 201, 151, 0.25);
     }
 
     .summary-item {
         display: flex;
         justify-content: space-between;
-        margin-bottom: 0.5rem;
+        padding: 0.75rem 0;
+        border-bottom: 1px dashed #e0e0e0;
+        color: #555;
     }
 
     .summary-total {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
         font-weight: bold;
-        color: #198754;
-        border-top: 1px solid #ccc;
-        margin-top: 1rem;
-        padding-top: 1rem;
+        color: #0d6efd;
+        margin-top: 1.5rem;
+        text-align: right;
+    }
+
+    .btn-success {
+        font-size: 1.1rem;
+        padding: 0.75rem;
+        border-radius: 10px;
+        background-color: #20c997;
+        border: none;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn-success:hover {
+        background-color: #17b58d;
+    }
+
+    .alert-danger {
+        background-color: #fff0f0;
+        color: #d9534f;
+        border: 1px solid #f5c6cb;
+        border-radius: 8px;
+        padding: 1rem;
+    }
+
+    @media (max-width: 768px) {
+        .checkout-form,
+        .order-summary {
+            padding: 1.5rem;
+        }
+
+        .summary-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .summary-item span:last-child {
+            margin-top: 0.25rem;
+            font-weight: 500;
+        }
+
+        .summary-total {
+            text-align: left;
+        }
     }
 </style>
 {% endblock %}
 
 {% block content %}
 <div class="container checkout-container">
-    <div class="row">
+    <div class="row g-5">
         <div class="col-md-6">
-            <h2 class="mb-4">Оформлення замовлення</h2>
-            <form method="post" action="{% url 'orders:checkout' %}">
-                {% if form.errors %}
-                    <div class="alert alert-danger">
-                        Будь ласка, виправте помилки у формі.
-                    </div>
-                {% endif %}
-                {% csrf_token %}
-                <div class="checkout-form">
+            <div class="checkout-form">
+                <h2>Оформлення замовлення</h2>
+                <form method="post" action="{% url 'orders:checkout' %}">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                        <div class="alert alert-danger">
+                            Будь ласка, виправте помилки у формі.
+                        </div>
+                    {% endif %}
                     <div class="mb-3">
                         <label for="{{ form.first_name.id_for_label }}" class="form-label">Ім’я</label>
                         {{ form.first_name }}
@@ -64,15 +129,15 @@
                         <label for="{{ form.last_name.id_for_label }}" class="form-label">Прізвище</label>
                         {{ form.last_name }}
                     </div>
-                    <div class="col-12 mt-3">
+                    <div class="mb-3">
                         <label for="{{ form.address.id_for_label }}" class="form-label">Адреса доставки</label>
                         {{ form.address }}
                     </div>
                     <button type="submit" class="btn btn-success w-100 mt-3">
                         Підтвердити та оплатити
                     </button>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
 
         <div class="col-md-6">
@@ -80,7 +145,7 @@
                 <h4>Ваше замовлення</h4>
                 {% for item in cart %}
                     <div class="summary-item">
-                        <span>{{ item.product.name }} - x{{ item.quantity }}</span>
+                        <span>{{ item.product.name }} — x{{ item.quantity }}</span>
                         <span>{{ item.total_price }} грн</span>
                     </div>
                 {% endfor %}
