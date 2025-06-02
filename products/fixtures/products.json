@@ -320,5 +320,299 @@
     "created_at": "2025-05-25T12:41:28.888Z",
     "category": 6
   }
+},
+{
+  "model": "products.product",
+  "pk": 24,
+  "fields": {
+    "name": "RTX 4060 Ti Dual EVO OC 8GB",
+    "slug": "rtx-4060-ti-dual-evo-oc-8gb",
+    "description": "Відеокарта NVIDIA середнього класу, яка пропонує сучасну продуктивність та підтримку передових технологій \"зеленого\" бренду. Заснована на архітектурі Ada Lovelace, виконана по 4-нм техпроцесу і як основа використовує ядро AD106 з 4352 CUDA-ядрами та невеликим заводським розгоном до 2595 МГц. Як і базова версія GeForce RTX 4060, модифікація з приставкою Ti оснащена 8 ГБ відеопам'яті GDDR6, проте її частота збільшена з 17000 МГц до 18000 МГц.",
+    "price": "21299.00",
+    "image": "products_images/2621229.webp",
+    "available": true,
+    "created_at": "2025-05-29T10:40:16.765Z",
+    "category": 3
+  }
+},
+{
+  "model": "products.product",
+  "pk": 25,
+  "fields": {
+    "name": "Gigabyte GeForce RTX 4070 WINDFORCE OC 12G",
+    "slug": "gigabyte-geforce-rtx-4070-windforce-oc-12g",
+    "description": "Високопродуктивна ігрова відеокарта на основі передової мікроархітектури NVIDIA Ada Lovelace 2023 року. Призначена для комплектації ігрових систем верхньої цінової категорії, обладнаних моніторами FullHD або WQHD-дозвіл. Основою пристрою є графічний процесор AD 104 (5 нм), що працює у зв'язці з графічною пам'яттю GDDR6 об'ємом 8 Гб (256-bit). Кристал 5888 потокових процесорів, а тактова частота 2490 МГц трохи розігнана в порівнянні з референсним зразком.",
+    "price": "28999.00",
+    "image": "products_images/hcxpv3m0fl1.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:41:24.591Z",
+    "category": 3
+  }
+},
+{
+  "model": "products.product",
+  "pk": 26,
+  "fields": {
+    "name": "Gigabyte GeForce RTX 4070 SUPER WINDFORCE OC 12G",
+    "slug": "gigabyte-geforce-rtx-4070-super-windforce-oc-12g",
+    "description": "Середньорозмірна тривентиляторна модифікація відеокарти NVIDIA GeForce RTX 4070 із приставкою SUPER. Базується на модифікованому кристалі AD104 з 10 додатковими 10 потоковими мультипроцесорами, який забезпечує приріст продуктивності в 20-25% порівняно зі звичайною версією GeForce RTX 4070. Після обчислювальної потужності, енергоспоживання відеокарти збільшилося з 200 до 225 Вт.",
+    "price": "40499.00",
+    "image": "products_images/hln1oqpvn71.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:42:16.106Z",
+    "category": 3
+  }
+},
+{
+  "model": "products.product",
+  "pk": 27,
+  "fields": {
+    "name": "Gigabyte GeForce RTX­­ 4070 Ti GAMING OC 12G",
+    "slug": "gigabyte-geforce-rtx-4070-ti-gaming-oc-12g",
+    "description": "Серія Gigabyte Gaming пропонує великогабаритну та високопродуктивну ігрову відеокарту верхнього середнього цінового сегмента, засновану на передовій мікроархітектурі NVIDIA Ada Lovelace (5 нм, 2022). Цей потужний графічний адаптер призначений для вимогливих геймерів, ентузіастів та кіберспортсменів, які прагнуть грати у роздільній здатності 2K без жодних обмежень. Особлива увага приділяється ігровим можливостям та ефективному охолодженню за допомогою фірмової трикулерної системи Windforce.",
+    "price": "50999.00",
+    "image": "products_images/h9t0btdb681.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:43:06.109Z",
+    "category": 3
+  }
+},
+{
+  "model": "products.product",
+  "pk": 28,
+  "fields": {
+    "name": "ZOTAC GeForce RTX 4070 Ti SUPER SOLID",
+    "slug": "zotac-geforce-rtx-4070-ti-super-solid",
+    "description": "Відеоприскорювач у верхній частині середнього цінового діапазону побудований на базі модифікованого графічного чіпа NVIDIA AD 103. Відеоядро моделі містить 8448 потокових процесорів, чіп працює на частоті 2610 МГц, підтримує інтерфейс PCI-E v4.0 і DirectX 12 Ultimate. Об'єм пам'яті GDDR6X становить 16 ГБ і для обміну даними використовується 256-бітна шина. Покращені RT-ядра четвертого покоління та тензорні ядра третього покоління забезпечують більш ефективну та якісну роботу системи трасування променів та масштабування зображення без замилювання картинки.",
+    "price": "45779.00",
+    "image": "products_images/htauvhgfw91.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:43:52.399Z",
+    "category": 3
+  }
+},
+{
+  "model": "products.product",
+  "pk": 29,
+  "fields": {
+    "name": "AMD Ryzen 9 Raphael 7900X BOX",
+    "slug": "amd-ryzen-9-raphael-7900x-box",
+    "description": "Топовий процесор AMD Ryzen 9 з сімейства Raphael, представляє вражаючу комбінацію обчислювальної потужності та передових технологій, реалізованих у прогресивній мікроархітектурі Zen 4. графічного рендерингу, інженерних розрахунків, компіляції та ін. Призначений для встановлення в материнські наступні покоління, оснащені новим сокетом AM5, який компанія AMD представила наприкінці 2022 року.",
+    "price": "16699.00",
+    "image": "products_images/h5ouoncs621.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:45:40.397Z",
+    "category": 2
+  }
+},
+{
+  "model": "products.product",
+  "pk": 30,
+  "fields": {
+    "name": "Intel Core i9 Raptor Lake i9-13900K BOX",
+    "slug": "intel-core-i9-raptor-lake-i9-13900k-box",
+    "description": "Сімейство абсолютно топових, екстремально потужних і продуктивних 24-ядерних процесорів, які гігант Intel випускає на ринку побутових комплектуючих. За своєю продуктивністю вони наближаються до серверних чіпів трирічної давності, що дозволяє розглядати їх у ролі основи надзвичайно вимогливих робочих станцій для монтажу, рендерингу, обробки великих даних, роботи з ШІ тощо. Для ігрових ПК їх потужність здебільшого надмірна.",
+    "price": "17399.00",
+    "image": "products_images/2283984.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:46:19.051Z",
+    "category": 2
+  }
+},
+{
+  "model": "products.product",
+  "pk": 31,
+  "fields": {
+    "name": "Intel Core i9 Alder Lake i9-12900K BOX",
+    "slug": "intel-core-i9-alder-lake-i9-12900k-box",
+    "description": "Гібридна архітектура, що передбачає поєднання високопродуктивних (Performance-cores) і енергоефективних (Efficient-core) ядер. Підтримка стандарту DDR5 і інтерфейсу PCI Express 5.0.\r\nPerformance-cores – високопродуктивні ядра здатні одночасно виконувати до двох потоків обчислення. Efficient-core – енергоефективні ядра, не підтримують Hyper-Threading і призначені для обробки фонових навантажень.",
+    "price": "13999.00",
+    "image": "products_images/2117067.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:46:56.313Z",
+    "category": 2
+  }
+},
+{
+  "model": "products.product",
+  "pk": 32,
+  "fields": {
+    "name": "Intel Core i7 Raptor Lake Refresh 14700KF BOX",
+    "slug": "intel-core-i7-raptor-lake-refresh-14700kf-box",
+    "description": "Збільшено кількість енергоефективних ядер (E-core) до 12. Частоти для P-core підвищено на 200 Гц до 5.5 ГГц, а також на 100 МГц для E-core порівняно з попереднім поколінням.",
+    "price": "13999.00",
+    "image": "products_images/2555555.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:47:27.502Z",
+    "category": 2
+  }
+},
+{
+  "model": "products.product",
+  "pk": 33,
+  "fields": {
+    "name": "MSI MEG AiT Ai1600T",
+    "slug": "msi-meg-ait-ai1600t",
+    "description": "Блок стандарту ATX 3.1 з можливістю живлення двох відеокарт PCIe 5.1 до 600 Вт на один кабель. Синхронізація з MSI Gaming Intelligence (підключається до системи через порт USB‑C). Кабелі в тканинній оплітці. Корпус виконаний зі сталі.",
+    "price": "35999.00",
+    "image": "products_images/2877422.webp",
+    "available": true,
+    "created_at": "2025-05-29T10:48:45.551Z",
+    "category": 6
+  }
+},
+{
+  "model": "products.product",
+  "pk": 34,
+  "fields": {
+    "name": "be quiet! Pure Power 12 M BN346",
+    "slug": "be-quiet-pure-power-12-m-bn346",
+    "description": "",
+    "price": "9999.00",
+    "image": "products_images/hgpaa8srsd1.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:50:10.253Z",
+    "category": 6
+  }
+},
+{
+  "model": "products.product",
+  "pk": 35,
+  "fields": {
+    "name": "Chieftec VEGA PPG-750-S",
+    "slug": "chieftec-vega-ppg-750-s",
+    "description": "",
+    "price": "3399.00",
+    "image": "products_images/hwasnyrft91.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:50:42.549Z",
+    "category": 6
+  }
+},
+{
+  "model": "products.product",
+  "pk": 36,
+  "fields": {
+    "name": "Cooler Master GX II MPX-7503-AFAG-2",
+    "slug": "cooler-master-gx-ii-mpx-7503-afag-2",
+    "description": "",
+    "price": "4499.00",
+    "image": "products_images/2658903.webp",
+    "available": true,
+    "created_at": "2025-05-29T10:51:13.907Z",
+    "category": 6
+  }
+},
+{
+  "model": "products.product",
+  "pk": 37,
+  "fields": {
+    "name": "SSD Kingston NV3 SNV3S/1000G 1 ТБ",
+    "slug": "ssd-kingston-nv3-snv3s1000g-1",
+    "description": "Надійний та доступний твердотільний накопичувач форм-фактору M.2, призначений для підвищення продуктивності домашніх медіасистем, ігрових ПК та робочих ноутбуків. SSD відноситься до початкового рівня і є представником споживчої серії Consumer, до якої входять відносно недорогі накопичувачі, призначені для вирішення широкого спектру завдань. Працюючи під управлінням інтерфейсу PCI-E 4.0 та протоколу NVMe 1.4, накопичувач",
+    "price": "2699.00",
+    "image": "products_images/2740878.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:52:37.852Z",
+    "category": 5
+  }
+},
+{
+  "model": "products.product",
+  "pk": 38,
+  "fields": {
+    "name": "SSD Kingston KC3000 SKC3000D/2048G 2.05 ТБ",
+    "slug": "ssd-kingston-kc3000-skc3000d2048g-205",
+    "description": "",
+    "price": "6599.00",
+    "image": "products_images/2115679.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:53:10.487Z",
+    "category": 5
+  }
+},
+{
+  "model": "products.product",
+  "pk": 39,
+  "fields": {
+    "name": "SSD Apacer Panther AS350X AP1TBAS350XR 1 ТБ",
+    "slug": "ssd-apacer-panther-as350x-ap1tbas350xr-1",
+    "description": "",
+    "price": "2225.00",
+    "image": "products_images/gnwjab12y21.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:53:43.580Z",
+    "category": 5
+  }
+},
+{
+  "model": "products.product",
+  "pk": 40,
+  "fields": {
+    "name": "SSD Kingston A400 SA400S37/960G 960 ГБ",
+    "slug": "ssd-kingston-a400-sa400s37960g-960",
+    "description": "Один з найдоступніших і найпопулярніших SSD-накопичувачів на ринку, який і не думає випадати з топів продаж навіть незважаючи на те, що вийшов у продаж ще в 2018 році. Виробник позиціонує його в ролі доступного та надійного системного диска в ПК чи ноутбуці, від якого не потрібно щодня перезаписувати по 300 – 500 ГБ даних. Завдяки доступній ціні є недорогою і набагато швидше альтернативою старим і неповоротким HDD-накопичувачам.",
+    "price": "2599.00",
+    "image": "products_images/1035813.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:54:20.807Z",
+    "category": 5
+  }
+},
+{
+  "model": "products.product",
+  "pk": 41,
+  "fields": {
+    "name": "GOODRAM IRDM DDR5 2x16Gb IR-6000D564L30S/32GDC",
+    "slug": "goodram-irdm-ddr5-2x16gb-ir-6000d564l30s32gdc",
+    "description": "Двоканальний комплект продуктивної оверклокерської оперативної пам'яті типу DDR5, яка здатна гарантовано працювати з ефективною тактовою частотою 6000 МГц. Складається з пари дворангових модулів об'ємом по 16 Гб кожен. Призначений для використання у складі продуктивних персональних комп'ютерів, що базуються на платформі Intel Core (від 6-го до 12-го покоління) або в конфігураціях на базі процесорів AMD Ryzen.",
+    "price": "4699.00",
+    "image": "products_images/2552096_1jZlOLI.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:55:46.547Z",
+    "category": 4
+  }
+},
+{
+  "model": "products.product",
+  "pk": 42,
+  "fields": {
+    "name": "A-Data Lancer Blade DDR5 2x16Gb AX5U6000C3016G-DTLABBK",
+    "slug": "a-data-lancer-blade-ddr5-2x16gb-ax5u6000c3016g-dtlabbk",
+    "description": "",
+    "price": "4599.00",
+    "image": "products_images/2493014.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:56:21.253Z",
+    "category": 4
+  }
+},
+{
+  "model": "products.product",
+  "pk": 43,
+  "fields": {
+    "name": "Crucial Pro Overclocking DDR5 2x16Gb CP2K16G60C36U5B",
+    "slug": "crucial-pro-overclocking-ddr5-2x16gb-cp2k16g60c36u5b",
+    "description": "",
+    "price": "4299.00",
+    "image": "products_images/2656280.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:57:13.674Z",
+    "category": 4
+  }
+},
+{
+  "model": "products.product",
+  "pk": 44,
+  "fields": {
+    "name": "Patriot Memory Viper Venom DDR5 2x16Gb PVV532G620C40K",
+    "slug": "patriot-memory-viper-venom-ddr5-2x16gb-pvv532g620c",
+    "description": "Швидкодіючий комплект оперативної пам'яті класу DDR5 з вражаючою стартовою швидкістю та загальним обсягом 32 ГБ. Входить до нової продуктової лінійки Viper Venom, спеціально для якої відбираються найшвидші модулі пам'яті, що є в асортименті Viper. Представники цієї серії здатні працювати на більш високих частотах, ніж модулі Viper Steel і Signature Line, також вони оснащені стильними радіаторами з вбудованими термічними датчиками для більш ефективного охолодження чіпів пам'яті.",
+    "price": "4599.00",
+    "image": "products_images/2144790.jpg",
+    "available": true,
+    "created_at": "2025-05-29T10:57:55.964Z",
+    "category": 4
+  }
 }
 ]
