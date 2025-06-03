@@ -1,5 +1,7 @@
 from django.views.generic import DetailView, ListView, TemplateView
 
+from django.core.cache import cache
+
 from .models import Category, Product
 
 
@@ -51,5 +53,16 @@ class ProductsListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context["categories"] = Category.objects.all()
+        categories = cache.get("category_list")
+        if not categories:
+            categories = Category.objects.all()
+            cache.set("category_list", categories)
+        context["categories"] = categories
+
+        products = cache.get("category_list")
+        if not products:
+            products = Product.objects.all()
+            cache.set("category_list", products)
+        context["categories"] = products
+
         return context
