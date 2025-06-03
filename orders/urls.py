@@ -8,4 +8,5 @@ urlpatterns = [
     path("order/success/", views.SuccessTemplateView.as_view(), name="order_success"),
     path("order/cancel/", views.CancelTemplateView.as_view(), name="order_cancel"),
     path("user/my-orders/", views.MyOrdesView.as_view(), name="my_orders"),
+    path("webhooks/stripe/", views.stripe_webhook, name="stripe_webhook"),
 ]
