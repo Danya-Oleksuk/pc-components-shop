@@ -21,6 +21,9 @@ class MyOrdesView(TemplateView):
 class SuccessTemplateView(TemplateView):
     template_name = "orders/success.html"
 
+class CancelTemplateView(TemplateView):
+    template_name = "orders/cancel.html"
+
 
 class CheckoutView(FormView):
     template_name = "orders/checkout.html"
