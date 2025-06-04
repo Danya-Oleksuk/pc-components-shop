@@ -59,10 +59,4 @@ class ProductsListView(ListView):
             cache.set("category_list", categories)
         context["categories"] = categories
 
-        products = cache.get("category_list")
-        if not products:
-            products = Product.objects.all()
-            cache.set("category_list", products)
-        context["categories"] = products
-
         return context
