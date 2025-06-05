@@ -220,76 +220,43 @@
                 </div>
 
                 {% if is_paginated %}
-                    <nav class="mt-5" aria-label="Page navigation">
-                        <ul class="pagination justify-content-center">
-                            {% if page_obj.has_previous %}
-                                <li class="page-item">
-                                    <a class="page-link"
-                                       href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
-                                        Назад
-                                    </a>
-                                </li>
-                            {% endif %}
+                <nav class="mt-5" aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        {% if page_obj.has_previous %}
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.min_price %}&min_price={{ request.GET.min_price }}{% endif %}{% if request.GET.max_price %}&max_price={{ request.GET.max_price }}{% endif %}">
+                                    Назад
+                                </a>
+                            </li>
+                        {% endif %}
 
-                            {% if page_obj.paginator.num_pages > 5 %}
-                                {% if page_obj.number > 3 %}
+                        {% for num in page_obj.paginator.page_range %}
+                            {% if num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
+                                {% if num == page_obj.number %}
+                                    <li class="page-item active"><span class="page-link">{{ num }}</span></li>
+                                {% else %}
                                     <li class="page-item">
                                         <a class="page-link"
-                                           href="?page=1{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">1</a>
-                                    </li>
-                                    {% if page_obj.number > 4 %}
-                                        <li class="page-item disabled"><span class="page-link">...</span></li>
-                                    {% endif %}
-                                {% endif %}
-
-                                {% for num in page_obj.paginator.page_range %}
-                                    {% if num >= page_obj.number|add:"-2" and num <= page_obj.number|add:"2" %}
-                                        {% if num == page_obj.number %}
-                                            <li class="page-item active"><span class="page-link">{{ num }}</span></li>
-                                        {% else %}
-                                            <li class="page-item">
-                                                <a class="page-link"
-                                                   href="?page={{ num }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
-                                                    {{ num }}
-                                                </a>
-                                            </li>
-                                        {% endif %}
-                                    {% endif %}
-                                {% endfor %}
-
-                                {% if page_obj.number < page_obj.paginator.num_pages|add:"-2" %}
-                                    {% if page_obj.number < page_obj.paginator.num_pages|add:"-3" %}
-                                        <li class="page-item disabled"><span class="page-link">...</span></li>
-                                    {% endif %}
-                                    <li class="page-item">
-                                        <a class="page-link"
-                                           href="?page={{ page_obj.paginator.num_pages }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
-                                            {{ page_obj.paginator.num_pages }}
-                                        </a>
-                                    </li>
-                                {% endif %}
-                            {% else %}
-                                {% for num in page_obj.paginator.page_range %}
-                                    <li class="page-item{% if num == page_obj.number %} active{% endif %}">
-                                        <a class="page-link"
-                                           href="?page={{ num }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
+                                           href="?page={{ num }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.min_price %}&min_price={{ request.GET.min_price }}{% endif %}{% if request.GET.max_price %}&max_price={{ request.GET.max_price }}{% endif %}">
                                             {{ num }}
                                         </a>
                                     </li>
-                                {% endfor %}
+                                {% endif %}
                             {% endif %}
+                        {% endfor %}
 
-                            {% if page_obj.has_next %}
-                                <li class="page-item">
-                                    <a class="page-link"
-                                       href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}">
-                                        Вперёд
-                                    </a>
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </nav>
-                {% endif %}
+                        {% if page_obj.has_next %}
+                            <li class="page-item">
+                                <a class="page-link"
+                                   href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.min_price %}&min_price={{ request.GET.min_price }}{% endif %}{% if request.GET.max_price %}&max_price={{ request.GET.max_price }}{% endif %}">
+                                    Вперёд
+                                </a>
+                            </li>
+                        {% endif %}
+                    </ul>
+                </nav>
+            {% endif %}
             </div>
         </div>
     </div>
