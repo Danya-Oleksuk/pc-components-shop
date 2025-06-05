@@ -11,6 +11,7 @@
         padding: 4rem 0;
     }
 
+    /* Унифицированные стили для .checkout-form и .order-summary */
     .checkout-form, .order-summary {
         background-color: #ffffff;
         border-radius: 16px;
@@ -19,8 +20,7 @@
         transition: transform 0.2s ease-in-out;
     }
 
-    .checkout-form:hover,
-    .order-summary:hover {
+    .checkout-form:hover, .order-summary:hover {
         transform: translateY(-2px);
     }
 
@@ -64,17 +64,59 @@
         text-align: right;
     }
 
-    .btn-success {
-        font-size: 1.1rem;
-        padding: 0.75rem;
-        border-radius: 10px;
-        background-color: #20c997;
-        border: none;
-        transition: background-color 0.3s ease;
+    .btn-back {
+        display: inline-flex;
+        align-items: center;
+        padding: 5px 10px;
+        background: linear-gradient(135deg, #20c997, #17b58d);
+        color: #ffffff;
+        font-size: 0.9rem;
+        border-radius: 20px;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
-    .btn-success:hover {
-        background-color: #17b58d;
+    .btn-back:hover {
+        background: linear-gradient(135deg, #17b58d, #20c997);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-back i {
+        font-size: 1.1rem;
+    }
+
+    /* Стиль для кнопки подтверждения */
+    .btn-custom {
+        padding: 12px 24px;
+        font-size: 1.1rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        border-radius: 30px;
+        background: linear-gradient(135deg, #20c997, #17b58d);
+        color: #fff;
+        border: none;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        transition: all 0.3s ease;
+    }
+
+    .btn-custom:hover {
+        background: linear-gradient(135deg, #17b58d, #20c997);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-custom:active {
+        background: #17b58d;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transform: translateY(1px);
+    }
+
+    .btn-custom:focus {
+        outline: none;
+        box-shadow: 0 0 0 0.2rem rgba(32, 201, 151, 0.25);
     }
 
     .alert-danger {
@@ -83,11 +125,11 @@
         border: 1px solid #f5c6cb;
         border-radius: 8px;
         padding: 1rem;
+        display: none; /* Прячем alert, если не используется */
     }
 
     @media (max-width: 768px) {
-        .checkout-form,
-        .order-summary {
+        .checkout-form, .order-summary {
             padding: 1.5rem;
         }
 
@@ -113,6 +155,11 @@
     <div class="row g-5">
         <div class="col-md-6">
             <div class="checkout-form">
+                <a href="{% url 'cart:cart_list' %}" class="back-btn d-inline-flex align-items-center text-decoration-none btn-back">
+                    <i class="bi bi-arrow-left-short fs-4"></i>
+                    <span class="ms-2">До кошика</span>
+                </a>
+
                 <h2>Оформлення замовлення</h2>
                 <form method="post" action="{% url 'orders:checkout' %}">
                     {% csrf_token %}
@@ -133,7 +180,7 @@
                         <label for="{{ form.address.id_for_label }}" class="form-label">Адреса доставки</label>
                         {{ form.address }}
                     </div>
-                    <button type="submit" class="btn btn-success w-100 mt-3">
+                    <button type="submit" class="btn btn-success w-100 mt-3 btn-custom">
                         Підтвердити та оплатити
                     </button>
                 </form>
