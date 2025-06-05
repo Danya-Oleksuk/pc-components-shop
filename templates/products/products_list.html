@@ -177,7 +177,7 @@
                     {% for product in products %}
                         <div class="col">
                             <div class="card product-card h-100 position-relative">
-                                <a href="{% url 'products:product_detail' product_slug=product.slug %}?from=catalog" class="stretched-link"></a>
+                                <a href="{% url 'products:product_detail' product_slug=product.slug %}?from=catalog&{{ request.GET.urlencode|safe }}" class="stretched-link"></a>
 
                                 <div class="product-img-container">
                                     {% if product.image %}

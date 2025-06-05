@@ -1,3 +1,5 @@
+from urllib.parse import urlencode
+
 from django.views.generic import DetailView, ListView, TemplateView
 
 from django.core.cache import cache
@@ -29,16 +31,23 @@ class ProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        source = self.request.GET.get("from")
+        params = self.request.GET.copy()
+        source = params.pop('from', [''])[0]
 
         if source == "main_page":
-            context["back_url"] = "/"
+            base_url = "/"
         elif source == "catalog":
-            context["back_url"] = "/products/"
+            base_url = "/products/"
         elif source == "cart":
-            context["back_url"] = "/user/cart/"
+            base_url = "/user/cart/"
         else:
-            context["back_url"] = "/"
+            base_url = "/"
+
+        if params:
+            query_string = urlencode(params, doseq=True)
+            context["back_url"] = f"{base_url}?{query_string}"
+        else:
+            context["back_url"] = base_url
 
         return context
 
