@@ -178,6 +178,7 @@
                             Будь ласка, виправте помилки у формі.
                         </div>
                     {% endif %}
+
                     <div class="mb-3">
                         <label for="{{ form.first_name.id_for_label }}" class="form-label">Ім’я</label>
                         {{ form.first_name }}
@@ -187,14 +188,17 @@
                         {{ form.last_name }}
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Місто</label>
-                        <input id="city-input" class="form-control" type="text" placeholder="Введіть місто">
+                        <label for="{{ form.phone.id_for_label }}" class="form-label">Телефон</label>
+                        {{ form.phone }}
                     </div>
                     <div class="mb-3">
-                        <label class="form-label">Відділення / Поштомат</label>
-                        <input id="warehouse-input" class="form-control" type="text" placeholder="Введіть відділення або поштомат">
+                        <label for="{{ form.city.id_for_label }}" class="form-label">Місто</label>
+                        {{ form.city }}
                     </div>
-
+                    <div class="mb-3">
+                        <label for="{{ form.warehouse.id_for_label }}" class="form-label">Відділення / Поштомат</label>
+                        {{ form.warehouse }}
+                    </div>
                     <button type="submit" class="btn btn-success w-100 mt-3 btn-custom">
                         Підтвердити та оплатити
                     </button>

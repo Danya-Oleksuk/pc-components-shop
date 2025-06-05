@@ -31,7 +31,12 @@
                                     <td>{{ order.id }}</td>
                                     <td>{{ order.first_name }}</td>
                                     <td>{{ order.last_name }}</td>
-                                    <td>{{ order.address }}</td>
+                                    <td>
+                                        <div>
+                                            <strong>{{ order.city }}</strong>,
+                                            <span>{{ order.warehouse }}</span>
+                                        </div>
+                                    </td>
                                     <td>{{ order.get_status_display }}</td>
                                     <td>{{ order.total_price }}</td>
                                     <td>{{ order.created_at }}</td>
