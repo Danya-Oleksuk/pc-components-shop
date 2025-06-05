@@ -63,6 +63,8 @@
    STRIPE_SECRET_KEY=<your_stripe_secret_key>
    STRIPE_PUBLIC_KEY=<your_stripe_public_key>
    STRIPE_WEBHOOK_SECRET=<your_stripe_webhook_key>
+
+   NOVA_POSHTA_API_KEY=<your_api_key>
    ```
 
 5. **Run database migrations**:
