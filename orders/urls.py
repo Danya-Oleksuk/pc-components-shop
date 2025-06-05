@@ -9,4 +9,6 @@ urlpatterns = [
     path("order/cancel/", views.CancelTemplateView.as_view(), name="order_cancel"),
     path("user/my-orders/", views.MyOrdesView.as_view(), name="my_orders"),
     path("webhooks/stripe/", views.stripe_webhook, name="stripe_webhook"),
+    path('ajax/cities/', views.autocomplete_city, name='autocomplete_city'),
+    path('ajax/warehouses/', views.autocomplete_warehouses, name='autocomplete_warehouse'),
 ]

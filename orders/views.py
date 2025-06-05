@@ -1,8 +1,9 @@
 import stripe
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_GET
 from django.views.generic import FormView, TemplateView
 
 from cart.models import Cart
@@ -10,9 +11,26 @@ from pc_components_shop import settings
 
 from .forms import OrderForm
 from .models import Order
+from .novaposhta_service import get_city_suggestions, get_warehouse_suggestions
+
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
 
+@require_GET
+def autocomplete_city(request):
+    query = request.GET.get('q', '')
+    suggestions = get_city_suggestions(query)
+    return JsonResponse(suggestions, safe=False)
+
+@require_GET
+def autocomplete_warehouses(request):
+    city_ref = request.GET.get('city_ref')
+    query = request.GET.get('q', '')
+    if not city_ref:
+        return JsonResponse([], safe=False)
+
+    warehouses = get_warehouse_suggestions(city_ref, query)
+    return JsonResponse(warehouses, safe=False)
 
 class MyOrdesView(TemplateView):
     template_name = "orders/my_orders.html"
