@@ -81,6 +81,7 @@
 - `orders/` — application for handling orders.
 - `products/` — application for the product catalog.
 - `users/` — application for user management.
+- `errors/` — application for сustom error pages.
 - `templates/` — HTML templates.
 - `static/` — static files (CSS, JavaScript, images).
 - `media/` — user-uploaded files (e.g., product images).
