@@ -26,6 +26,22 @@ class ProductDetailView(DetailView):
     slug_field = "slug"
     slug_url_kwarg = "product_slug"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        source = self.request.GET.get("from")
+
+        if source == "main_page":
+            context["back_url"] = "/"
+        elif source == "catalog":
+            context["back_url"] = "/products/"
+        elif source == "cart":
+            context["back_url"] = "/user/cart/"
+        else:
+            context["back_url"] = "/"
+
+        return context
+
 
 class ProductsListView(ListView):
     template_name = "products/products_list.html"

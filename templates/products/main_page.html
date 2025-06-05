@@ -72,9 +72,8 @@
             {% for product in random_products %}
             <div class="col">
                 <div class="card product-card h-100">
-
                     <div class="card-clickable-area"
-                         onclick="window.location.href='{% url 'products:product_detail' product_slug=product.slug %}'"
+                         onclick="window.location.href='{% url 'products:product_detail' product_slug=product.slug %}?from=home'"
                          aria-label="Переглянути деталі товару">
                     </div>
 

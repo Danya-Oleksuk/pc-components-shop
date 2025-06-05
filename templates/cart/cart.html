@@ -69,7 +69,7 @@
 
                 <div class="flex-grow-1">
                     <div class="cart-item-header">
-                        <a href="{% url 'products:product_detail' product_slug=cart_item.product.slug %}">
+                        <a href="{% url 'products:product_detail' product_slug=cart_item.product.slug %}?from=cart">
                             {{ cart_item.product.name }}
                         </a>
                     </div>
