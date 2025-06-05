@@ -94,6 +94,19 @@
             font-size: 1.8rem;
         }
     }
+
+    .category-link {
+        text-decoration: none;
+        color: inherit;
+        cursor: pointer;
+        transition: color 0.3s ease, text-decoration 0.3s ease;
+    }
+
+    .category-link:hover {
+        color: #007bff;
+        text-decoration: none;
+    }
+
 </style>
 {% endblock %}
 
@@ -127,7 +140,9 @@
                 <ul class="specs-list">
                     <li>
                         <span>Категорія:</span>
-                        <span>{{ product.category.name }}</span>
+                        <a href="{% url 'products:catalog' %}?category={{ product.category.name }}" class="category-link">
+                            <span>{{ product.category.name }}</span>
+                        </a>
                     </li>
                     <li>
                         <span>Гарантія:</span>
