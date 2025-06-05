@@ -55,6 +55,58 @@
         text-decoration: underline;
         color: #a71d2a;
     }
+
+    .quantity-controls {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .quantity-controls button {
+        font-size: 1rem;
+        width: 30px;
+        height: 30px;
+        background-color: #f8f9fa;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #495057;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .quantity-controls button:hover {
+        background-color: #e9ecef;
+        transform: scale(1.1);
+    }
+
+    .quantity-controls button:disabled {
+        cursor: not-allowed;
+        background-color: #e0e0e0;
+        border: 1px solid #d6d6d6;
+    }
+
+    .quantity-display {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .cart-item-info p {
+        margin-bottom: 1rem;
+    }
+
+    .cart-item-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cart-item-info p {
+        margin-bottom: 0.5rem;
+    }
 </style>
 {% endblock %}
 
@@ -62,7 +114,7 @@
 <div class="container cart-container">
 
     {% if cart %}
-        <h1 class="mb-4 text-center">Ваш кошик</h1>
+        <h1 class="mb-4 text-center">🛒 Ваш кошик</h1>
         {% for cart_item in cart %}
             <div class="cart-item-card d-flex flex-column flex-md-row align-items-md-center">
                 <img src="{{ cart_item.product.image.url|default:'https://via.placeholder.com/100' }}" alt="{{ cart_item.product.name }}" class="cart-item-img">
@@ -73,9 +125,23 @@
                             {{ cart_item.product.name }}
                         </a>
                     </div>
-                    <p class="mb-1">Ціна: <strong>{{ cart_item.product.price }} грн</strong></p>
-                    <p class="mb-1">Кількість: <strong>{{ cart_item.quantity }}</strong></p>
-                    <p class="mb-1">Сума: <strong>{{ cart_item.total_price }} грн</strong></p>
+
+                    <div class="cart-item-info">
+                        <p>Ціна: <strong>{{ cart_item.product.price }} грн</strong></p>
+
+                        <p>Кількість:
+                            <span class="quantity-controls">
+                                <button {% if cart_item.quantity <= 1 %} disabled {% endif %}
+                                    onclick="location.href='{% url 'cart:cart_add' product_id=cart_item.product.id %}?action=decrease'">
+                                    -
+                                </button>
+                                <span class="quantity-display">{{ cart_item.quantity }}</span>
+                                <button onclick="location.href='{% url 'cart:cart_add' product_id=cart_item.product.id %}?action=increase'">+</button>
+                            </span>
+                        </p>
+
+                        <p>Сума: <strong>{{ cart_item.total_price }} грн</strong></p>
+                    </div>
                 </div>
 
                 <div class="ms-md-4 mt-3 mt-md-0 text-md-end">
@@ -95,7 +161,6 @@
                 Оформити замовлення
             </a>
         </div>
-
     {% else %}
         <div class="text-center mt-5">
             <h3>🛒 Ваш кошик порожній</h3>

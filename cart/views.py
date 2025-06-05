@@ -23,14 +23,18 @@ def cart_list(request):
 
 
 def cart_add(request, product_id):
-    cart = Cart.objects.filter(user=request.user, product_id=product_id)
+    action = request.GET.get("action")
+    cart_item = Cart.objects.filter(user=request.user, product_id=product_id).first()
 
-    if not cart.exists():
-        obj = Cart.objects.create(user=request.user, product_id=product_id, quantity=1)
+    if not cart_item:
+        cart_item = Cart.objects.create(user=request.user, product_id=product_id, quantity=1)
     else:
-        obj = cart.first()
-        obj.quantity += 1
-        obj.save()
+        if action == "decrease" and cart_item.quantity > 1:
+            cart_item.quantity -= 1
+        else:
+            cart_item.quantity += 1
+        cart_item.save()
+
     return HttpResponseRedirect(request.META["HTTP_REFERER"])
 
 
