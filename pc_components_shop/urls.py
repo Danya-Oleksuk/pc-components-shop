@@ -3,6 +3,8 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 
+handler404 = "errors.views.custom_404"
+handler500 = "errors.views.custom_500"
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", include("products.urls")),
