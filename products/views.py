@@ -1,8 +1,7 @@
 from urllib.parse import urlencode
 
-from django.views.generic import DetailView, ListView, TemplateView
-
 from django.core.cache import cache
+from django.views.generic import DetailView, ListView, TemplateView
 
 from .models import Category, Product
 
@@ -32,7 +31,7 @@ class ProductDetailView(DetailView):
         context = super().get_context_data(**kwargs)
 
         params = self.request.GET.copy()
-        source = params.pop('from', [''])[0]
+        source = params.pop("from", [""])[0]
 
         if source == "main_page":
             base_url = "/"

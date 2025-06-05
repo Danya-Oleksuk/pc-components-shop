@@ -1,17 +1,18 @@
+import stripe
 from django.http import HttpResponse
 from django.shortcuts import redirect
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import FormView, TemplateView
 
-from pc_components_shop import settings
 from cart.models import Cart
+from pc_components_shop import settings
 
 from .forms import OrderForm
 from .models import Order
-import stripe
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
+
 
 class MyOrdesView(TemplateView):
     template_name = "orders/my_orders.html"
@@ -22,11 +23,14 @@ class MyOrdesView(TemplateView):
         context["orders"] = Order.objects.filter(user=self.request.user)
         return context
 
+
 class SuccessTemplateView(TemplateView):
     template_name = "orders/success.html"
 
+
 class CancelTemplateView(TemplateView):
     template_name = "orders/cancel.html"
+
 
 class CheckoutView(FormView):
     template_name = "orders/checkout.html"
@@ -57,14 +61,14 @@ class CheckoutView(FormView):
         for item in cart:
             line_items.append(
                 {
-                    'price_data': {
-                        'currency': 'uah',
-                        'unit_amount': int(item.product.price * 100),
-                        'product_data': {
-                            'name': item.product.name,
+                    "price_data": {
+                        "currency": "uah",
+                        "unit_amount": int(item.product.price * 100),
+                        "product_data": {
+                            "name": item.product.name,
                         },
                     },
-                    'quantity': item.quantity,
+                    "quantity": item.quantity,
                 }
             )
 
@@ -72,7 +76,7 @@ class CheckoutView(FormView):
             checkout_session = stripe.checkout.Session.create(
                 payment_method_types=["card"],
                 line_items=line_items,
-                mode='payment',
+                mode="payment",
                 client_reference_id=str(order.id),
                 success_url=self.request.build_absolute_uri(
                     reverse("orders:order_success") + f"?order_id={order.id}"
@@ -99,9 +103,7 @@ def stripe_webhook(request):
 
     try:
         event = stripe.Webhook.construct_event(
-            payload=payload,
-            sig_header=sig_header,
-            secret=endpoint_secret
+            payload=payload, sig_header=sig_header, secret=endpoint_secret
         )
     except ValueError as e:
         print("❌ Invalid payload:", e)
@@ -119,6 +121,7 @@ def stripe_webhook(request):
 
         if order_id:
             from .models import Order
+
             try:
                 order = Order.objects.get(id=order_id, status=Order.CREATED)
                 order.update_after_payment()

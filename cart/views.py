@@ -27,7 +27,9 @@ def cart_add(request, product_id):
     cart_item = Cart.objects.filter(user=request.user, product_id=product_id).first()
 
     if not cart_item:
-        cart_item = Cart.objects.create(user=request.user, product_id=product_id, quantity=1)
+        cart_item = Cart.objects.create(
+            user=request.user, product_id=product_id, quantity=1
+        )
     else:
         if action == "decrease" and cart_item.quantity > 1:
             cart_item.quantity -= 1
