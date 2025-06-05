@@ -128,6 +128,17 @@
                     <div class="input-group shadow-sm" style="max-width: 500px; width: 100%;">
                         <input type="text" name="search" class="form-control rounded-start" placeholder="Пошук товарів..."
                                value="{{ request.GET.search }}">
+
+                        {% if request.GET.category %}
+                            <input type="hidden" name="category" value="{{ request.GET.category }}">
+                        {% endif %}
+                        {% if request.GET.min_price %}
+                            <input type="hidden" name="min_price" value="{{ request.GET.min_price }}">
+                        {% endif %}
+                        {% if request.GET.max_price %}
+                            <input type="hidden" name="max_price" value="{{ request.GET.max_price }}">
+                        {% endif %}
+
                         <button class="btn btn-success rounded-end" type="submit">
                             <i class="bi bi-search"></i>
                         </button>
