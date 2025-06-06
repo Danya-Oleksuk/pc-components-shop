@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/info/about.css' %} ">
+{% endblock %}
+
+{% block content %}
+<div class="about-container">
+    <h1 class="about-title">Про нас</h1>
+    <div class="about-text">
+        <p>Ласкаво просимо до <span class="highlight">PC Components Store</span> — вашого надійного партнера у світі комп'ютерної техніки!</p>
+        <p>Ми спеціалізуємось на продажу <span class="highlight">комплектуючих для ПК</span>, аксесуарів та сучасних гаджетів. У нашому магазині ви знайдете відеокарти, процесори, оперативну пам'ять, SSD-диски та багато іншого — лише від перевірених виробників.</p>
+        <p>Ми віримо в <span class="highlight">якість, швидкість та чесність</span>. Наша команда завжди готова допомогти вам зібрати ідеальний комп'ютер для ігор, роботи чи навчання.</p>
+        <p>Дякуємо, що обираєте <span class="highlight">PC Components Store</span> — ми працюємо для вас з 2025 року!</p>
+    </div>
+</div>
+{% endblock %}

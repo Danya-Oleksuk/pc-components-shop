@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/info/contacts.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="contacts-container">
+    <h1 class="contacts-title">Контакти</h1>
+    <div class="contacts-box">
+        <div class="contact-item">
+            <span class="contact-label">Телефон:</span> +38 (099) 123-45-67
+        </div>
+        <div class="contact-item">
+            <span class="contact-label">Email:</span> support@techmaster.ua
+        </div>
+        <div class="contact-item">
+            <span class="contact-label">Адреса:</span> м. Київ, вул. Інноваційна, 12
+        </div>
+
+        <form class="contact-form">
+            <h3 style="margin-bottom: 15px;">Напишіть нам:</h3>
+            <input type="text" placeholder="Ваше ім'я" required>
+            <input type="email" placeholder="Ваш Email" required>
+            <textarea rows="4" placeholder="Ваше повідомлення" required></textarea>
+            <button type="submit">Відправити</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
