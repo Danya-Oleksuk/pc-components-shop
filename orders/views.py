@@ -1,4 +1,5 @@
 import stripe
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
@@ -34,8 +35,9 @@ def autocomplete_warehouses(request):
     return JsonResponse(warehouses, safe=False)
 
 
-class MyOrdesView(TemplateView):
+class MyOrdesView(LoginRequiredMixin, TemplateView):
     template_name = "orders/my_orders.html"
+    redirect_field_name = None
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -44,15 +46,16 @@ class MyOrdesView(TemplateView):
         return context
 
 
-class SuccessTemplateView(TemplateView):
+class SuccessTemplateView(LoginRequiredMixin, TemplateView):
     template_name = "orders/success.html"
+    redirect_field_name = None
 
 
-class CancelTemplateView(TemplateView):
+class CancelTemplateView(LoginRequiredMixin, TemplateView):
     template_name = "orders/cancel.html"
+    redirect_field_name = None
 
-
-class CheckoutView(FormView):
+class CheckoutView(LoginRequiredMixin, FormView):
     template_name = "orders/checkout.html"
     form_class = OrderForm
     success_url = reverse_lazy("orders:order_success")

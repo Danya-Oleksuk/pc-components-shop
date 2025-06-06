@@ -1,5 +1,6 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import redirect
 from django.urls import reverse_lazy
@@ -43,12 +44,10 @@ class UserRegisterView(CreateView):
         return redirect("products:main_page")
 
 
-class UserLogoutView(LogoutView):
+class UserLogoutView(LoginRequiredMixin, LogoutView):
     next_page = reverse_lazy("products:main_page")
 
 
-@method_decorator(
-    login_required(login_url="/user/login", redirect_field_name=None), name="dispatch"
-)
-class UserProfileView(TemplateView):
+class UserProfileView(LoginRequiredMixin, TemplateView):
     template_name = "users/user_profile.html"
+    redirect_field_name = None
