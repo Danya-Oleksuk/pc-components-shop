@@ -71,8 +71,13 @@
    ```bash
    python manage.py migrate
    ```
-
-6. **Run the project**:
+   
+6. **Run Redis Server**:
+   ```bash
+   redis-server
+   ```
+   
+7. **Run the project**:
    ```bash
    python manage.py runserver
    ```
