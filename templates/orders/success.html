@@ -1,58 +1,8 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block styles %}
-<style>
-    .thank-you-container {
-        padding: 5rem 1rem;
-        background: linear-gradient(to right, #e8f5e9, #ffffff);
-        border-radius: 16px;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.05);
-        transition: all 0.3s ease-in-out;
-    }
-
-    .thank-you-container:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
-    }
-
-    .thank-you-title {
-        font-size: 2.5rem;
-        color: #28a745;
-        font-weight: 600;
-        margin-bottom: 1rem;
-    }
-
-    .thank-you-message {
-        font-size: 1.2rem;
-        color: #555;
-        max-width: 700px;
-        margin: 0 auto 2rem;
-    }
-
-    .btn-return-home {
-        font-size: 1.1rem;
-        padding: 0.75rem 1.5rem;
-        border-radius: 10px;
-        background-color: #0d6efd;
-        border: none;
-        color: #fff;
-        transition: background-color 0.3s ease;
-    }
-
-    .btn-return-home:hover {
-        background-color: #0b5ed7;
-    }
-
-    @media (max-width: 768px) {
-        .thank-you-title {
-            font-size: 2rem;
-        }
-
-        .thank-you-message {
-            font-size: 1rem;
-        }
-    }
-</style>
+    <link rel="stylesheet" href="{% static 'css/orders/success.css' %}">
 {% endblock %}
 
 {% block content %}

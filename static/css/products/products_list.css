@@ -1,0 +1,109 @@
+    .catalog-header {
+        background: linear-gradient(45deg, #0d6efd, #6610f2);
+        padding: 4rem 0;
+        margin-bottom: 3rem;
+        color: white;
+        border-radius: 10px 10px 0 0;
+    }
+
+    .catalog-header h1 {
+        font-size: 3rem;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+
+    .product-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        height: 100%;
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+    }
+
+    .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-img-container {
+        height: 200px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f8f9fa;
+    }
+
+    .product-img-container img {
+        object-fit: contain;
+        max-height: 100%;
+        max-width: 100%;
+    }
+
+    .filter-card {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        margin-bottom: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .filter-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .filter-card h5 {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+
+    .product-card .card-body {
+        padding: 1.5rem;
+    }
+
+    .product-card .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    .product-card .card-text {
+        color: #6c757d;
+    }
+
+    .product-card .btn-outline-primary {
+        font-size: 1.2rem;
+        padding: 0.5rem 1.2rem;
+        transition: all 0.3s ease;
+    }
+
+    .product-card .btn-outline-primary:hover {
+        background-color: #0d6efd;
+        color: white;
+    }
+
+    .pagination .page-item.active .page-link {
+        background-color: #0d6efd;
+        border-color: #0d6efd;
+    }
+
+    .pagination .page-item.disabled .page-link {
+        color: #6c757d;
+    }
+
+    @media (max-width: 768px) {
+        .catalog-header h1 {
+            font-size: 2rem;
+        }
+
+        .product-card .card-body {
+            padding: 1rem;
+        }
+
+        .product-card .card-title {
+            font-size: 1.125rem;
+        }
+    }

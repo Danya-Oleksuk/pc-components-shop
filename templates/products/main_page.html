@@ -1,58 +1,8 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block styles %}
-<style>
-    .product-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        height: 100%;
-        position: relative;
-    }
-    .product-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    }
-    .product-img-container {
-        height: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #f8f9fa;
-        overflow: hidden;
-    }
-    .product-img {
-        max-height: 90%;
-        max-width: 90%;
-        object-fit: contain;
-    }
-    .price {
-        font-weight: bold;
-        color: #0d6efd;
-        font-size: 1.2rem;
-    }
-    .catalog-promo {
-        border: 2px solid #0d6efd;
-        border-radius: 15px;
-        padding: 2rem;
-        margin-bottom: 3rem;
-        background: rgba(13, 110, 253, 0.05);
-    }
-    .catalog-title {
-        font-size: 2.5rem;
-        color: #1a1a1a;
-        margin-bottom: 1.5rem;
-    }
-    .card-clickable-area {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 60px;
-        z-index: 1;
-    }
-    .add-to-cart {
-        z-index: 2;
-    }
-</style>
+    <link rel="stylesheet" href="{% static 'css/products/main_page.css' %}">
 {% endblock %}
 
 {% block content %}

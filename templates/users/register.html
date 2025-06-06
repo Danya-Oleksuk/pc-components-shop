@@ -1,101 +1,10 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}Зареєструватися{% endblock %}
 
 {% block styles %}
-<style>
-    body {
-        background: linear-gradient(135deg, #e0f7fa, #f8f9fa);
-        margin: 0;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .auth-wrapper {
-        min-height: calc(100vh - 120px);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding: 2rem 1rem;
-    }
-
-    .register-card {
-        background-color: white;
-        border-radius: 12px;
-        padding: 2rem;
-        width: 100%;
-        max-width: 420px;
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-        transition: all 0.3s ease;
-    }
-
-    .register-card h2 {
-        font-size: 1.8rem;
-        color: #333;
-        margin-bottom: 1.5rem;
-        text-align: center;
-    }
-
-    .form-label {
-        font-weight: 500;
-        margin-bottom: 0.5rem;
-        color: #555;
-    }
-
-    input {
-        width: 100%;
-        padding: 0.75rem;
-        margin-bottom: 1.25rem;
-        border: 1px solid #ddd;
-        border-radius: 6px;
-        font-size: 1rem;
-        color: #555;
-    }
-
-    input:focus {
-        border-color: #4CAF50;
-        outline: none;
-    }
-
-    .btn-register {
-        width: 100%;
-        background-color: #4CAF50;
-        color: white;
-        padding: 0.75rem;
-        border: none;
-        border-radius: 6px;
-        font-size: 1rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: background-color 0.3s;
-    }
-
-    .btn-register:hover {
-        background-color: #45a049;
-    }
-
-    .error-list {
-        color: #dc3545;
-        font-size: 0.95rem;
-        margin-bottom: 1rem;
-        list-style-type: none;
-        padding-left: 0;
-    }
-
-    .login-link {
-        text-align: center;
-        margin-top: 1rem;
-        font-size: 0.95rem;
-    }
-
-    .login-link a {
-        color: #0d6efd;
-        text-decoration: none;
-    }
-
-    .login-link a:hover {
-        text-decoration: underline;
-    }
-</style>
+    <link rel="stylesheet" href="{% static 'css/users/register.css' %}">
 {% endblock %}
 
 {% block content %}

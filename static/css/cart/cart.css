@@ -1,0 +1,105 @@
+    .cart-container {
+        padding: 3rem 1rem;
+    }
+
+    .cart-item-card {
+        border: 1px solid #dee2e6;
+        border-radius: 12px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        background-color: #fff;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease;
+    }
+
+    .cart-item-card:hover {
+        transform: translateY(-3px);
+    }
+
+    .cart-item-header {
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #0d6efd;
+    }
+
+    .cart-item-img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+        margin-right: 1.5rem;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        padding: 0.5rem;
+    }
+
+    .cart-total {
+        font-size: 1.8rem;
+        font-weight: bold;
+        text-align: right;
+        color: #198754;
+        margin-top: 2rem;
+    }
+
+    .remove-btn {
+        color: #dc3545;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.2s ease;
+    }
+
+    .remove-btn:hover {
+        text-decoration: underline;
+        color: #a71d2a;
+    }
+
+    .quantity-controls {
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .quantity-controls button {
+        font-size: 1rem;
+        width: 30px;
+        height: 30px;
+        background-color: #f8f9fa;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #495057;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .quantity-controls button:hover {
+        background-color: #e9ecef;
+        transform: scale(1.1);
+    }
+
+    .quantity-controls button:disabled {
+        cursor: not-allowed;
+        background-color: #e0e0e0;
+        border: 1px solid #d6d6d6;
+    }
+
+    .quantity-display {
+        font-size: 1rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .cart-item-info p {
+        margin-bottom: 1rem;
+    }
+
+    .cart-item-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cart-item-info p {
+        margin-bottom: 0.5rem;
+    }
