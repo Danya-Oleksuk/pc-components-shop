@@ -25,6 +25,7 @@ class Order(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     basket_history = models.JSONField(default=dict)
+    purchased_items = models.TextField(default="")
 
     def __str__(self):
         return f"Order #{self.id}. {self.first_name} {self.last_name}"
@@ -48,6 +49,10 @@ class Order(models.Model):
             ],
             "total_sum": float(total_sum),
         }
+
+        self.purchased_items = "\n".join(
+            [f"{item.product.name} — {item.quantity} шт." for item in cart]
+        )
         cart.delete()
         self.save()
 

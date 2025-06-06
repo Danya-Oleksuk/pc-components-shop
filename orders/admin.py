@@ -13,6 +13,6 @@ class OrderAdmin(admin.ModelAdmin):
         ("city", "warehouse"),
         ("user", "phone"),
         "status",
-        "basket_history",
+        ("basket_history", "purchased_items")
     )
-    readonly_fields = ("id", "created_at")
+    readonly_fields = ("id", "created_at", "basket_history", "purchased_items")
