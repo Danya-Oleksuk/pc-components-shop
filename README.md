@@ -84,6 +84,7 @@
 - `products/` — application for the product catalog.
 - `users/` — application for user management.
 - `errors/` — application for сustom error pages.
+- `info/` — application for displaying additional information about the store (e.g., contact details, store policy).
 - `templates/` — HTML templates.
 - `static/` — static files (CSS, JavaScript, images).
 - `media/` — user-uploaded files (e.g., product images).
