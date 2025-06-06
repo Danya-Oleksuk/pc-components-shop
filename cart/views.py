@@ -1,46 +1,59 @@
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F, Sum
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.views import View
+from django.views.generic import ListView
+from django.shortcuts import redirect, render, get_object_or_404
 
 from .models import Cart
 
 
-@login_required(login_url="/user/login", redirect_field_name=None)
-def cart_list(request):
-    cart = Cart.objects.filter(user=request.user)
-    user_cart_total = (
-        cart.aggregate(total=Sum(F("product__price") * F("quantity")))["total"] or 0
-    )
-    return render(
-        request,
-        "cart/cart.html",
-        context={
-            "cart": cart,
-            "user_cart_total": user_cart_total,
-        },
-    )
+class CartListView(LoginRequiredMixin, ListView):
+    login_url = "/user/login"
+    redirect_field_name = None
+    model = Cart
+    template_name = "cart/cart.html"
+    context_object_name = "cart"
 
+    def get_queryset(self):
+        return Cart.objects.filter(user=self.request.user)
 
-def cart_add(request, product_id):
-    action = request.GET.get("action")
-    cart_item = Cart.objects.filter(user=request.user, product_id=product_id).first()
-
-    if not cart_item:
-        cart_item = Cart.objects.create(
-            user=request.user, product_id=product_id, quantity=1
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        cart = self.get_queryset()
+        user_cart_total = (
+            cart.aggregate(total=Sum(F("product__price") * F("quantity")))["total"] or 0
         )
-    else:
-        if action == "decrease" and cart_item.quantity > 1:
-            cart_item.quantity -= 1
-        else:
-            cart_item.quantity += 1
-        cart_item.save()
-
-    return HttpResponseRedirect(request.META["HTTP_REFERER"])
+        context["user_cart_total"] = user_cart_total
+        return context
 
 
-def cart_remove(request, cart_id):
-    cart = Cart.objects.get(id=cart_id, user=request.user)
-    cart.delete()
-    return HttpResponseRedirect(request.META["HTTP_REFERER"])
+class CartAddView(LoginRequiredMixin, View):
+    login_url = "/user/login"
+    redirect_field_name = None
+
+    def get(self, request, product_id):
+        action = request.GET.get("action")
+        cart_item, created = Cart.objects.get_or_create(
+            user=request.user, product_id=product_id,
+            defaults={"quantity": 1}
+        )
+
+        if not created:
+            if action == "decrease" and cart_item.quantity > 1:
+                cart_item.quantity -= 1
+            else:
+                cart_item.quantity += 1
+            cart_item.save()
+
+        return redirect(request.META.get("HTTP_REFERER", "/"))
+
+
+class CartRemoveView(LoginRequiredMixin, View):
+    login_url = "/user/login"
+    redirect_field_name = None
+
+    def get(self, request, cart_id):
+        cart = get_object_or_404(Cart, id=cart_id, user=request.user)
+        cart.delete()
+        return redirect(request.META.get("HTTP_REFERER", "/"))
