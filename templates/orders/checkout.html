@@ -14,7 +14,12 @@
                     <i class="bi bi-arrow-left-short fs-4"></i>
                     <span class="ms-2">До кошика</span>
                 </a>
-                <h2>Оформлення замовлення</h2>
+                <h2 style="text-align: center">Оформлення замовлення</h2>
+                {% if form.phone.errors %}
+                    <div style="color: red; text-align: center; margin-top: 10px;">
+                        <h6>{{ form.phone.errors.0 }}</h6>
+                    </div>
+                {% endif %}
                 <form method="post" action="{% url 'orders:checkout' %}">
                     {% csrf_token %}
                     {% if form.errors %}

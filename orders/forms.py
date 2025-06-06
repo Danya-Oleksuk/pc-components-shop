@@ -37,6 +37,15 @@ class OrderForm(forms.ModelForm):
         required=True,
     )
 
+    def clean_phone(self):
+        phone = self.cleaned_data["phone"]
+
+        if not phone.isdigit():
+            raise forms.ValidationError("Номер телефону повинен містити лише цифри.")
+        elif len(phone) < 10:
+            raise forms.ValidationError("Введіть дійсний номер телефону, який містить щонайменше 10 цифр.")
+        return phone
+
     class Meta:
         model = Order
         fields = ("first_name", "last_name", "phone", "city", "warehouse")
