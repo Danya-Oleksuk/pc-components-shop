@@ -6,6 +6,7 @@ from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET
 from django.views.generic import FormView, TemplateView
+from django.core.cache import cache
 
 from cart.models import Cart
 from pc_components_shop import settings
@@ -42,7 +43,11 @@ class MyOrdesView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context["orders"] = Order.objects.filter(user=self.request.user)
+        user_orders = cache.get("orders")
+        if not user_orders:
+            user_orders = Order.objects.filter(user=self.request.user).order_by("-created_at")
+            cache.set("orders", user_orders)
+        context["orders"] = user_orders
         return context
 
 
@@ -150,6 +155,7 @@ def stripe_webhook(request):
             try:
                 order = Order.objects.get(id=order_id, status=Order.CREATED)
                 order.update_after_payment()
+                cache.delete("orders")
                 print("✅ Order updated successfully")
             except Order.DoesNotExist:
                 print("❌ Order not found with ID:", order_id)
