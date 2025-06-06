@@ -11,5 +11,5 @@ def clear_product_cache(sender, **kwargs):
 
 
 @receiver([post_save, post_delete], sender=Category)
-def clear_product_cache(sender, **kwargs):
+def clear_category_cache(sender, **kwargs):
     cache.delete("category_list")
