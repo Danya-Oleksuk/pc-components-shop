@@ -81,6 +81,13 @@
    ```bash
    python manage.py runserver
    ```
+   
+🧪 Tests
+The project includes unit and integration tests for order forms, views, and URL resolution. Tests are written using Django's built-in `TestCase` and can be run using:
+
+```bash
+python manage.py test
+   ```
 
 ## 📁 Project Structure
 
