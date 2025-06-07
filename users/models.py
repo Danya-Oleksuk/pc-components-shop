@@ -8,3 +8,8 @@ class User(AbstractUser):
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username"]
+
+    def save(self, *args, **kwargs):
+        if not self.email:
+            raise ValueError(_("The Email field must be set"))
+        super().save(*args, **kwargs)
