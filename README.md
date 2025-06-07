@@ -19,6 +19,7 @@
 - **Order Checkout**: Integration with Stripe for order processing and payments.
 - **Order History**: Users can view their order history.
 - **Pagination**: Supports pagination for the product list.
+- **Tests**: Unit tests for order processing, forms, and views
 
 ## ▶️ Installation
 
