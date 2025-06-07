@@ -17,10 +17,14 @@ ALLOWED_HOSTS = [
 ]
 
 # User
+
 AUTH_USER_MODEL = "users.User"
+
+# Login
 
 LOGIN_URL = "/user/login/"
 LOGIN_REDIRECT_URL = "/"
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -30,6 +34,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+
     "products",
     "users",
     "cart",
