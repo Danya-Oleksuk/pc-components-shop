@@ -39,10 +39,12 @@
                                 <span>{{ product.category.name }}</span>
                             </a>
                         </li>
+                    {% for spec in specs %}
                         <li>
-                            <span>Гарантія:</span>
-                            <span>24 місяці</span>
+                                <span>{{ spec.spec_name }}</span>
+                                <span>{{ spec.spec_value }}</span>
                         </li>
+                    {% endfor %}
                     </ul>
                 </div>
 
