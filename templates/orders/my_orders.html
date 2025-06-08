@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
 <div class="container my-5">
@@ -85,16 +86,5 @@
 {% endblock %}
 
 {% block scripts %}
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const buttons = document.querySelectorAll('.toggle-details');
-        buttons.forEach(button => {
-            button.addEventListener('click', function () {
-                const orderId = this.getAttribute('data-order-id');
-                const detailsRow = document.getElementById('details-' + orderId);
-                detailsRow.classList.toggle('d-none');
-            });
-        });
-    });
-</script>
+    <script src="{% static 'js/orders/my_orders.js' %}"></script>
 {% endblock %}
