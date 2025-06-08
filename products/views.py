@@ -1,6 +1,8 @@
 from urllib.parse import urlencode
 
 from django.core.cache import cache
+from django.core.exceptions import ObjectDoesNotExist
+from django.http import Http404
 from django.views.generic import DetailView, ListView, TemplateView
 
 from .models import Category, Product
@@ -48,6 +50,13 @@ class ProductDetailView(DetailView):
         else:
             context["back_url"] = base_url
 
+        product = self.object
+
+        if not product.available:
+            context["not_available"] = True
+            return context
+
+        context["specs"] = product.productspecification_set.all()
         return context
 
 
@@ -59,7 +68,7 @@ class ProductsListView(ListView):
     context_object_name = "products"
 
     def get_queryset(self):
-        queryset = super().get_queryset()
+        queryset = super().get_queryset().filter(available=True)
 
         category = self.request.GET.get("category")
         search = self.request.GET.get("search")

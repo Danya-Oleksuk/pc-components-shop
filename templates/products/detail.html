@@ -11,49 +11,59 @@
         <i class="bi bi-arrow-left-short fs-4"></i>
         <span class="ms-2">Назад</span>
     </a>
+    {% if product and not not_available %}
+        <div class="row g-5">
+            <div class="col-lg-6">
+                {% if product.image %}
+                    <img src="{{ product.image.url }}" class="product-image" alt="{{ product.name }}">
+                {% else %}
+                    <img src="https://via.placeholder.com/600" class="product-image" alt="No image">
+                {% endif %}
+            </div>
 
-    <div class="row g-5">
-        <div class="col-lg-6">
-            {% if product.image %}
-                <img src="{{ product.image.url }}" class="product-image" alt="{{ product.name }}">
-            {% else %}
-                <img src="https://via.placeholder.com/600" class="product-image" alt="No image">
-            {% endif %}
+            <div class="col-lg-6">
+                <h1 class="fw-bold mb-3">{{ product.name }}</h1>
+                <div class="price-tag">{{ product.price }} грн</div>
+
+                <div class="description mb-4">
+                    <h5 class="mb-2">Опис товару</h5>
+                    <p>{{ product.description }}</p>
+                </div>
+
+                <div class="specifications">
+                    <h5 class="mb-3">Характеристики</h5>
+                    <ul class="specs-list">
+                        <li>
+                            <span>Категорія:</span>
+                            <a href="{% url 'products:catalog' %}?category={{ product.category.name }}" class="category-link">
+                                <span>{{ product.category.name }}</span>
+                            </a>
+                        </li>
+                        <li>
+                            <span>Гарантія:</span>
+                            <span>24 місяці</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="mt-4">
+                    <a href="{% if user.is_authenticated %}{% url 'cart:cart_add' product.id %}{% else %}{% url 'users:login' %}{% endif %}"
+                       class="btn btn-primary add-to-cart w-100"
+                       onclick="event.stopPropagation()">
+                       Додати в корзину
+                    </a>
+                </div>
+            </div>
         </div>
-
-        <div class="col-lg-6">
-            <h1 class="fw-bold mb-3">{{ product.name }}</h1>
-            <div class="price-tag">{{ product.price }} грн</div>
-
-            <div class="description mb-4">
-                <h5 class="mb-2">Опис товару</h5>
-                <p>{{ product.description }}</p>
-            </div>
-
-            <div class="specifications">
-                <h5 class="mb-3">Характеристики</h5>
-                <ul class="specs-list">
-                    <li>
-                        <span>Категорія:</span>
-                        <a href="{% url 'products:catalog' %}?category={{ product.category.name }}" class="category-link">
-                            <span>{{ product.category.name }}</span>
-                        </a>
-                    </li>
-                    <li>
-                        <span>Гарантія:</span>
-                        <span>24 місяці</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="mt-4">
-                <a href="{% if user.is_authenticated %}{% url 'cart:cart_add' product.id %}{% else %}{% url 'users:login' %}{% endif %}"
-                   class="btn btn-primary add-to-cart w-100"
-                   onclick="event.stopPropagation()">
-                   Додати в корзину
-                </a>
+    {% else %}
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <div class="alert alert-warning">
+                    <h2 class="fw-bold">Продукт тимчасово недоступний</h2>
+                    <p class="lead">Цей товар наразі не доступний для покупки. Вибачте за незручності.</p>
+                </div>
             </div>
         </div>
-    </div>
+    {% endif %}
 </div>
 {% endblock %}
