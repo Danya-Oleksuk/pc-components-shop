@@ -2,7 +2,7 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 from django.urls import reverse
 
-from .models import Product, Category
+from .models import Category, Product
 
 
 class HomePageTest(TestCase):
@@ -14,6 +14,7 @@ class HomePageTest(TestCase):
     def test_home_page_template_name(self):
         response = self.client.get(reverse("products:main_page"))
         self.assertTemplateUsed(response, "products/main_page.html")
+
 
 class CatalogTest(TestCase):
 
@@ -38,14 +39,15 @@ class CatalogTest(TestCase):
         Product.objects.create(name="RTX 3080", price=70000, category=category_gpu)
         Product.objects.create(name="Ryzen 5", price=15000, category=category_cpu)
 
-        response = self.client.get('/products/?category=Видеокарты')
+        response = self.client.get("/products/?category=Видеокарты")
         self.assertContains(response, "RTX 3080")
         self.assertNotContains(response, "Ryzen 5")
 
     def test_search_products(self):
         Product.objects.create(name="SSD 1TB", price=3000)
-        response = self.client.get('/products/?q=SSD')
+        response = self.client.get("/products/?q=SSD")
         self.assertContains(response, "SSD 1TB")
+
 
 class CategoryModelTest(TestCase):
 
@@ -60,12 +62,11 @@ class ProductModelTest(TestCase):
         self.category = Category.objects.create(name="Процесори")
 
     def test_product_creation_and_slug_generation(self):
-        image = SimpleUploadedFile(name='test.jpg', content=b'', content_type='image/jpeg')
+        image = SimpleUploadedFile(
+            name="test.jpg", content=b"", content_type="image/jpeg"
+        )
         product = Product.objects.create(
-            name="Ryzen 5 5600",
-            price=5999.99,
-            image=image,
-            category=self.category
+            name="Ryzen 5 5600", price=5999.99, image=image, category=self.category
         )
         self.assertEqual(str(product), "Ryzen 5 5600")
         self.assertEqual(product.slug, "ryzen-5-5600")
@@ -73,11 +74,10 @@ class ProductModelTest(TestCase):
         self.assertIsNotNone(product.created_at)
 
     def test_product_has_category(self):
-        image = SimpleUploadedFile(name='test.jpg', content=b'', content_type='image/jpeg')
+        image = SimpleUploadedFile(
+            name="test.jpg", content=b"", content_type="image/jpeg"
+        )
         product = Product.objects.create(
-            name="Intel i5",
-            price=6999.99,
-            image=image,
-            category=self.category
+            name="Intel i5", price=6999.99, image=image, category=self.category
         )
         self.assertEqual(product.category.name, "Процесори")

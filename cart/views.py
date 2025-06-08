@@ -1,9 +1,9 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.db.models import F, Sum
 from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views import View
 from django.views.generic import ListView
-from django.shortcuts import redirect, render, get_object_or_404
 
 from .models import Cart
 
@@ -35,8 +35,7 @@ class CartAddView(LoginRequiredMixin, View):
     def get(self, request, product_id):
         action = request.GET.get("action")
         cart_item, created = Cart.objects.get_or_create(
-            user=request.user, product_id=product_id,
-            defaults={"quantity": 1}
+            user=request.user, product_id=product_id, defaults={"quantity": 1}
         )
 
         if not created:

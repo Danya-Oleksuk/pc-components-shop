@@ -1,12 +1,12 @@
 import stripe
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.cache import cache
 from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect
 from django.urls import reverse, reverse_lazy
 from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET
 from django.views.generic import FormView, TemplateView
-from django.core.cache import cache
 
 from cart.models import Cart
 from pc_components_shop import settings
@@ -45,7 +45,9 @@ class MyOrdesView(LoginRequiredMixin, TemplateView):
 
         user_orders = cache.get("orders")
         if not user_orders:
-            user_orders = Order.objects.filter(user=self.request.user).order_by("-created_at")
+            user_orders = Order.objects.filter(user=self.request.user).order_by(
+                "-created_at"
+            )
             cache.set("orders", user_orders)
         context["orders"] = user_orders
         return context
@@ -59,6 +61,7 @@ class SuccessTemplateView(LoginRequiredMixin, TemplateView):
 class CancelTemplateView(LoginRequiredMixin, TemplateView):
     template_name = "orders/cancel.html"
     redirect_field_name = None
+
 
 class CheckoutView(LoginRequiredMixin, FormView):
     template_name = "orders/checkout.html"

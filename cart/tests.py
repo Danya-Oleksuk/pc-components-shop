@@ -18,4 +18,3 @@ class CartURLsTests(TestCase):
         url = reverse("cart:cart_remove", args=[1])
         response = self.client.get(url)
         self.assertEqual(response.status_code, 302)
-

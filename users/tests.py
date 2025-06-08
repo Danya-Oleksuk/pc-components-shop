@@ -1,5 +1,5 @@
-from django.test import TestCase
 from django.contrib.auth import get_user_model
+from django.test import TestCase
 
 from users.forms import UserLoginForm, UserRegisterForm
 
@@ -12,9 +12,7 @@ class UserModelTest(TestCase):
         password = "password123"
 
         user = get_user_model().objects.create_user(
-            email=email,
-            username=username,
-            password=password
+            email=email, username=username, password=password
         )
 
         self.assertEqual(user.email, email)
@@ -25,9 +23,7 @@ class UserModelTest(TestCase):
     def test_create_user_with_no_email(self):
         with self.assertRaises(ValueError):
             get_user_model().objects.create_user(
-                email='',
-                username='testuser',
-                password='password123'
+                email="", username="testuser", password="password123"
             )
 
     def test_create_superuser(self):
@@ -36,9 +32,7 @@ class UserModelTest(TestCase):
         password = "adminpassword123"
 
         admin_user = get_user_model().objects.create_superuser(
-            email=email,
-            username=username,
-            password=password
+            email=email, username=username, password=password
         )
 
         self.assertTrue(admin_user.is_superuser)
@@ -52,22 +46,19 @@ class UserModelTest(TestCase):
         password = "password123"
 
         get_user_model().objects.create_user(
-            email=email,
-            username=username,
-            password=password
+            email=email, username=username, password=password
         )
 
         with self.assertRaises(Exception):
             get_user_model().objects.create_user(
-                email=email,
-                username="newuser",
-                password="newpassword123"
+                email=email, username="newuser", password="newpassword123"
             )
+
 
 class UserLoginFormTest(TestCase):
     def setUp(self):
         self.user = get_user_model().objects.create_user(
-            email="testuser@example.com", password="testpassword", username='testuser'
+            email="testuser@example.com", password="testpassword", username="testuser"
         )
 
     def test_login_form_valid(self):
@@ -87,12 +78,13 @@ class UserLoginFormTest(TestCase):
         user = form.get_user()
         self.assertEqual(user.email, self.user.email)
 
+
 class UserRegisterFormTest(TestCase):
     def setUp(self):
         self.user_data = {
             "email": "testuser@example.com",
             "password1": "testpassword",
-            "password2": "testpassword"
+            "password2": "testpassword",
         }
 
     def test_register_form_valid(self):
@@ -103,7 +95,7 @@ class UserRegisterFormTest(TestCase):
         form_data = {
             "email": "testuser@example.com",
             "password1": "testpassword",
-            "password2": "wrongpassword"
+            "password2": "wrongpassword",
         }
         form = UserRegisterForm(data=form_data)
         self.assertFalse(form.is_valid())
@@ -122,7 +114,7 @@ class UserRegisterFormTest(TestCase):
         form_data = {
             "email": "testuser@example.com",
             "password1": "anotherpassword",
-            "password2": "anotherpassword"
+            "password2": "anotherpassword",
         }
         form = UserRegisterForm(data=form_data)
         self.assertFalse(form.is_valid())

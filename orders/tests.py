@@ -1,10 +1,11 @@
 from django.core.cache import cache
-from django.test import TestCase, Client
-from django.urls import reverse, resolve
+from django.test import Client, TestCase
+from django.urls import resolve, reverse
 
-from users.models import User
-from . import views
 from orders.forms import OrderForm
+from users.models import User
+
+from . import views
 
 
 class OrderFormTests(TestCase):
@@ -14,7 +15,7 @@ class OrderFormTests(TestCase):
             "last_name": "Петренко",
             "phone": "0981234567",
             "city": "Київ",
-            "warehouse": "Відділення 1"
+            "warehouse": "Відділення 1",
         }
         form = OrderForm(data=data)
         self.assertTrue(form.is_valid())
@@ -25,14 +26,13 @@ class OrderFormTests(TestCase):
             "last_name": "Петренко",
             "phone": "09812abc67",
             "city": "Київ",
-            "warehouse": "Відділення 1"
+            "warehouse": "Відділення 1",
         }
         form = OrderForm(data=data)
         self.assertFalse(form.is_valid())
         self.assertIn("phone", form.errors)
         self.assertEqual(
-            form.errors["phone"][0],
-            "Номер телефону повинен містити лише цифри."
+            form.errors["phone"][0], "Номер телефону повинен містити лише цифри."
         )
 
     def test_invalid_phone_too_short(self):
@@ -41,15 +41,16 @@ class OrderFormTests(TestCase):
             "last_name": "Петренко",
             "phone": "12345",
             "city": "Київ",
-            "warehouse": "Відділення 1"
+            "warehouse": "Відділення 1",
         }
         form = OrderForm(data=data)
         self.assertFalse(form.is_valid())
         self.assertIn("phone", form.errors)
         self.assertEqual(
             form.errors["phone"][0],
-            "Введіть дійсний номер телефону, який містить щонайменше 10 цифр."
+            "Введіть дійсний номер телефону, який містить щонайменше 10 цифр.",
         )
+
 
 class OrdersURLTests(TestCase):
     def test_checkout_url_resolves(self):
@@ -80,10 +81,13 @@ class OrdersURLTests(TestCase):
         url = reverse("orders:autocomplete_warehouse")
         self.assertEqual(resolve(url).func, views.autocomplete_warehouses)
 
+
 class OrdersViewsTests(TestCase):
     def setUp(self):
         self.client = Client()
-        self.user = User.objects.create_user(username="testuser", email="test@gmail.com", password="testpass")
+        self.user = User.objects.create_user(
+            username="testuser", email="test@gmail.com", password="testpass"
+        )
         self.client.login(username="testuser", password="testpass")
 
     def test_checkout_view_get(self):
@@ -99,12 +103,12 @@ class OrdersViewsTests(TestCase):
         self.assertEqual(response.status_code, 302)
 
     def test_autocomplete_city_view(self):
-        response = self.client.get(reverse("orders:autocomplete_city"), {'q': 'Київ'})
+        response = self.client.get(reverse("orders:autocomplete_city"), {"q": "Київ"})
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(response['Content-Type'], 'application/json')
+        self.assertEqual(response["Content-Type"], "application/json")
 
     def test_autocomplete_warehouses_view_without_city_ref(self):
-        response = self.client.get(reverse("orders:autocomplete_warehouse"), {'q': '1'})
+        response = self.client.get(reverse("orders:autocomplete_warehouse"), {"q": "1"})
         self.assertEqual(response.status_code, 200)
         self.assertJSONEqual(response.content, [])
 

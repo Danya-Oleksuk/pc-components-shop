@@ -43,7 +43,9 @@ class OrderForm(forms.ModelForm):
         if not phone.isdigit():
             raise forms.ValidationError("Номер телефону повинен містити лише цифри.")
         elif len(phone) < 10:
-            raise forms.ValidationError("Введіть дійсний номер телефону, який містить щонайменше 10 цифр.")
+            raise forms.ValidationError(
+                "Введіть дійсний номер телефону, який містить щонайменше 10 цифр."
+            )
         return phone
 
     class Meta:
