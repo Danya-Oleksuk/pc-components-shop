@@ -8,7 +8,6 @@
             <i class="bi bi-arrow-left"></i> Назад
         </a>
     </div>
-
     {% if orders %}
         <div class="card shadow-sm">
             <div class="card-body p-4">
@@ -23,6 +22,7 @@
                                 <th>Статус</th>
                                 <th>Загальна сума</th>
                                 <th>Дата</th>
+                                <th>Деталі</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -33,13 +33,42 @@
                                     <td>{{ order.last_name }}</td>
                                     <td>
                                         <div>
-                                            <strong>{{ order.city }}</strong>,
+                                            <strong>{{ order.city }}</strong><br>
                                             <span>{{ order.warehouse }}</span>
                                         </div>
                                     </td>
                                     <td>{{ order.get_status_display }}</td>
-                                    <td>{{ order.total_price }}</td>
-                                    <td>{{ order.created_at }}</td>
+                                    <td>{{ order.total_price }} грн</td>
+                                    <td>{{ order.created_at|date:"d.m.Y" }}</td>
+                                    <td>
+                                        <button class="btn btn-sm btn-outline-secondary toggle-details" data-order-id="{{ order.id }}">
+                                            Деталі
+                                        </button>
+                                    </td>
+                                </tr>
+                                <tr class="order-details-row d-none" id="details-{{ order.id }}">
+                                    <td colspan="8">
+                                        <div class="row">
+                                            {% if order.basket_history.purchased_items %}
+                                                {% for item in order.basket_history.purchased_items %}
+                                                    <div class="col-12 mb-2">
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="badge bg-secondary me-2">{{ forloop.counter }}</span>
+                                                            <div>
+                                                                <strong class="d-block">{{ item.product }}</strong>
+                                                                <p class="mb-1 text-muted">Кількість: {{ item.quantity }}</p>
+                                                                <p class="mb-0 text-muted">Сума: <strong>{{ item.total_price }} грн</strong></p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            {% else %}
+                                                <div class="col-12">
+                                                    <p>Товари не знайдені для цього замовлення.</p>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </td>
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -53,4 +82,19 @@
         </div>
     {% endif %}
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const buttons = document.querySelectorAll('.toggle-details');
+        buttons.forEach(button => {
+            button.addEventListener('click', function () {
+                const orderId = this.getAttribute('data-order-id');
+                const detailsRow = document.getElementById('details-' + orderId);
+                detailsRow.classList.toggle('d-none');
+            });
+        });
+    });
+</script>
 {% endblock %}
