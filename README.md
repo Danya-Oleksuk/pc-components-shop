@@ -19,6 +19,7 @@
 - **Order Checkout**: Integration with Stripe for order processing and payments.
 - **Order History**: Users can view their order history.
 - **Pagination**: Supports pagination for the product list.
+- **Tests**: Unit tests for order processing, forms, and views
 
 ## ▶️ Installation
 
@@ -80,6 +81,13 @@
 7. **Run the project**:
    ```bash
    python manage.py runserver
+   ```
+   
+🧪 Tests
+The project includes unit and integration tests for order forms, views, and URL resolution. Tests are written using Django's built-in `TestCase` and can be run using:
+
+```bash
+python manage.py test
    ```
 
 ## 📁 Project Structure
