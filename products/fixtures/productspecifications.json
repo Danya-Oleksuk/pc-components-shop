@@ -4,9 +4,9 @@
   "pk": 1,
   "fields": {
     "product": 23,
-    "spec_name": "Мощность",
+    "spec_name": "Потужність",
     "spec_value": "850 Вт",
-    "spec_value_numeric": "850.00"
+    "spec_value_numeric": null
   }
 },
 {
@@ -24,8 +24,808 @@
   "pk": 3,
   "fields": {
     "product": 23,
-    "spec_name": "Сертификат",
-    "spec_value": "80 PLUS Gold",
+    "spec_name": "Сертифікат",
+    "spec_value": "80+ Gold",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 4,
+  "fields": {
+    "product": 36,
+    "spec_name": "Потужність",
+    "spec_value": "750 Вт",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 5,
+  "fields": {
+    "product": 36,
+    "spec_name": "Стандарт",
+    "spec_value": "ATX",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 6,
+  "fields": {
+    "product": 36,
+    "spec_name": "Сертифікат",
+    "spec_value": "80+ Gold",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 7,
+  "fields": {
+    "product": 35,
+    "spec_name": "Потужність",
+    "spec_value": "750 Вт",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 8,
+  "fields": {
+    "product": 35,
+    "spec_name": "Стандарт",
+    "spec_value": "ATX",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 9,
+  "fields": {
+    "product": 35,
+    "spec_name": "Сертифікат",
+    "spec_value": "80+ Gold",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 10,
+  "fields": {
+    "product": 34,
+    "spec_name": "Потужність",
+    "spec_value": "1200 Вт",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 11,
+  "fields": {
+    "product": 34,
+    "spec_name": "Стандарт",
+    "spec_value": "ATX",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 12,
+  "fields": {
+    "product": 34,
+    "spec_name": "Сертифікат",
+    "spec_value": "80+ Gold",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 13,
+  "fields": {
+    "product": 33,
+    "spec_name": "Потужність",
+    "spec_value": "1600 Вт",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 14,
+  "fields": {
+    "product": 33,
+    "spec_name": "Стандарт",
+    "spec_value": "ATX",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 15,
+  "fields": {
+    "product": 33,
+    "spec_name": "Сертифікат",
+    "spec_value": "80+ Titanium",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 16,
+  "fields": {
+    "product": 22,
+    "spec_name": "Потужність",
+    "spec_value": "750 Вт",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 17,
+  "fields": {
+    "product": 22,
+    "spec_name": "Стандарт",
+    "spec_value": "ATX",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 18,
+  "fields": {
+    "product": 22,
+    "spec_name": "Сертифікат",
+    "spec_value": "80+ Gold",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 19,
+  "fields": {
+    "product": 21,
+    "spec_name": "Потужність",
+    "spec_value": "650 Вт",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 20,
+  "fields": {
+    "product": 21,
+    "spec_name": "Стандарт",
+    "spec_value": "ATX",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 21,
+  "fields": {
+    "product": 21,
+    "spec_name": "Сертифікат",
+    "spec_value": "80+ Silver",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 22,
+  "fields": {
+    "product": 9,
+    "spec_name": "Роз'єм (Socket)",
+    "spec_value": "AMD AM4",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 23,
+  "fields": {
+    "product": 9,
+    "spec_name": "Кількість ядер",
+    "spec_value": "6 cores",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 24,
+  "fields": {
+    "product": 9,
+    "spec_name": "Кількість потоків",
+    "spec_value": "12 threads",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 25,
+  "fields": {
+    "product": 9,
+    "spec_name": "Тактова частота",
+    "spec_value": "3.5 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 26,
+  "fields": {
+    "product": 9,
+    "spec_name": "Частота TurboBoost / TurboCore",
+    "spec_value": "4.4 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 27,
+  "fields": {
+    "product": 32,
+    "spec_name": "Роз'єм (Socket)",
+    "spec_value": "Intel LGA 1700",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 28,
+  "fields": {
+    "product": 32,
+    "spec_name": "Кількість ядер",
+    "spec_value": "20 cores",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 29,
+  "fields": {
+    "product": 32,
+    "spec_name": "Кількість потоків",
+    "spec_value": "28 threads",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 30,
+  "fields": {
+    "product": 32,
+    "spec_name": "Тактова частота",
+    "spec_value": "3.4 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 31,
+  "fields": {
+    "product": 32,
+    "spec_name": "Частота TurboBoost / TurboCore",
+    "spec_value": "5.6 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 32,
+  "fields": {
+    "product": 31,
+    "spec_name": "Роз'єм (Socket)",
+    "spec_value": "Intel LGA 1700",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 33,
+  "fields": {
+    "product": 31,
+    "spec_name": "Кількість ядер",
+    "spec_value": "16 cores",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 34,
+  "fields": {
+    "product": 31,
+    "spec_name": "Кількість потоків",
+    "spec_value": "24 threads",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 35,
+  "fields": {
+    "product": 31,
+    "spec_name": "Тактова частота",
+    "spec_value": "3.2 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 36,
+  "fields": {
+    "product": 31,
+    "spec_name": "Частота TurboBoost / TurboCore",
+    "spec_value": "5.2 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 37,
+  "fields": {
+    "product": 30,
+    "spec_name": "Роз'єм (Socket)",
+    "spec_value": "Intel LGA 1700",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 38,
+  "fields": {
+    "product": 30,
+    "spec_name": "Кількість ядер",
+    "spec_value": "24 cores",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 39,
+  "fields": {
+    "product": 30,
+    "spec_name": "Кількість потоків",
+    "spec_value": "32 threads",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 40,
+  "fields": {
+    "product": 30,
+    "spec_name": "Тактова частота",
+    "spec_value": "3 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 41,
+  "fields": {
+    "product": 30,
+    "spec_name": "Частота TurboBoost / TurboCore",
+    "spec_value": "5.8 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 42,
+  "fields": {
+    "product": 29,
+    "spec_name": "Роз'єм (Socket)",
+    "spec_value": "AMD AM5",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 43,
+  "fields": {
+    "product": 29,
+    "spec_name": "Кількість ядер",
+    "spec_value": "12 cores",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 44,
+  "fields": {
+    "product": 29,
+    "spec_name": "Кількість потоків",
+    "spec_value": "24 threads",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 45,
+  "fields": {
+    "product": 29,
+    "spec_name": "Тактова частота",
+    "spec_value": "4.7 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 46,
+  "fields": {
+    "product": 29,
+    "spec_name": "Частота TurboBoost / TurboCore",
+    "spec_value": "5.6 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 47,
+  "fields": {
+    "product": 8,
+    "spec_name": "Роз'єм (Socket)",
+    "spec_value": "Intel LGA 1700",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 48,
+  "fields": {
+    "product": 8,
+    "spec_name": "Кількість ядер",
+    "spec_value": "14 cores",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 49,
+  "fields": {
+    "product": 8,
+    "spec_name": "Кількість потоків",
+    "spec_value": "20 threads",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 50,
+  "fields": {
+    "product": 8,
+    "spec_name": "Тактова частота",
+    "spec_value": "3.5 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 51,
+  "fields": {
+    "product": 8,
+    "spec_name": "Частота TurboBoost / TurboCore",
+    "spec_value": "5.1 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 52,
+  "fields": {
+    "product": 7,
+    "spec_name": "Роз'єм (Socket)",
+    "spec_value": "Intel LGA 1851",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 53,
+  "fields": {
+    "product": 7,
+    "spec_name": "Кількість ядер",
+    "spec_value": "20 cores",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 54,
+  "fields": {
+    "product": 7,
+    "spec_name": "Кількість потоків",
+    "spec_value": "20 threads",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 55,
+  "fields": {
+    "product": 7,
+    "spec_name": "Тактова частота",
+    "spec_value": "3.9 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 56,
+  "fields": {
+    "product": 7,
+    "spec_name": "Частота TurboBoost / TurboCore",
+    "spec_value": "5.5 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 57,
+  "fields": {
+    "product": 6,
+    "spec_name": "Роз'єм (Socket)",
+    "spec_value": "Intel LGA 1700",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 58,
+  "fields": {
+    "product": 6,
+    "spec_name": "Кількість ядер",
+    "spec_value": "10 cores",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 59,
+  "fields": {
+    "product": 6,
+    "spec_name": "Кількість потоків",
+    "spec_value": "16 threads",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 60,
+  "fields": {
+    "product": 6,
+    "spec_name": "Тактова частота",
+    "spec_value": "3.7 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 61,
+  "fields": {
+    "product": 6,
+    "spec_name": "Частота TurboBoost / TurboCore",
+    "spec_value": "4.9 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 62,
+  "fields": {
+    "product": 5,
+    "spec_name": "Роз'єм (Socket)",
+    "spec_value": "AMD AM5",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 63,
+  "fields": {
+    "product": 5,
+    "spec_name": "Кількість ядер",
+    "spec_value": "6 cores",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 64,
+  "fields": {
+    "product": 5,
+    "spec_name": "Кількість потоків",
+    "spec_value": "12 threads",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 65,
+  "fields": {
+    "product": 5,
+    "spec_name": "Тактова частота",
+    "spec_value": "3.7 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 66,
+  "fields": {
+    "product": 5,
+    "spec_name": "Частота TurboBoost / TurboCore",
+    "spec_value": "5 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 67,
+  "fields": {
+    "product": 4,
+    "spec_name": "Роз'єм (Socket)",
+    "spec_value": "AMD AM5",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 68,
+  "fields": {
+    "product": 4,
+    "spec_name": "Кількість ядер",
+    "spec_value": "8 cores",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 69,
+  "fields": {
+    "product": 4,
+    "spec_name": "Кількість потоків",
+    "spec_value": "16 threads",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 70,
+  "fields": {
+    "product": 4,
+    "spec_name": "Тактова частота",
+    "spec_value": "4.7 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 71,
+  "fields": {
+    "product": 4,
+    "spec_name": "Частота TurboBoost / TurboCore",
+    "spec_value": "5.2 ГГц",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 72,
+  "fields": {
+    "product": 3,
+    "spec_name": "Socket",
+    "spec_value": "AMD AM4",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 73,
+  "fields": {
+    "product": 3,
+    "spec_name": "Чипсет",
+    "spec_value": "AMD B550",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 74,
+  "fields": {
+    "product": 3,
+    "spec_name": "Форм-фактор",
+    "spec_value": "ATX",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 75,
+  "fields": {
+    "product": 3,
+    "spec_name": "Слоти ОЗП",
+    "spec_value": "DDR4 4 сл",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 76,
+  "fields": {
+    "product": 2,
+    "spec_name": "Socket",
+    "spec_value": "AMD AM4",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 77,
+  "fields": {
+    "product": 2,
+    "spec_name": "Чипсет",
+    "spec_value": "AMD B550",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 78,
+  "fields": {
+    "product": 2,
+    "spec_name": "Форм-фактор",
+    "spec_value": "micro-ATX",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 79,
+  "fields": {
+    "product": 2,
+    "spec_name": "Слоти ОЗП",
+    "spec_value": "DDR4 4 сл",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 80,
+  "fields": {
+    "product": 1,
+    "spec_name": "Socket",
+    "spec_value": "AMD AM5",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 81,
+  "fields": {
+    "product": 1,
+    "spec_name": "Чипсет",
+    "spec_value": "AMD B650",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 82,
+  "fields": {
+    "product": 1,
+    "spec_name": "Форм-фактор",
+    "spec_value": "micro-ATX",
+    "spec_value_numeric": null
+  }
+},
+{
+  "model": "products.productspecification",
+  "pk": 83,
+  "fields": {
+    "product": 1,
+    "spec_name": "Слоти ОЗП",
+    "spec_value": "DDR5 4 сл",
     "spec_value_numeric": null
   }
 }
