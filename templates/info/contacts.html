@@ -19,11 +19,10 @@
             <span class="contact-label">Адреса:</span> м. Київ, вул. Інноваційна, 12
         </div>
 
-        <form class="contact-form">
+         <form method="post" class="contact-form">
+            {% csrf_token %}
             <h3 style="margin-bottom: 15px;">Напишіть нам:</h3>
-            <input type="text" placeholder="Ваше ім'я" required>
-            <input type="email" placeholder="Ваш Email" required>
-            <textarea rows="4" placeholder="Ваше повідомлення" required></textarea>
+            {{ form.as_p }}
             <button type="submit">Відправити</button>
         </form>
     </div>
