@@ -11,5 +11,5 @@ class ContactMessage(models.Model):
         return f"{self.name} ({self.email})"
 
     class Meta:
-        ordering = ['sent_at']
+        ordering = ["sent_at"]
         verbose_name_plural = "Contact Messages"
