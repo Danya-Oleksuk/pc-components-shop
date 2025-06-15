@@ -10,11 +10,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-2!=i!7&li8zd-)i86=$(ef*7a@p-1&l9+xy6v18-$!dn5ti8vi"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = [
-    "*",
-]
+ALLOWED_HOSTS = ['localhost',]
+
 
 # User
 
@@ -83,7 +82,7 @@ DATABASES = {
         "NAME": os.getenv("DB_NAME"),
         "USER": os.getenv("DB_USER"),
         "PASSWORD": os.getenv("DB_PASSWORD"),
-        "HOST": os.getenv("DB_HOST"),
+        "HOST": 'db',
         "PORT": "5432",
     }
 }
@@ -125,12 +124,10 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = "/media/"
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
@@ -142,7 +139,7 @@ load_dotenv()
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
+        "LOCATION": "redis://redis:6379/1",
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
         },
