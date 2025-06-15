@@ -82,6 +82,52 @@
    ```bash
    python manage.py runserver
    ```
+
+
+## 🚀 **Run with Docker**
+
+If you prefer to use Docker for setting up your environment, you can follow these steps. Docker provides a more isolated and convenient way to run the project.
+
+### 1. Clone the repository (if you haven't already):
+
+```bash
+git clone https://github.com/Danya-Oleksuk/pc-components-shop
+cd pc-components-shop
+```
+
+### 2. Ensure you have Docker and Docker Compose installed on your system.
+
+If you don’t have Docker installed, follow the instructions on the [official Docker website](https://www.docker.com/get-started).
+
+### 3. Build and start the containers:
+
+In the root directory of your project, run:
+
+```bash
+docker-compose up --build -d
+```
+
+This will:
+
+- Build the Docker images for the project and its dependencies.
+- Start the services in the background.
+
+### 4. Apply database migrations:
+
+Once the containers are up and running, you need to apply the database migrations:
+
+```bash
+docker-compose exec web python manage.py migrate
+```
+
+### 5. Access the application:
+
+Your application will be running at :
+
+```
+http://<server_ip_or_host_domen>:8000
+```
+---
    
 🧪 Tests
 The project includes unit and integration tests for order forms, views, and URL resolution. Tests are written using Django's built-in `TestCase` and can be run using:
