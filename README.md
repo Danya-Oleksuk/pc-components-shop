@@ -9,6 +9,7 @@
 - **Stripe API** — for payment integration
 - **PostgreSQL** — for data storage
 - **Redis** — for data caching and performance improvement
+- **Nova Poshta API** — integration for searching for branches and delivery addresses.
 - **flake8, black, isort** — for code formatting and adhering to standards
 
 
