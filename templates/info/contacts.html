@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/info/contacts.css' %}">
@@ -7,23 +8,23 @@
 
 {% block content %}
 <div class="contacts-container">
-    <h1 class="contacts-title">Контакти</h1>
+    <h1 class="contacts-title">{% trans "Контакти" %}</h1>
     <div class="contacts-box">
         <div class="contact-item">
-            <span class="contact-label">Телефон:</span> +38 (099) 123-45-67
+            <span class="contact-label">{% trans "Телефон:" %}</span> +38 (099) 123-45-67
         </div>
         <div class="contact-item">
-            <span class="contact-label">Email:</span> support@techmaster.ua
+            <span class="contact-label">{% trans "Email:" %}</span> support@techmaster.ua
         </div>
         <div class="contact-item">
-            <span class="contact-label">Адреса:</span> м. Київ, вул. Інноваційна, 12
+            <span class="contact-label">{% trans "Адреса:" %}</span> м. Київ, вул. Інноваційна, 12
         </div>
 
-         <form method="post" class="contact-form">
+        <form method="post" class="contact-form">
             {% csrf_token %}
-            <h3 style="margin-bottom: 15px;">Напишіть нам:</h3>
+            <h3 style="margin-bottom: 15px;">{% trans "Напишіть нам:" %}</h3>
             {{ form.as_p }}
-            <button type="submit">Відправити</button>
+            <button type="submit">{% trans "Відправити" %}</button>
         </form>
     </div>
 </div>
