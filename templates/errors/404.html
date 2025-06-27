@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/errors/error-404.css' %}">
@@ -8,9 +9,9 @@
 {% block content %}
 <div class="container error-page">
     <div class="error-code">404</div>
-    <div class="error-message">Сторінку не знайдено</div>
+    <div class="error-message">{% trans "Сторінку не знайдено" %}</div>
     <a href="{% url 'products:main_page' %}" class="btn btn-primary btn-home">
-        <i class="bi bi-house-door-fill me-2"></i>На головну
+        <i class="bi bi-house-door-fill me-2"></i>{% trans "На головну" %}
     </a>
 </div>
 {% endblock %}

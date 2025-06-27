@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/errors/error-500.css' %}">
@@ -8,9 +9,9 @@
 {% block content %}
 <div class="container error-page">
     <div class="error-code">500</div>
-    <div class="error-message">Щось пішло не так на сервері</div>
+    <div class="error-message">{% trans "Щось пішло не так на сервері" %}</div>
     <a href="{% url 'products:main_page' %}" class="btn btn-danger btn-home">
-        <i class="bi bi-arrow-repeat me-2"></i>Спробувати пізніше
+        <i class="bi bi-arrow-repeat me-2"></i>{% trans "Спробуйте пізніше" %}
     </a>
 </div>
 {% endblock %}

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-27 21:35+0300\n"
+"POT-Creation-Date: 2025-06-27 21:46+0300\n"
 "PO-Revision-Date: 2025-06-27 21:30+0300\n"
 "Last-Translator: Danya Oleksuk <danya@example.com>\n"
 "Language-Team: English <en@li.org>\n"
@@ -70,12 +70,29 @@ msgstr "User Agreement"
 msgid "Всі права захищено."
 msgstr "All rights reserved."
 
+#: .\templates\errors\404.html:12
+msgid "Сторінку не знайдено"
+msgstr "Page not found"
+
+#: .\templates\errors\404.html:14
+msgid "На головну"
+msgstr "Go to Home"
+
+#: .\templates\errors\500.html:12
+msgid "Щось пішло не так на сервері"
+msgstr "Something went wrong on the server"
+
+#: .\templates\errors\500.html:14
+msgid "Спробуйте пізніше"
+msgstr "Try again later"
+
 #: .\templates\info\about.html:13
 msgid ""
 "Ласкаво просимо до <span class=\"highlight\">PC Components Store</span> — "
 "вашого надійного партнера у світі комп'ютерної техніки!"
 msgstr ""
-"Welcome to <span class=\"highlight\">PC Components Store</span> — your reliable partner in the world of computer hardware!"
+"Welcome to <span class=\"highlight\">PC Components Store</span> — your "
+"reliable partner in the world of computer hardware!"
 
 #: .\templates\info\about.html:14
 msgid ""
@@ -84,7 +101,9 @@ msgid ""
 "відеокарти, процесори, оперативну пам'ять, SSD-диски та багато іншого — лише "
 "від перевірених виробників."
 msgstr ""
-"We specialize in selling <span class=\"highlight\">PC components</span>, accessories, and modern gadgets. In our store, you'll find graphics cards, processors, RAM, SSDs, and much more — all from trusted manufacturers."
+"We specialize in selling <span class=\"highlight\">PC components</span>, "
+"accessories, and modern gadgets. In our store, you'll find graphics cards, "
+"processors, RAM, SSDs, and much more — all from trusted manufacturers."
 
 #: .\templates\info\about.html:15
 msgid ""
@@ -92,14 +111,17 @@ msgid ""
 "Наша команда завжди готова допомогти вам зібрати ідеальний комп'ютер для "
 "ігор, роботи чи навчання."
 msgstr ""
-"We believe in <span class=\"highlight\">quality, speed, and honesty</span>. Our team is always ready to help you build the perfect computer for gaming, work, or study."
+"We believe in <span class=\"highlight\">quality, speed, and honesty</span>. "
+"Our team is always ready to help you build the perfect computer for gaming, "
+"work, or study."
 
 #: .\templates\info\about.html:16
 msgid ""
 "Дякуємо, що обираєте <span class=\"highlight\">PC Components Store</span> — "
 "ми працюємо для вас з 2025 року!"
 msgstr ""
-"Thank you for choosing <span class=\"highlight\">PC Components Store</span> — we have been working for you since 2025!"
+"Thank you for choosing <span class=\"highlight\">PC Components Store</span> "
+"— we have been working for you since 2025!"
 
 #: .\templates\info\contacts.html:14
 msgid "Телефон:"
@@ -126,11 +148,16 @@ msgid "1. Вступ"
 msgstr "1. Introduction"
 
 #: .\templates\info\terms.html:15
+#, fuzzy
+#| msgid ""
+#| "Ця угода описує умови використання сервісу TechMaster, наданого компанією "
+#| "TechMaster."
 msgid ""
-"Ця угода описує умови використання сервісу TechMaster, наданого компанією "
-"TechMaster."
+"Ця угода описує умови використання сервісу  PC Components Store, наданого "
+"компанією \\"
 msgstr ""
-"This agreement outlines the terms of use for the TechMaster service provided by TechMaster."
+"This agreement outlines the terms of use for the TechMaster service provided "
+"by TechMaster."
 
 #: .\templates\info\terms.html:17
 msgid "2. Право користування"
@@ -141,7 +168,8 @@ msgid ""
 "Ми надаємо вам обмежену ліцензію на використання нашого сайту і сервісів для "
 "особистих або комерційних цілей, згідно з умовами цієї угоди."
 msgstr ""
-"We grant you a limited license to use our site and services for personal or commercial purposes, in accordance with the terms of this agreement."
+"We grant you a limited license to use our site and services for personal or "
+"commercial purposes, in accordance with the terms of this agreement."
 
 #: .\templates\info\terms.html:20
 msgid "3. Обов'язки користувача"
@@ -152,7 +180,8 @@ msgid ""
 "Ви зобов'язані дотримуватись всіх застосовних законів та норм щодо "
 "використання нашого вебсайту та не порушувати права інших користувачів."
 msgstr ""
-"You are required to comply with all applicable laws and regulations regarding the use of our website and not violate the rights of other users."
+"You are required to comply with all applicable laws and regulations "
+"regarding the use of our website and not violate the rights of other users."
 
 #: .\templates\info\terms.html:23
 msgid "4. Відповідальність"
@@ -164,7 +193,8 @@ msgid ""
 "через використання наших послуг, окрім випадків, коли це передбачено "
 "законодавством."
 msgstr ""
-"We are not liable for any damages or harm arising from the use of our services, except where required by law."
+"We are not liable for any damages or harm arising from the use of our "
+"services, except where required by law."
 
 #: .\templates\info\terms.html:26
 msgid "5. Конфіденційність"
@@ -175,7 +205,8 @@ msgid ""
 "Ми зобов'язуємось не розголошувати ваші персональні дані третім особам без "
 "вашої згоди, за винятком випадків, передбачених законодавством."
 msgstr ""
-"We are committed to not disclosing your personal data to third parties without your consent, except where required by law."
+"We are committed to not disclosing your personal data to third parties "
+"without your consent, except where required by law."
 
 #: .\templates\info\terms.html:29
 msgid "6. Зміни угоди"
@@ -186,7 +217,8 @@ msgid ""
 "Ми маємо право змінювати умови цієї угоди. Зміни набирають чинності після їх "
 "публікації на сайті."
 msgstr ""
-"We reserve the right to change the terms of this agreement. Changes take effect after they are published on the site."
+"We reserve the right to change the terms of this agreement. Changes take "
+"effect after they are published on the site."
 
 #: .\templates\products\main_page.html:12
 msgid "Ознайомтесь з повним каталогом товарів"
