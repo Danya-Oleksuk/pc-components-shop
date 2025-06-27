@@ -1,0 +1,230 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-06-27 21:35+0300\n"
+"PO-Revision-Date: 2025-06-27 21:30+0300\n"
+"Last-Translator: Danya Oleksuk <danya@example.com>\n"
+"Language-Team: English <en@li.org>\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\templates\base.html:10 .\templates\base.html:22 .\templates\base.html:82
+#: .\templates\base.html:100
+msgid "PC Components Store"
+msgstr "PC Components Store"
+
+#: .\templates\base.html:26
+msgid "Каталог"
+msgstr "Catalog"
+
+#: .\templates\base.html:37
+msgid "Profile"
+msgstr "Profile"
+
+#: .\templates\base.html:41
+msgid "Вихід"
+msgstr "Logout"
+
+#: .\templates\base.html:44
+msgid "Вхід"
+msgstr "Login"
+
+#: .\templates\base.html:45
+msgid "Реєстрація"
+msgstr "Register"
+
+#: .\templates\base.html:65
+msgid "Ukrainian"
+msgstr "Ukrainian"
+
+#: .\templates\base.html:66
+msgid "English"
+msgstr "English"
+
+#: .\templates\base.html:83
+msgid "Найкращі комплектуючі для вашого комп'ютера"
+msgstr "The best components for your PC"
+
+#: .\templates\base.html:88 .\templates\info\about.html:11
+msgid "Про нас"
+msgstr "About us"
+
+#: .\templates\base.html:91 .\templates\info\contacts.html:11
+msgid "Контакти"
+msgstr "Contacts"
+
+#: .\templates\base.html:94 .\templates\info\terms.html:11
+msgid "Угода користувача"
+msgstr "User Agreement"
+
+#: .\templates\base.html:100
+msgid "Всі права захищено."
+msgstr "All rights reserved."
+
+#: .\templates\info\about.html:13
+msgid ""
+"Ласкаво просимо до <span class=\"highlight\">PC Components Store</span> — "
+"вашого надійного партнера у світі комп'ютерної техніки!"
+msgstr ""
+"Welcome to <span class=\"highlight\">PC Components Store</span> — your reliable partner in the world of computer hardware!"
+
+#: .\templates\info\about.html:14
+msgid ""
+"Ми спеціалізуємось на продажу <span class=\"highlight\">комплектуючих для "
+"ПК</span>, аксесуарів та сучасних гаджетів. У нашому магазині ви знайдете "
+"відеокарти, процесори, оперативну пам'ять, SSD-диски та багато іншого — лише "
+"від перевірених виробників."
+msgstr ""
+"We specialize in selling <span class=\"highlight\">PC components</span>, accessories, and modern gadgets. In our store, you'll find graphics cards, processors, RAM, SSDs, and much more — all from trusted manufacturers."
+
+#: .\templates\info\about.html:15
+msgid ""
+"Ми віримо в <span class=\"highlight\">якість, швидкість та чесність</span>. "
+"Наша команда завжди готова допомогти вам зібрати ідеальний комп'ютер для "
+"ігор, роботи чи навчання."
+msgstr ""
+"We believe in <span class=\"highlight\">quality, speed, and honesty</span>. Our team is always ready to help you build the perfect computer for gaming, work, or study."
+
+#: .\templates\info\about.html:16
+msgid ""
+"Дякуємо, що обираєте <span class=\"highlight\">PC Components Store</span> — "
+"ми працюємо для вас з 2025 року!"
+msgstr ""
+"Thank you for choosing <span class=\"highlight\">PC Components Store</span> — we have been working for you since 2025!"
+
+#: .\templates\info\contacts.html:14
+msgid "Телефон:"
+msgstr "Phone:"
+
+#: .\templates\info\contacts.html:17
+msgid "Email:"
+msgstr "Email:"
+
+#: .\templates\info\contacts.html:20
+msgid "Адреса:"
+msgstr "Address:"
+
+#: .\templates\info\contacts.html:25
+msgid "Напишіть нам:"
+msgstr "Write to us:"
+
+#: .\templates\info\contacts.html:27
+msgid "Відправити"
+msgstr "Send"
+
+#: .\templates\info\terms.html:14
+msgid "1. Вступ"
+msgstr "1. Introduction"
+
+#: .\templates\info\terms.html:15
+msgid ""
+"Ця угода описує умови використання сервісу TechMaster, наданого компанією "
+"TechMaster."
+msgstr ""
+"This agreement outlines the terms of use for the TechMaster service provided by TechMaster."
+
+#: .\templates\info\terms.html:17
+msgid "2. Право користування"
+msgstr "2. Right of Use"
+
+#: .\templates\info\terms.html:18
+msgid ""
+"Ми надаємо вам обмежену ліцензію на використання нашого сайту і сервісів для "
+"особистих або комерційних цілей, згідно з умовами цієї угоди."
+msgstr ""
+"We grant you a limited license to use our site and services for personal or commercial purposes, in accordance with the terms of this agreement."
+
+#: .\templates\info\terms.html:20
+msgid "3. Обов'язки користувача"
+msgstr "3. User Obligations"
+
+#: .\templates\info\terms.html:21
+msgid ""
+"Ви зобов'язані дотримуватись всіх застосовних законів та норм щодо "
+"використання нашого вебсайту та не порушувати права інших користувачів."
+msgstr ""
+"You are required to comply with all applicable laws and regulations regarding the use of our website and not violate the rights of other users."
+
+#: .\templates\info\terms.html:23
+msgid "4. Відповідальність"
+msgstr "4. Liability"
+
+#: .\templates\info\terms.html:24
+msgid ""
+"Ми не несемо відповідальності за будь-які збитки або шкоду, що виникають "
+"через використання наших послуг, окрім випадків, коли це передбачено "
+"законодавством."
+msgstr ""
+"We are not liable for any damages or harm arising from the use of our services, except where required by law."
+
+#: .\templates\info\terms.html:26
+msgid "5. Конфіденційність"
+msgstr "5. Confidentiality"
+
+#: .\templates\info\terms.html:27
+msgid ""
+"Ми зобов'язуємось не розголошувати ваші персональні дані третім особам без "
+"вашої згоди, за винятком випадків, передбачених законодавством."
+msgstr ""
+"We are committed to not disclosing your personal data to third parties without your consent, except where required by law."
+
+#: .\templates\info\terms.html:29
+msgid "6. Зміни угоди"
+msgstr "6. Agreement Modifications"
+
+#: .\templates\info\terms.html:30
+msgid ""
+"Ми маємо право змінювати умови цієї угоди. Зміни набирають чинності після їх "
+"публікації на сайті."
+msgstr ""
+"We reserve the right to change the terms of this agreement. Changes take effect after they are published on the site."
+
+#: .\templates\products\main_page.html:12
+msgid "Ознайомтесь з повним каталогом товарів"
+msgstr "Explore the full product catalog"
+
+#: .\templates\products\main_page.html:13
+msgid "Більше 10 позицій комплектуючих для вашого ПК"
+msgstr "Over 10 PC component options available"
+
+#: .\templates\products\main_page.html:15
+msgid "Перейти в каталог"
+msgstr "Go to catalog"
+
+#: .\templates\products\main_page.html:20
+msgid "Рекомендовані товари"
+msgstr "Recommended Products"
+
+#: .\templates\products\main_page.html:28
+msgid "Переглянути деталі товару"
+msgstr "View product details"
+
+#: .\templates\products\main_page.html:35
+msgid "Зображення відсутнє"
+msgstr "Image not available"
+
+#: .\templates\products\main_page.html:49
+#, python-format
+msgid "Додати %(product_name)s в корзину"
+msgstr "Add %(product_name)s to cart"
+
+#: .\templates\products\main_page.html:50
+msgid "В корзину"
+msgstr "Add to cart"
+
+#: .\users\models.py:7
+msgid "email address"
+msgstr "email address"
+
+#: .\users\models.py:14
+msgid "The Email field must be set"
+msgstr "The Email field must be set"
