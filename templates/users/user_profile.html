@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 
-{% block title %}Профіль{% endblock %}
+{% block title %}{% trans "Профіль" %}{% endblock %}
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/users/user_profile.css' %}">
@@ -9,8 +10,8 @@
 
 {% block content %}
 <div class="profile-header">
-    <h1 class="display-4">Профіль користувача</h1>
-    <p class="lead">Перегляньте або змініть свої дані</p>
+    <h1 class="display-4">{% trans "Профіль користувача" %}</h1>
+    <p class="lead">{% trans "Перегляньте або змініть свої дані" %}</p>
 </div>
 
 <div class="container">
@@ -18,21 +19,21 @@
         <div class="col-md-8 col-lg-6">
             <a href="{% url 'products:main_page' %}" class="back-btn d-inline-flex align-items-center text-decoration-none">
                 <i class="bi bi-arrow-left-short fs-4"></i>
-                <span class="ms-2">На головну</span>
+                <span class="ms-2">{% trans "На головну" %}</span>
             </a>
 
             <div class="profile-card text-center">
                 <h4>{{ user.get_full_name|default:user.username }}</h4>
 
                 <div class="profile-info text-start mt-4">
-                    <p><strong>Email:</strong> {{ user.email }}</p>
-                    <p><strong>Ім’я користувача:</strong> {{ user.username }}</p>
-                    <p><strong>Дата приєднання:</strong> {{ user.date_joined|date:"d.m.Y" }}</p>
+                    <p><strong>{% trans "Емаїл:" %}</strong> {{ user.email }}</p>
+                    <p><strong>{% trans "Ім’я користувача:" %}</strong> {{ user.username }}</p>
+                    <p><strong>{% trans "Дата приєднання:" %}</strong> {{ user.date_joined|date:"d.m.Y" }}</p>
                 </div>
 
                 <div class="d-flex justify-content-center mt-4">
                     <a href="{% url 'orders:my_orders' %}" class="btn btn-outline-primary edit-btn">
-                        <i class="bi bi-card-list"></i> Історія замовлень
+                        <i class="bi bi-card-list"></i> {% trans "Історія замовлень" %}
                     </a>
                 </div>
             </div>

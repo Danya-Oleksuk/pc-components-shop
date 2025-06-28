@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-28 19:07+0300\n"
+"POT-Creation-Date: 2025-06-28 19:13+0300\n"
 "PO-Revision-Date: 2025-06-27 21:30+0300\n"
 "Last-Translator: Danya Oleksuk <danya@example.com>\n"
 "Language-Team: English <en@li.org>\n"
@@ -26,7 +26,7 @@ msgstr "PC Components Store"
 msgid "Каталог"
 msgstr "Catalog"
 
-#: .\templates\base.html:37
+#: .\templates\base.html:37 .\templates\users\user_profile.html:5
 msgid "Профіль"
 msgstr "Profile"
 
@@ -74,7 +74,7 @@ msgstr "All rights reserved."
 msgid "Сторінку не знайдено"
 msgstr "Page not found"
 
-#: .\templates\errors\404.html:14
+#: .\templates\errors\404.html:14 .\templates\users\user_profile.html:22
 msgid "На головну"
 msgstr "Go to Home"
 
@@ -297,6 +297,31 @@ msgstr "Do you have account?"
 #: .\templates\users\register.html:45
 msgid "Увійдіть"
 msgstr "Login"
+
+#: .\templates\users\user_profile.html:13
+msgid "Профіль користувача"
+msgstr "User profile"
+
+#: .\templates\users\user_profile.html:14
+msgid "Перегляньте або змініть свої дані"
+msgstr "View or change your details"
+
+#: .\templates\users\user_profile.html:29
+#| msgid "Емаїл"
+msgid "Емаїл:"
+msgstr "Email:"
+
+#: .\templates\users\user_profile.html:30
+msgid "Ім’я користувача:"
+msgstr "Username:"
+
+#: .\templates\users\user_profile.html:31
+msgid "Дата приєднання:"
+msgstr "Joining date:"
+
+#: .\templates\users\user_profile.html:36
+msgid "Історія замовлень"
+msgstr "Order history"
 
 #: .\users\forms.py:13 .\users\forms.py:33
 msgid "Емаїл"
