@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-27 21:46+0300\n"
+"POT-Creation-Date: 2025-06-28 18:58+0300\n"
 "PO-Revision-Date: 2025-06-27 21:30+0300\n"
 "Last-Translator: Danya Oleksuk <danya@example.com>\n"
 "Language-Team: English <en@li.org>\n"
@@ -252,6 +252,82 @@ msgstr "Add %(product_name)s to cart"
 #: .\templates\products\main_page.html:50
 msgid "В корзину"
 msgstr "Add to cart"
+
+#: .\templates\users\login.html:5 .\templates\users\login.html:41
+#| msgid "Увійдіть"
+msgid "Увійти"
+msgstr "Login"
+
+#: .\templates\users\login.html:14
+#| msgid "Вже маєте акаунт?"
+msgid "Вхід до акаунту"
+msgstr "Account login"
+
+#: .\templates\users\login.html:18
+msgid "Будь ласка, виправте наступні помилки:"
+msgstr "Please correct the following errors:"
+
+#: .\templates\users\login.html:21 .\templates\users\register.html:20
+#, python-format
+msgid "%(field)s: %(error)s"
+msgstr ""
+
+#: .\templates\users\login.html:31 .\templates\users\register.html:30
+msgid "Електронна пошта"
+msgstr "Email"
+
+#: .\templates\users\login.html:36 .\templates\users\register.html:35
+#: .\users\forms.py:20 .\users\forms.py:40
+msgid "Пароль"
+msgstr "Password"
+
+#: .\templates\users\login.html:47
+#| msgid "Вже маєте акаунт?"
+msgid "Ще не маєте акаунту?"
+msgstr "Do you have account?"
+
+#: .\templates\users\login.html:48
+#| msgid "Реєстрація"
+msgid "Зареєструйтеся"
+msgstr "Register"
+
+#: .\templates\users\register.html:5 .\templates\users\register.html:45
+#| msgid "Реєстрація"
+msgid "Зареєструватися"
+msgstr "Register"
+
+#: .\templates\users\register.html:14
+#| msgid "Реєстрація"
+msgid "Зареєструйтесь"
+msgstr "Register"
+
+#: .\templates\users\register.html:40 .\users\forms.py:46
+msgid "Підтвердьте пароль"
+msgstr "Confirm password"
+
+#: .\templates\users\register.html:51
+msgid "Вже маєте акаунт?"
+msgstr "Do you have account?"
+
+#: .\templates\users\register.html:52
+msgid "Увійдіть"
+msgstr "Login"
+
+#: .\users\forms.py:13 .\users\forms.py:33
+msgid "Емаїл"
+msgstr "Email"
+
+#: .\users\forms.py:16 .\users\forms.py:36
+msgid "Введіть свою електронну адресу"
+msgstr "Enter your email address"
+
+#: .\users\forms.py:22 .\users\forms.py:42
+msgid "Введіть свій пароль"
+msgstr "Enter your password"
+
+#: .\users\forms.py:48
+msgid "Підтвердьте свій пароль"
+msgstr "Confirm password"
 
 #: .\users\models.py:7
 msgid "email address"

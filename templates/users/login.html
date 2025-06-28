@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 
-{% block title %}Увійти{% endblock %}
+{% block title %}{% trans "Увійти" %}{% endblock %}
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/users/login.css' %}">
@@ -10,7 +11,7 @@
 {% block content %}
 <div class="auth-wrapper">
     <div class="login-card">
-        <h2>Вхід до акаунту</h2>
+        <h2>{% trans "Вхід до акаунту" %}</h2>
 
         {% if form.errors %}
             <ul class="error-list">
@@ -28,17 +29,17 @@
         <form method="post" action="{% url 'users:login' %}">
             {% csrf_token %}
 
-            <label for="{{ form.username.id_for_label }}" class="form-label">Електронна пошта</label>
+            <label for="{{ form.username.id_for_label }}" class="form-label">{% trans "Електронна пошта" %}</label>
             {{ form.username }}
 
-            <label for="{{ form.password.id_for_label }}" class="form-label">Пароль</label>
+            <label for="{{ form.password.id_for_label }}" class="form-label">{% trans "Пароль" %}</label>
             {{ form.password }}
 
-            <button type="submit" class="btn-login">Увійти</button>
+            <button type="submit" class="btn-login">{% trans "Увійти" %}</button>
         </form>
 
         <div class="register-link">
-            <p>Ще не маєте акаунту? <a href="{% url 'users:register' %}">Зареєструйтеся</a></p>
+            <p>{% trans "Ще не маєте акаунту?" %} <a href="{% url 'users:register' %}">{% trans "Зареєструйтеся" %}</a></p>
         </div>
     </div>
 </div>
