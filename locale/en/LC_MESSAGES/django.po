@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-28 18:58+0300\n"
+"POT-Creation-Date: 2025-06-28 19:07+0300\n"
 "PO-Revision-Date: 2025-06-27 21:30+0300\n"
 "Last-Translator: Danya Oleksuk <danya@example.com>\n"
 "Language-Team: English <en@li.org>\n"
@@ -27,7 +27,7 @@ msgid "Каталог"
 msgstr "Catalog"
 
 #: .\templates\base.html:37
-msgid "Profile"
+msgid "Профіль"
 msgstr "Profile"
 
 #: .\templates\base.html:41
@@ -253,63 +253,48 @@ msgstr "Add %(product_name)s to cart"
 msgid "В корзину"
 msgstr "Add to cart"
 
-#: .\templates\users\login.html:5 .\templates\users\login.html:41
-#| msgid "Увійдіть"
+#: .\templates\users\login.html:5 .\templates\users\login.html:38
 msgid "Увійти"
 msgstr "Login"
 
 #: .\templates\users\login.html:14
-#| msgid "Вже маєте акаунт?"
 msgid "Вхід до акаунту"
 msgstr "Account login"
 
-#: .\templates\users\login.html:18
-msgid "Будь ласка, виправте наступні помилки:"
-msgstr "Please correct the following errors:"
-
-#: .\templates\users\login.html:21 .\templates\users\register.html:20
-#, python-format
-msgid "%(field)s: %(error)s"
-msgstr ""
-
-#: .\templates\users\login.html:31 .\templates\users\register.html:30
+#: .\templates\users\login.html:32 .\templates\users\register.html:32
 msgid "Електронна пошта"
 msgstr "Email"
 
-#: .\templates\users\login.html:36 .\templates\users\register.html:35
+#: .\templates\users\login.html:35 .\templates\users\register.html:35
 #: .\users\forms.py:20 .\users\forms.py:40
 msgid "Пароль"
 msgstr "Password"
 
-#: .\templates\users\login.html:47
-#| msgid "Вже маєте акаунт?"
+#: .\templates\users\login.html:42
 msgid "Ще не маєте акаунту?"
 msgstr "Do you have account?"
 
-#: .\templates\users\login.html:48
-#| msgid "Реєстрація"
+#: .\templates\users\login.html:42
 msgid "Зареєструйтеся"
 msgstr "Register"
 
-#: .\templates\users\register.html:5 .\templates\users\register.html:45
-#| msgid "Реєстрація"
+#: .\templates\users\register.html:5 .\templates\users\register.html:41
 msgid "Зареєструватися"
 msgstr "Register"
 
 #: .\templates\users\register.html:14
-#| msgid "Реєстрація"
 msgid "Зареєструйтесь"
 msgstr "Register"
 
-#: .\templates\users\register.html:40 .\users\forms.py:46
+#: .\templates\users\register.html:38 .\users\forms.py:46
 msgid "Підтвердьте пароль"
 msgstr "Confirm password"
 
-#: .\templates\users\register.html:51
+#: .\templates\users\register.html:45
 msgid "Вже маєте акаунт?"
 msgstr "Do you have account?"
 
-#: .\templates\users\register.html:52
+#: .\templates\users\register.html:45
 msgid "Увійдіть"
 msgstr "Login"
 
@@ -336,3 +321,9 @@ msgstr "email address"
 #: .\users\models.py:14
 msgid "The Email field must be set"
 msgstr "The Email field must be set"
+
+#~ msgid "Profile"
+#~ msgstr "Profile"
+
+#~ msgid "Будь ласка, виправте наступні помилки:"
+#~ msgstr "Please correct the following errors:"
