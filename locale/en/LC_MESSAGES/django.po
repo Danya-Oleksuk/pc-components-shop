@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-28 19:13+0300\n"
+"POT-Creation-Date: 2025-06-28 19:19+0300\n"
 "PO-Revision-Date: 2025-06-27 21:30+0300\n"
 "Last-Translator: Danya Oleksuk <danya@example.com>\n"
 "Language-Team: English <en@li.org>\n"
@@ -69,6 +69,60 @@ msgstr "User Agreement"
 #: .\templates\base.html:100
 msgid "Всі права захищено."
 msgstr "All rights reserved."
+
+#: .\templates\cart\cart.html:13
+msgid "Ваш кошик"
+msgstr "Your cart"
+
+#: .\templates\cart\cart.html:26
+msgid "Ціна:"
+msgstr "Price:"
+
+#: .\templates\cart\cart.html:28
+msgid "Кількість:"
+msgstr "Quantity:"
+
+#: .\templates\cart\cart.html:39
+msgid "Сума:"
+msgstr "Sum:"
+
+#: .\templates\cart\cart.html:45
+msgid "Видалити"
+msgstr "Delete"
+
+#: .\templates\cart\cart.html:52
+msgid "Загальна сума:"
+msgstr "Total amount:"
+
+#: .\templates\cart\cart.html:52
+msgid "грн"
+msgstr "uah"
+
+#: .\templates\cart\cart.html:57
+#, fuzzy
+#| msgid "Історія замовлень"
+msgid "Оформити замовлення"
+msgstr "Order history"
+
+#: .\templates\cart\cart.html:62
+msgid "Ваш кошик порожній"
+msgstr "Your cart is empty"
+
+#: .\templates\cart\cart.html:63
+#, fuzzy
+#| msgid "Увійдіть"
+msgid "Перейдіть до"
+msgstr "Login"
+
+#: .\templates\cart\cart.html:63
+#, fuzzy
+#| msgid "Рекомендовані товари"
+msgid "каталогу товарів"
+msgstr "Recommended Products"
+
+#: .\templates\cart\cart.html:63
+msgid "щоб додати щось."
+msgstr "to add something."
 
 #: .\templates\errors\404.html:12
 msgid "Сторінку не знайдено"
@@ -307,7 +361,6 @@ msgid "Перегляньте або змініть свої дані"
 msgstr "View or change your details"
 
 #: .\templates\users\user_profile.html:29
-#| msgid "Емаїл"
 msgid "Емаїл:"
 msgstr "Email:"
 
