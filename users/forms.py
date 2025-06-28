@@ -1,25 +1,26 @@
 from django import forms
 from django.contrib.auth.forms import (
     AuthenticationForm,
-    UserChangeForm,
     UserCreationForm,
 )
+from django.utils.translation import gettext_lazy as _
 
 from .models import User
 
 
 class UserLoginForm(AuthenticationForm):
     username = forms.EmailField(
-        label="Email",
+        label=_("Емаїл"),
         max_length=254,
         widget=forms.EmailInput(
-            attrs={"class": "form-control", "placeholder": "Введіть пошту"}
+            attrs={"class": "form-control", "placeholder": _("Введіть свою електронну адресу")}
         ),
     )
     password = forms.CharField(
+        label=_("Пароль"),
         widget=forms.PasswordInput(
-            attrs={"class": "form-control", "placeholder": "Введіть пароль"}
-        )
+            attrs={"class": "form-control", "placeholder": _("Введіть свій пароль")}
+        ),
     )
 
     class Meta:
@@ -29,22 +30,22 @@ class UserLoginForm(AuthenticationForm):
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(
-        label="Email",
+        label=_("Емаїл"),
         max_length=254,
         widget=forms.EmailInput(
-            attrs={"class": "form-control", "placeholder": "Введіть пошту"}
+            attrs={"class": "form-control", "placeholder": _("Введіть свою електронну адресу")}
         ),
     )
     password1 = forms.CharField(
-        label="Password",
+        label=_("Пароль"),
         widget=forms.PasswordInput(
-            attrs={"class": "form-control", "placeholder": "Введіть пароль"}
+            attrs={"class": "form-control", "placeholder": _("Введіть свій пароль")}
         ),
     )
     password2 = forms.CharField(
-        label="Confirm Password",
+        label=_("Підтвердьте пароль"),
         widget=forms.PasswordInput(
-            attrs={"class": "form-control", "placeholder": "Підтвердьте пароль"}
+            attrs={"class": "form-control", "placeholder": _("Підтвердьте свій пароль")}
         ),
     )
 
