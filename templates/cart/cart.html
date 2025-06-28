@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="cart-item-info">
-                        <p>{% trans "Ціна:" %} <strong>{{ cart_item.product.price }} грн</strong></p>
+                        <p>{% trans "Ціна:" %} <strong>{{ cart_item.product.price }} {% trans "грн" %}</strong></p>
 
                         <p>{% trans "Кількість:" %}
                             <span class="quantity-controls">
@@ -36,7 +36,7 @@
                             </span>
                         </p>
 
-                        <p>{% trans "Сума:" %} <strong>{{ cart_item.total_price }} грн</strong></p>
+                        <p>{% trans "Сума:" %} <strong>{{ cart_item.total_price }} {% trans "грн" %}</strong></p>
                     </div>
                 </div>
 
