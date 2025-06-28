@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/products/products-catalog-page.css' %}">
@@ -8,16 +8,17 @@
 {% block content %}
     <a href="{% url 'products:main_page' %}" class="back-btn d-inline-flex align-items-center text-decoration-none">
         <i class="bi bi-arrow-left-short fs-4"></i>
-        <span class="ms-2">Назад</span>
+        <span class="ms-2">{% trans "Назад" %}</span>
     </a>
 
     <div class="catalog-header">
         <div class="container text-center">
-            <h1 class="display-4 mb-3">Каталог товарів</h1>
+            <h1 class="display-4 mb-3">{% trans "Каталог товарів" %}</h1>
             <form class="mt-4" method="get">
                 <div class="d-flex justify-content-center">
                     <div class="input-group shadow-sm" style="max-width: 500px; width: 100%;">
-                        <input type="text" name="search" class="form-control rounded-start" placeholder="Пошук товарів..."
+                        <input type="text" name="search" class="form-control rounded-start"
+                               placeholder="{% trans 'Пошук товарів...' %}"
                                value="{{ request.GET.search }}">
 
                         {% if request.GET.category %}
@@ -43,26 +44,26 @@
         <div class="row">
             <div class="col-lg-3">
                 <div class="filter-card">
-                    <h5>Фільтр за ціною</h5>
+                    <h5>{% trans "Фільтр за ціною" %}</h5>
                     <form method="get">
                         <input type="hidden" name="category" value="{{ request.GET.category }}">
 
                         <div class="mb-3">
-                            <label for="min_price" class="form-label">Мінімальна ціна</label>
+                            <label for="min_price" class="form-label">{% trans "Мінімальна ціна" %}</label>
                             <input type="number" name="min_price" class="form-control" id="min_price"
                                    value="{{ request.GET.min_price }}">
                         </div>
                         <div class="mb-3">
-                            <label for="max_price" class="form-label">Максимальна ціна</label>
+                            <label for="max_price" class="form-label">{% trans "Максимальна ціна" %}</label>
                             <input type="number" name="max_price" class="form-control" id="max_price"
                                    value="{{ request.GET.max_price }}">
                         </div>
-                        <button type="submit" class="btn btn-primary w-100">Застосувати</button>
+                        <button type="submit" class="btn btn-primary w-100">{% trans "Застосувати" %}</button>
                     </form>
                 </div>
 
                 <div class="filter-card">
-                    <h5>Категорії</h5>
+                    <h5>{% trans "Категорії" %}</h5>
                     <div class="list-group">
                         {% for category in categories %}
                             <a href="?category={{ category.name }}{% if request.GET.min_price %}&min_price={{ request.GET.min_price }}{% endif %}{% if request.GET.max_price %}&max_price={{ request.GET.max_price }}{% endif %}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}"
@@ -85,7 +86,7 @@
                                     {% if product.image %}
                                         <img src="{{ product.image.url }}" class="img-fluid" alt="{{ product.name }}">
                                     {% else %}
-                                        <div class="text-muted">Нет изображения</div>
+                                        <div class="text-muted">{% trans "Немає зображення" %}</div>
                                     {% endif %}
                                 </div>
 
@@ -95,7 +96,7 @@
                                         <p class="card-text text-muted">{{ product.short_description|truncatechars:100 }}</p>
                                     </div>
                                     <div class="d-flex justify-content-between align-items-center mt-3">
-                                        <span class="h5 text-primary mb-0">{{ product.price }} грн</span>
+                                        <span class="h5 text-primary mb-0">{{ product.price }} {% trans "грн" %}</span>
                                         <a href="{% if user.is_authenticated %}{% url 'cart:cart_add' product.id %}{% else %}{% url 'users:login' %}{% endif %}" class="btn btn-outline-primary px-3 py-2 z-1">
                                             <i class="bi bi-cart-plus"></i>
                                         </a>
@@ -105,7 +106,7 @@
                         </div>
                     {% empty %}
                         <div class="col-12 text-center py-5">
-                            <h3>Товары не найдены</h3>
+                            <h3>{% trans "Товари не знайдені" %}</h3>
                         </div>
                     {% endfor %}
                 </div>
@@ -115,9 +116,8 @@
                     <ul class="pagination justify-content-center">
                         {% if page_obj.has_previous %}
                             <li class="page-item">
-                                <a class="page-link"
-                                   href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.min_price %}&min_price={{ request.GET.min_price }}{% endif %}{% if request.GET.max_price %}&max_price={{ request.GET.max_price }}{% endif %}">
-                                    Назад
+                                <a class="page-link" href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.min_price %}&min_price={{ request.GET.min_price }}{% endif %}{% if request.GET.max_price %}&max_price={{ request.GET.max_price }}{% endif %}">
+                                    {% trans "Назад" %}
                                 </a>
                             </li>
                         {% endif %}
@@ -141,13 +141,13 @@
                             <li class="page-item">
                                 <a class="page-link"
                                    href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.category %}&category={{ request.GET.category }}{% endif %}{% if request.GET.min_price %}&min_price={{ request.GET.min_price }}{% endif %}{% if request.GET.max_price %}&max_price={{ request.GET.max_price }}{% endif %}">
-                                    Вперёд
+                                    {% trans "Вперед" %}
                                 </a>
                             </li>
                         {% endif %}
                     </ul>
                 </nav>
-            {% endif %}
+                {% endif %}
             </div>
         </div>
     </div>

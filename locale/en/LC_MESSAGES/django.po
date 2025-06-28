@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-28 19:35+0300\n"
+"POT-Creation-Date: 2025-06-28 19:46+0300\n"
 "PO-Revision-Date: 2025-06-27 21:30+0300\n"
 "Last-Translator: Danya Oleksuk <danya@example.com>\n"
 "Language-Team: English <en@li.org>\n"
@@ -23,7 +23,6 @@ msgid "Ім’я"
 msgstr "First name"
 
 #: .\orders\forms.py:13
-#| msgid "Будь ласка, виправте помилки у формі."
 msgid "Будь ласка, введіть ваше ім’я."
 msgstr "Please enter your name."
 
@@ -33,7 +32,6 @@ msgid "Прізвище"
 msgstr "Last name"
 
 #: .\orders\forms.py:21
-#| msgid "Будь ласка, виправте помилки у формі."
 msgid "Будь ласка, введіть ваше прізвище."
 msgstr "Please enter your last name."
 
@@ -43,7 +41,6 @@ msgid "Телефон"
 msgstr "Phone"
 
 #: .\orders\forms.py:29
-#| msgid "Будь ласка, виправте помилки у формі."
 msgid "Будь ласка, введіть номер телефону."
 msgstr "Please enter your phone number."
 
@@ -53,7 +50,6 @@ msgid "Місто"
 msgstr "City"
 
 #: .\orders\forms.py:38
-#| msgid "Будь ласка, виправте помилки у формі."
 msgid "Будь ласка, введіть назву міста."
 msgstr "Please enter the name of the city."
 
@@ -62,12 +58,10 @@ msgid "Відділення / Поштомат"
 msgstr "Warehouse / Pickup point"
 
 #: .\orders\forms.py:45
-#| msgid "Відділення / Поштомат"
 msgid "Відділення/Поштомат"
 msgstr "Warehouse / Pickup point"
 
 #: .\orders\forms.py:49
-#| msgid "Будь ласка, виправте помилки у формі."
 msgid "Будь ласка, вкажіть відділення або поштомат."
 msgstr "Please specify the branch or post office."
 
@@ -142,7 +136,8 @@ msgstr "Price:"
 
 #: .\templates\cart\cart.html:26 .\templates\cart\cart.html:39
 #: .\templates\cart\cart.html:52 .\templates\orders\checkout.html:89
-#: .\templates\orders\checkout.html:93
+#: .\templates\orders\checkout.html:93 .\templates\products\detail.html:26
+#: .\templates\products\products_list.html:99
 msgid "грн"
 msgstr "uah"
 
@@ -372,7 +367,9 @@ msgstr "Your order"
 msgid "Мої замовлення"
 msgstr "My orders"
 
-#: .\templates\orders\my_orders.html:10
+#: .\templates\orders\my_orders.html:10 .\templates\products\detail.html:12
+#: .\templates\products\products_list.html:11
+#: .\templates\products\products_list.html:120
 msgid "Назад"
 msgstr "Back"
 
@@ -428,6 +425,38 @@ msgstr "Your order has been successfully placed."
 msgid "Ми зв'яжемося з вами найближчим часом для підтвердження доставки."
 msgstr "We will contact you shortly to confirm delivery."
 
+#: .\templates\products\detail.html:20
+#: .\templates\products\products_list.html:89
+msgid "Немає зображення"
+msgstr "No image"
+
+#: .\templates\products\detail.html:29
+#| msgid "каталогу товарів"
+msgid "Опис товару"
+msgstr "Product description"
+
+#: .\templates\products\detail.html:34
+msgid "Характеристики"
+msgstr "Characteristics"
+
+#: .\templates\products\detail.html:37
+#| msgid "Категорії"
+msgid "Категорія:"
+msgstr "Category:"
+
+#: .\templates\products\detail.html:55
+#| msgid "Додати %(product_name)s в корзину"
+msgid "Додати в корзину"
+msgstr "Add to cart"
+
+#: .\templates\products\detail.html:64
+msgid "Продукт тимчасово недоступний"
+msgstr "Product temporarily unavailable"
+
+#: .\templates\products\detail.html:65
+msgid "Цей товар наразі не доступний для покупки. Вибачте за незручності."
+msgstr "This product is currently not available for purchase. We apologize for the inconvenience."
+
 #: .\templates\products\main_page.html:12
 msgid "Ознайомтесь з повним каталогом товарів"
 msgstr "Explore the full product catalog"
@@ -460,6 +489,42 @@ msgstr "Add %(product_name)s to cart"
 #: .\templates\products\main_page.html:50
 msgid "В корзину"
 msgstr "Add to cart"
+
+#: .\templates\products\products_list.html:16
+msgid "Каталог товарів"
+msgstr "Product catalog"
+
+#: .\templates\products\products_list.html:21
+msgid "Пошук товарів..."
+msgstr "Search for products..."
+
+#: .\templates\products\products_list.html:47
+msgid "Фільтр за ціною"
+msgstr "Filter by price"
+
+#: .\templates\products\products_list.html:52
+msgid "Мінімальна ціна"
+msgstr "Minimum price"
+
+#: .\templates\products\products_list.html:57
+msgid "Максимальна ціна"
+msgstr "Maximum price"
+
+#: .\templates\products\products_list.html:61
+msgid "Застосувати"
+msgstr "Apply"
+
+#: .\templates\products\products_list.html:66
+msgid "Категорії"
+msgstr "Categories"
+
+#: .\templates\products\products_list.html:109
+msgid "Товари не знайдені"
+msgstr "Products not found"
+
+#: .\templates\products\products_list.html:144
+msgid "Вперед"
+msgstr "Forward"
 
 #: .\templates\users\login.html:5 .\templates\users\login.html:38
 msgid "Увійти"

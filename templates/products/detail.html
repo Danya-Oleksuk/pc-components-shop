@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static i18n %}
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/products/product-detail.css' %}">
@@ -9,7 +9,7 @@
 <div class="container product-detail-container">
     <a href="{{ back_url }}" class="back-btn mb-4">
         <i class="bi bi-arrow-left-short fs-4"></i>
-        <span class="ms-2">Назад</span>
+        <span class="ms-2">{% trans "Назад" %}</span>
     </a>
     {% if product and not not_available %}
         <div class="row g-5">
@@ -17,34 +17,34 @@
                 {% if product.image %}
                     <img src="{{ product.image.url }}" class="product-image" alt="{{ product.name }}">
                 {% else %}
-                    <img src="https://via.placeholder.com/600" class="product-image" alt="No image">
+                    <img src="https://via.placeholder.com/600" class="product-image" alt="{% trans 'Немає зображення' %}">
                 {% endif %}
             </div>
 
             <div class="col-lg-6">
                 <h1 class="fw-bold mb-3">{{ product.name }}</h1>
-                <div class="price-tag">{{ product.price }} грн</div>
+                <div class="price-tag">{{ product.price }} {% trans "грн" %}</div>
 
                 <div class="description mb-4">
-                    <h5 class="mb-2">Опис товару</h5>
+                    <h5 class="mb-2">{% trans "Опис товару" %}</h5>
                     <p>{{ product.description }}</p>
                 </div>
 
                 <div class="specifications">
-                    <h5 class="mb-3">Характеристики</h5>
+                    <h5 class="mb-3">{% trans "Характеристики" %}</h5>
                     <ul class="specs-list">
                         <li>
-                            <span>Категорія:</span>
+                            <span>{% trans "Категорія:" %}</span>
                             <a href="{% url 'products:catalog' %}?category={{ product.category.name }}" class="category-link">
                                 <span>{{ product.category.name }}</span>
                             </a>
                         </li>
-                    {% for spec in specs %}
+                        {% for spec in specs %}
                         <li>
-                                <span>{{ spec.spec_name }}</span>
-                                <span>{{ spec.spec_value }}</span>
+                            <span>{{ spec.spec_name }}</span>
+                            <span>{{ spec.spec_value }}</span>
                         </li>
-                    {% endfor %}
+                        {% endfor %}
                     </ul>
                 </div>
 
@@ -52,7 +52,7 @@
                     <a href="{% if user.is_authenticated %}{% url 'cart:cart_add' product.id %}{% else %}{% url 'users:login' %}{% endif %}"
                        class="btn btn-primary add-to-cart w-100"
                        onclick="event.stopPropagation()">
-                       Додати в корзину
+                       {% trans "Додати в корзину" %}
                     </a>
                 </div>
             </div>
@@ -61,8 +61,8 @@
         <div class="row justify-content-center">
             <div class="col-md-8 text-center">
                 <div class="alert alert-warning">
-                    <h2 class="fw-bold">Продукт тимчасово недоступний</h2>
-                    <p class="lead">Цей товар наразі не доступний для покупки. Вибачте за незручності.</p>
+                    <h2 class="fw-bold">{% trans "Продукт тимчасово недоступний" %}</h2>
+                    <p class="lead">{% trans "Цей товар наразі не доступний для покупки. Вибачте за незручності." %}</p>
                 </div>
             </div>
         </div>
