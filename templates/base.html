@@ -53,19 +53,36 @@
                             </span>
                         {% endif %}
                     </a>
+
+                    <form action="{% url 'set_language' %}" method="post" class="me-2">
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ request.get_full_path }}">
+                        <div class="dropdown">
+                            <button class="btn btn-outline-light dropdown-toggle" type="button" id="dropdownLanguage" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="flag-icon flag-icon-{% if LANGUAGE_CODE == 'uk' %}ua{% else %}gb{% endif %}"></span>
+                                {% if LANGUAGE_CODE == 'uk' %}
+                                    🇺🇦 {% trans "Ukrainian" %}
+                                {% else %}
+                                    🇬🇧 {% trans "English" %}
+                                {% endif %}
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownLanguage">
+                                <li>
+                                    <button type="submit" name="language" value="uk" class="dropdown-item" {% if LANGUAGE_CODE == 'uk' %}disabled{% endif %}>
+                                        <span class="flag-icon flag-icon-ua"></span> 🇺🇦 {% trans "Ukrainian" %}
+                                    </button>
+                                </li>
+                                <li>
+                                    <button type="submit" name="language" value="en" class="dropdown-item" {% if LANGUAGE_CODE == 'en' %}disabled{% endif %}>
+                                        <span class="flag-icon flag-icon-gb"></span> 🇬🇧 {% trans "English" %}
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-
-        <form action="{% url 'set_language' %}" method="post" class="me-2">
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{{ request.get_full_path }}">
-            <select name="language" onchange="this.form.submit()"
-                    class="form-select form-select-sm bg-dark text-light border-secondary">
-                <option value="uk" {% if LANGUAGE_CODE == 'uk' %}selected{% endif %}>🇺🇦 {% trans "Ukrainian" %}</option>
-                <option value="en" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>🇬🇧 {% trans "English" %}</option>
-            </select>
-        </form>
     </nav>
 </header>
 
