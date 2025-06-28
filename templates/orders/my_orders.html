@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 <div class="container my-5">
     <div class="d-flex justify-content-between align-items-center mb-4">
-        <h1 class="text-primary fw-bold">Мої замовлення</h1>
+        <h1 class="text-primary fw-bold">{% trans "Мої замовлення" %}</h1>
         <a href="{% url 'users:profile' %}" class="btn btn-outline-primary d-inline-flex align-items-center gap-2 shadow-sm rounded-pill px-4 py-2">
-            <i class="bi bi-arrow-left"></i> Назад
+            <i class="bi bi-arrow-left"></i> {% trans "Назад" %}
         </a>
     </div>
     {% if orders %}
@@ -16,14 +17,14 @@
                     <table class="table table-hover align-middle">
                         <thead class="table-light">
                             <tr>
-                                <th>№</th>
-                                <th>Ім’я</th>
-                                <th>Прізвище</th>
-                                <th>Адреса</th>
-                                <th>Статус</th>
-                                <th>Загальна сума</th>
-                                <th>Дата</th>
-                                <th>Деталі</th>
+                                <th>{% trans "№" %}</th>
+                                <th>{% trans "Ім’я" %}</th>
+                                <th>{% trans "Прізвище" %}</th>
+                                <th>{% trans "Адреса" %}</th>
+                                <th>{% trans "Статус" %}</th>
+                                <th>{% trans "Загальна сума" %}</th>
+                                <th>{% trans "Дата" %}</th>
+                                <th>{% trans "Деталі" %}</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,7 +44,7 @@
                                     <td>{{ order.created_at|date:"d.m.Y" }}</td>
                                     <td>
                                         <button class="btn btn-sm btn-outline-secondary toggle-details" data-order-id="{{ order.id }}">
-                                            Деталі
+                                            {% trans "Деталі" %}
                                         </button>
                                     </td>
                                 </tr>
@@ -57,15 +58,15 @@
                                                             <span class="badge bg-secondary me-2">{{ forloop.counter }}</span>
                                                             <div>
                                                                 <strong class="d-block">{{ item.product }}</strong>
-                                                                <p class="mb-1 text-muted">Кількість: {{ item.quantity }}</p>
-                                                                <p class="mb-0 text-muted">Сума: <strong>{{ item.total_price }} грн</strong></p>
+                                                                <p class="mb-1 text-muted">{% trans "Кількість" %}: {{ item.quantity }}</p>
+                                                                <p class="mb-0 text-muted">{% trans "Сума" %}: <strong>{{ item.total_price }} грн</strong></p>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 {% endfor %}
                                             {% else %}
                                                 <div class="col-12">
-                                                    <p>Товари не знайдені для цього замовлення.</p>
+                                                    <p>{% trans "Товари не знайдені для цього замовлення." %}</p>
                                                 </div>
                                             {% endif %}
                                         </div>
@@ -79,7 +80,7 @@
         </div>
     {% else %}
         <div class="alert alert-info mt-4" role="alert">
-            У вас немає замовлень.
+            {% trans "У вас немає замовлень." %}
         </div>
     {% endif %}
 </div>

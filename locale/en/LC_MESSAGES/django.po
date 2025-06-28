@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-28 19:22+0300\n"
+"POT-Creation-Date: 2025-06-28 19:35+0300\n"
 "PO-Revision-Date: 2025-06-27 21:30+0300\n"
 "Last-Translator: Danya Oleksuk <danya@example.com>\n"
 "Language-Team: English <en@li.org>\n"
@@ -16,6 +16,68 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\orders\forms.py:9 .\orders\forms.py:10 .\templates\orders\checkout.html:27
+#: .\templates\orders\my_orders.html:21
+msgid "Ім’я"
+msgstr "First name"
+
+#: .\orders\forms.py:13
+#| msgid "Будь ласка, виправте помилки у формі."
+msgid "Будь ласка, введіть ваше ім’я."
+msgstr "Please enter your name."
+
+#: .\orders\forms.py:17 .\orders\forms.py:18
+#: .\templates\orders\checkout.html:37 .\templates\orders\my_orders.html:22
+msgid "Прізвище"
+msgstr "Last name"
+
+#: .\orders\forms.py:21
+#| msgid "Будь ласка, виправте помилки у формі."
+msgid "Будь ласка, введіть ваше прізвище."
+msgstr "Please enter your last name."
+
+#: .\orders\forms.py:25 .\orders\forms.py:26
+#: .\templates\orders\checkout.html:47
+msgid "Телефон"
+msgstr "Phone"
+
+#: .\orders\forms.py:29
+#| msgid "Будь ласка, виправте помилки у формі."
+msgid "Будь ласка, введіть номер телефону."
+msgstr "Please enter your phone number."
+
+#: .\orders\forms.py:34 .\orders\forms.py:35
+#: .\templates\orders\checkout.html:57
+msgid "Місто"
+msgstr "City"
+
+#: .\orders\forms.py:38
+#| msgid "Будь ласка, виправте помилки у формі."
+msgid "Будь ласка, введіть назву міста."
+msgstr "Please enter the name of the city."
+
+#: .\orders\forms.py:43 .\templates\orders\checkout.html:67
+msgid "Відділення / Поштомат"
+msgstr "Warehouse / Pickup point"
+
+#: .\orders\forms.py:45
+#| msgid "Відділення / Поштомат"
+msgid "Відділення/Поштомат"
+msgstr "Warehouse / Pickup point"
+
+#: .\orders\forms.py:49
+#| msgid "Будь ласка, виправте помилки у формі."
+msgid "Будь ласка, вкажіть відділення або поштомат."
+msgstr "Please specify the branch or post office."
+
+#: .\orders\forms.py:56
+msgid "Номер телефону повинен містити лише цифри."
+msgstr "The phone number must contain only numbers."
+
+#: .\orders\forms.py:58
+msgid "Введіть дійсний номер телефону, який містить щонайменше 10 цифр."
+msgstr "Please enter a valid phone number that contains at least 10 digits."
 
 #: .\templates\base.html:10 .\templates\base.html:22 .\templates\base.html:82
 #: .\templates\base.html:100
@@ -78,6 +140,12 @@ msgstr "Your cart"
 msgid "Ціна:"
 msgstr "Price:"
 
+#: .\templates\cart\cart.html:26 .\templates\cart\cart.html:39
+#: .\templates\cart\cart.html:52 .\templates\orders\checkout.html:89
+#: .\templates\orders\checkout.html:93
+msgid "грн"
+msgstr "uah"
+
 #: .\templates\cart\cart.html:28
 msgid "Кількість:"
 msgstr "Quantity:"
@@ -90,35 +158,25 @@ msgstr "Sum:"
 msgid "Видалити"
 msgstr "Delete"
 
-#: .\templates\cart\cart.html:52
+#: .\templates\cart\cart.html:52 .\templates\orders\checkout.html:93
 msgid "Загальна сума:"
 msgstr "Total amount:"
 
-#: .\templates\cart\cart.html:52
-msgid "грн"
-msgstr "uah"
-
 #: .\templates\cart\cart.html:57
-#, fuzzy
-#| msgid "Історія замовлень"
 msgid "Оформити замовлення"
-msgstr "Order history"
+msgstr "Place an order"
 
 #: .\templates\cart\cart.html:62
 msgid "Ваш кошик порожній"
 msgstr "Your cart is empty"
 
 #: .\templates\cart\cart.html:63
-#, fuzzy
-#| msgid "Увійдіть"
 msgid "Перейдіть до"
-msgstr "Login"
+msgstr "Go to"
 
 #: .\templates\cart\cart.html:63
-#, fuzzy
-#| msgid "Рекомендовані товари"
 msgid "каталогу товарів"
-msgstr "Recommended Products"
+msgstr "product catalog"
 
 #: .\templates\cart\cart.html:63
 msgid "щоб додати щось."
@@ -279,21 +337,86 @@ msgid "Оплата не вдалася"
 msgstr "Payment failed"
 
 #: .\templates\orders\cancel.html:14
-#| msgid "Щось пішло не так на сервері"
 msgid "Щось пішло не так під час обробки платежу."
-msgstr "Something went wrong on the server"
+msgstr "Something went wrong while processing the payment."
 
 #: .\templates\orders\cancel.html:15
 msgid "Будь ласка, спробуйте ще раз або зв'яжіться з нашою підтримкою."
 msgstr "Please try again or contact our support."
 
 #: .\templates\orders\cancel.html:19 .\templates\orders\success.html:19
-#| msgid "Переглянути деталі товару"
 msgid "Повернутись на головну"
 msgstr "Return to home page"
 
+#: .\templates\orders\checkout.html:16
+msgid "До кошика"
+msgstr "Your cart"
+
+#: .\templates\orders\checkout.html:18
+msgid "Оформлення замовлення"
+msgstr "Order checkout"
+
+#: .\templates\orders\checkout.html:23
+msgid "Будь ласка, виправте помилки у формі."
+msgstr "Please correct the errors in the form."
+
+#: .\templates\orders\checkout.html:77
+msgid "Підтвердити та оплатити"
+msgstr "Confirm and pay"
+
+#: .\templates\orders\checkout.html:85
+msgid "Ваше замовлення"
+msgstr "Your order"
+
+#: .\templates\orders\my_orders.html:8
+msgid "Мої замовлення"
+msgstr "My orders"
+
+#: .\templates\orders\my_orders.html:10
+msgid "Назад"
+msgstr "Back"
+
+#: .\templates\orders\my_orders.html:20
+msgid "№"
+msgstr "No."
+
+#: .\templates\orders\my_orders.html:23
+msgid "Адреса"
+msgstr "Address"
+
+#: .\templates\orders\my_orders.html:24
+msgid "Статус"
+msgstr "Status"
+
+#: .\templates\orders\my_orders.html:25
+msgid "Загальна сума"
+msgstr "Total amount"
+
+#: .\templates\orders\my_orders.html:26
+msgid "Дата"
+msgstr "Date"
+
+#: .\templates\orders\my_orders.html:27 .\templates\orders\my_orders.html:47
+msgid "Деталі"
+msgstr "Details"
+
+#: .\templates\orders\my_orders.html:61
+msgid "Кількість"
+msgstr "Quantity"
+
+#: .\templates\orders\my_orders.html:62
+msgid "Сума"
+msgstr "Amount"
+
+#: .\templates\orders\my_orders.html:69
+msgid "Товари не знайдені для цього замовлення."
+msgstr "No items found for this order."
+
+#: .\templates\orders\my_orders.html:83
+msgid "У вас немає замовлень."
+msgstr "You have no orders."
+
 #: .\templates\orders\success.html:12
-#| msgid "Історія замовлень"
 msgid "Дякуємо за ваше замовлення!"
 msgstr "Thank you for your order!"
 
@@ -433,6 +556,3 @@ msgstr "The Email field must be set"
 
 #~ msgid "Profile"
 #~ msgstr "Profile"
-
-#~ msgid "Будь ласка, виправте наступні помилки:"
-#~ msgstr "Please correct the following errors:"

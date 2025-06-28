@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% load i18n %}
+
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/orders/order-checkout.css' %}">
 {% endblock %}
@@ -12,18 +13,18 @@
             <div class="checkout-form">
                 <a href="{% url 'cart:cart_list' %}" class="back-btn d-inline-flex align-items-center text-decoration-none btn-back">
                     <i class="bi bi-arrow-left-short fs-4"></i>
-                    <span class="ms-2">До кошика</span>
+                    <span class="ms-2">{% trans "До кошика" %}</span>
                 </a>
-                <h2 style="text-align: center">Оформлення замовлення</h2>
+                <h2 style="text-align: center">{% trans "Оформлення замовлення" %}</h2>
                 <form method="post" action="{% url 'orders:checkout' %}" novalidate>
                     {% csrf_token %}
                     {% if form.errors %}
                         <div class="alert alert-danger">
-                            Будь ласка, виправте помилки у формі.
+                            {% trans "Будь ласка, виправте помилки у формі." %}
                         </div>
                     {% endif %}
                     <div class="mb-3">
-                        <label for="{{ form.first_name.id_for_label }}" class="form-label">Ім’я</label>
+                        <label for="{{ form.first_name.id_for_label }}" class="form-label">{% trans "Ім’я" %}</label>
                         {{ form.first_name }}
                         {% if form.first_name.errors %}
                             <div class="text-danger small mt-1">
@@ -33,7 +34,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="{{ form.last_name.id_for_label }}" class="form-label">Прізвище</label>
+                        <label for="{{ form.last_name.id_for_label }}" class="form-label">{% trans "Прізвище" %}</label>
                         {{ form.last_name }}
                         {% if form.last_name.errors %}
                             <div class="text-danger small mt-1">
@@ -43,7 +44,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="{{ form.phone.id_for_label }}" class="form-label">Телефон</label>
+                        <label for="{{ form.phone.id_for_label }}" class="form-label">{% trans "Телефон" %}</label>
                         {{ form.phone }}
                         {% if form.phone.errors %}
                             <div class="text-danger small mt-1">
@@ -53,7 +54,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="{{ form.city.id_for_label }}" class="form-label">Місто</label>
+                        <label for="{{ form.city.id_for_label }}" class="form-label">{% trans "Місто" %}</label>
                         {{ form.city }}
                         {% if form.city.errors %}
                             <div class="text-danger small mt-1">
@@ -63,7 +64,7 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="{{ form.warehouse.id_for_label }}" class="form-label">Відділення / Поштомат</label>
+                        <label for="{{ form.warehouse.id_for_label }}" class="form-label">{% trans "Відділення / Поштомат" %}</label>
                         {{ form.warehouse }}
                         {% if form.warehouse.errors %}
                             <div class="text-danger small mt-1">
@@ -73,7 +74,7 @@
                     </div>
 
                     <button type="submit" class="btn btn-success w-100 mt-3 btn-custom">
-                        Підтвердити та оплатити
+                        {% trans "Підтвердити та оплатити" %}
                     </button>
                 </form>
             </div>
@@ -81,15 +82,15 @@
 
         <div class="col-md-6">
             <div class="order-summary">
-                <h4>Ваше замовлення</h4>
+                <h4>{% trans "Ваше замовлення" %}</h4>
                 {% for item in cart %}
                     <div class="summary-item">
                         <span>{{ item.product.name }} — x{{ item.quantity }}</span>
-                        <span>{{ item.total_price }} грн</span>
+                        <span>{{ item.total_price }} {% trans "грн" %}</span>
                     </div>
                 {% endfor %}
                 <div class="summary-total">
-                    Загальна сума: {{ user_cart_total }} грн
+                    {% trans "Загальна сума:" %} {{ user_cart_total }} {% trans "грн" %}
                 </div>
             </div>
         </div>
