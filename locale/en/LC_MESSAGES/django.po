@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-28 19:19+0300\n"
+"POT-Creation-Date: 2025-06-28 19:22+0300\n"
 "PO-Revision-Date: 2025-06-27 21:30+0300\n"
 "Last-Translator: Danya Oleksuk <danya@example.com>\n"
 "Language-Team: English <en@li.org>\n"
@@ -273,6 +273,37 @@ msgid ""
 msgstr ""
 "We reserve the right to change the terms of this agreement. Changes take "
 "effect after they are published on the site."
+
+#: .\templates\orders\cancel.html:12
+msgid "Оплата не вдалася"
+msgstr "Payment failed"
+
+#: .\templates\orders\cancel.html:14
+#| msgid "Щось пішло не так на сервері"
+msgid "Щось пішло не так під час обробки платежу."
+msgstr "Something went wrong on the server"
+
+#: .\templates\orders\cancel.html:15
+msgid "Будь ласка, спробуйте ще раз або зв'яжіться з нашою підтримкою."
+msgstr "Please try again or contact our support."
+
+#: .\templates\orders\cancel.html:19 .\templates\orders\success.html:19
+#| msgid "Переглянути деталі товару"
+msgid "Повернутись на головну"
+msgstr "Return to home page"
+
+#: .\templates\orders\success.html:12
+#| msgid "Історія замовлень"
+msgid "Дякуємо за ваше замовлення!"
+msgstr "Thank you for your order!"
+
+#: .\templates\orders\success.html:14
+msgid "Ваше замовлення було успішно оформлено."
+msgstr "Your order has been successfully placed."
+
+#: .\templates\orders\success.html:15
+msgid "Ми зв'яжемося з вами найближчим часом для підтвердження доставки."
+msgstr "We will contact you shortly to confirm delivery."
 
 #: .\templates\products\main_page.html:12
 msgid "Ознайомтесь з повним каталогом товарів"

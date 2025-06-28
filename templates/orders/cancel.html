@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/orders/order-cancel.css' %}">
@@ -8,14 +9,14 @@
 {% block content %}
 <div class="container text-center">
     <div class="error-container mx-auto">
-        <h2 class="error-title">Оплата не вдалася</h2>
+        <h2 class="error-title">{% trans "Оплата не вдалася" %}</h2>
         <p class="error-message">
-            Щось пішло не так під час обробки платежу.<br>
-            Будь ласка, спробуйте ще раз або зв'яжіться з нашою підтримкою.
+            {% trans "Щось пішло не так під час обробки платежу." %}<br>
+            {% trans "Будь ласка, спробуйте ще раз або зв'яжіться з нашою підтримкою." %}
         </p>
 
         <a href="{% url 'products:main_page' %}" class="btn btn-return-home">
-            Повернутись на головну
+            {% trans "Повернутись на головну" %}
         </a>
     </div>
 </div>

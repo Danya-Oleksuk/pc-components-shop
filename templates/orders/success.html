@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load i18n %}
 
 {% block styles %}
     <link rel="stylesheet" href="{% static 'css/orders/order-success.css' %}">
@@ -8,14 +9,14 @@
 {% block content %}
 <div class="container text-center">
     <div class="thank-you-container mx-auto">
-        <h2 class="thank-you-title">Дякуємо за ваше замовлення!</h2>
+        <h2 class="thank-you-title">{% trans "Дякуємо за ваше замовлення!" %}</h2>
         <p class="thank-you-message">
-            Ваше замовлення було успішно оформлено.<br>
-            Ми зв'яжемося з вами найближчим часом для підтвердження доставки.
+            {% trans "Ваше замовлення було успішно оформлено." %}<br>
+            {% trans "Ми зв'яжемося з вами найближчим часом для підтвердження доставки." %}
         </p>
 
         <a href="{% url 'products:main_page' %}" class="btn btn-return-home">
-            Повернутись на головну
+            {% trans "Повернутись на головну" %}
         </a>
     </div>
 </div>
