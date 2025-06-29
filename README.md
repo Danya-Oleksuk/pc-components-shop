@@ -20,6 +20,7 @@
 - **Order Checkout**: Integration with Stripe for order processing and payments.
 - **Order History**: Users can view their order history.
 - **Pagination**: Supports pagination for the product list.
+- **Localization**: Support for Ukrainian and English languages with UI language switch
 - **Tests**: Unit tests for order processing, forms, and views
 
 ## ▶️ Installation
