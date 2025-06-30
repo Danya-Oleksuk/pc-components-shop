@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils.text import slugify
 
+from users.models import User
+
 
 class Category(models.Model):
     name = models.CharField(max_length=200)
@@ -24,6 +26,7 @@ class Product(models.Model):
     available = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey("Category", on_delete=models.SET_NULL, null=True)
+    wished_by = models.ManyToManyField(User, related_name="wishlist", blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
