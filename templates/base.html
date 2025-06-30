@@ -36,6 +36,9 @@
                         <a href="{% url 'users:profile' %}" class="btn btn-outline-light">
                             <i class="bi bi-person-circle me-1"></i> {% trans "Профіль" %}
                         </a>
+                        <a href="{% url 'users:wishlist' %}" class="btn btn-outline-light">
+                            💖 {% trans "Вибране" %}
+                        </a>
                         <form action="{% url 'users:logout' %}" method="post" class="d-inline">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-outline-light">{% trans "Вихід" %}</button>
