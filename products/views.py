@@ -1,8 +1,8 @@
 from urllib.parse import urlencode
 
+from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
-from django.core.exceptions import ObjectDoesNotExist
-from django.http import Http404
+from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import DetailView, ListView, TemplateView
 
 from .models import Category, Product
@@ -41,6 +41,8 @@ class ProductDetailView(DetailView):
             base_url = "/products/"
         elif source == "cart":
             base_url = "/user/cart/"
+        elif source == "wishlist":
+            base_url = "/user/wishlist/"
         else:
             base_url = "/"
 
@@ -96,3 +98,15 @@ class ProductsListView(ListView):
         context["categories"] = categories
 
         return context
+
+@login_required
+def add_to_wishlist(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    product.wished_by.add(request.user)
+    return redirect(request.META.get('HTTP_REFERER', 'catalog'))
+
+@login_required
+def remove_from_wishlist(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    product.wished_by.remove(request.user)
+    return redirect(request.META.get('HTTP_REFERER', 'catalog'))

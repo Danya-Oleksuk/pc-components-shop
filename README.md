@@ -9,17 +9,20 @@
 - **Stripe API** — for payment integration
 - **PostgreSQL** — for data storage
 - **Redis** — for data caching and performance improvement
-- **Nova Poshta API** — integration for searching for branches and delivery addresses.
+- **Nova Poshta API** — integration for searching for branches and delivery addresses
+- **Gunicorn + Nginx** — gunicorn serves the app, while Nginx acts as a reverse proxy and handles static/media files
+- **Docker & Docker Compose** — for easy deployment and service management
 - **flake8, black, isort** — for code formatting and adhering to standards
 
 
 ## ✨ Features
 
-- **Product Catalog**: Display all available components with sorting and filtering options.
-- **Shopping Cart**: Ability to add, remove items, and view the total cost of the order.
-- **Order Checkout**: Integration with Stripe for order processing and payments.
-- **Order History**: Users can view their order history.
-- **Pagination**: Supports pagination for the product list.
+- **Product Catalog**: Display all available components with sorting and filtering options
+- **Shopping Cart**: Ability to add, remove items, and view the total cost of the order
+- **Order Checkout**: Integration with Stripe for order processing and payments
+- **Order History**: Users can view their order history
+- **Pagination**: Supports pagination for the product list
+- **Localization**: Support for Ukrainian and English languages with UI language switch
 - **Tests**: Unit tests for order processing, forms, and views
 
 ## ▶️ Installation

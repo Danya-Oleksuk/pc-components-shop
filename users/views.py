@@ -11,6 +11,18 @@ from .forms import UserLoginForm, UserRegisterForm
 from .models import User
 
 
+class UserWishlist(LoginRequiredMixin, TemplateView):
+    template_name = "users/wishlist.html"
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        products = self.request.user.wishlist.all()
+        context['products'] = products
+
+        return context
+
+
 class UserLoginView(LoginView):
     template_name = "users/login.html"
     form_class = UserLoginForm
