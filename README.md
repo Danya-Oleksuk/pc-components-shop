@@ -21,6 +21,7 @@
 - **Shopping Cart**: Ability to add, remove items, and view the total cost of the order
 - **Order Checkout**: Integration with Stripe for order processing and payments
 - **Order History**: Users can view their order history
+- **Wishlist**: Users can add and remove products from their wishlist for future purchases
 - **Pagination**: Supports pagination for the product list
 - **Localization**: Support for Ukrainian and English languages with UI language switch
 - **Tests**: Unit tests for order processing, forms, and views
