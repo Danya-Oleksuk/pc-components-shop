@@ -22,8 +22,25 @@
             </div>
 
             <div class="col-lg-6">
-                <h1 class="fw-bold mb-3">{{ product.name }}</h1>
-                <div class="price-tag">{{ product.price }} {% trans "грн" %}</div>
+                <div class="d-flex align-items-center justify-content-between mb-2">
+                    <h1 class="fw-bold mb-0">{{ product.name }}</h1>
+
+                    {% if user.is_authenticated %}
+                        {% if user in product.wished_by.all %}
+                            <a href="{% url 'products:remove_from_wishlist' product.id %}"
+                               class="btn btn-outline-danger btn-sm">
+                               ❤️ {% trans "Видалити з вибраного" %}
+                            </a>
+                        {% else %}
+                            <a href="{% url 'products:add_to_wishlist' product.id %}"
+                               class="btn btn-outline-danger btn-sm">
+                               🤍 {% trans "Додати в вибране" %}
+                            </a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+
+                <div class="price-tag mb-3">{{ product.price }} {% trans "грн" %}</div>
 
                 <div class="description mb-4">
                     <h5 class="mb-2">{% trans "Опис товару" %}</h5>
