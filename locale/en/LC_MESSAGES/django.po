@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-06-28 19:46+0300\n"
+"POT-Creation-Date: 2025-06-30 20:04+0300\n"
 "PO-Revision-Date: 2025-06-27 21:30+0300\n"
 "Last-Translator: Danya Oleksuk <danya@example.com>\n"
 "Language-Team: English <en@li.org>\n"
@@ -73,8 +73,8 @@ msgstr "The phone number must contain only numbers."
 msgid "Введіть дійсний номер телефону, який містить щонайменше 10 цифр."
 msgstr "Please enter a valid phone number that contains at least 10 digits."
 
-#: .\templates\base.html:10 .\templates\base.html:22 .\templates\base.html:82
-#: .\templates\base.html:100
+#: .\templates\base.html:10 .\templates\base.html:22 .\templates\base.html:102
+#: .\templates\base.html:120
 msgid "PC Components Store"
 msgstr "PC Components Store"
 
@@ -86,43 +86,47 @@ msgstr "Catalog"
 msgid "Профіль"
 msgstr "Profile"
 
-#: .\templates\base.html:41
+#: .\templates\base.html:40 .\templates\users\wishlist.html:5
+msgid "Вибране"
+msgstr "Wishlist"
+
+#: .\templates\base.html:44
 msgid "Вихід"
 msgstr "Logout"
 
-#: .\templates\base.html:44
+#: .\templates\base.html:47
 msgid "Вхід"
 msgstr "Login"
 
-#: .\templates\base.html:45
+#: .\templates\base.html:48
 msgid "Реєстрація"
 msgstr "Register"
 
-#: .\templates\base.html:65
+#: .\templates\base.html:67 .\templates\base.html:75
 msgid "Ukrainian"
 msgstr "Ukrainian"
 
-#: .\templates\base.html:66
+#: .\templates\base.html:69 .\templates\base.html:80
 msgid "English"
 msgstr "English"
 
-#: .\templates\base.html:83
+#: .\templates\base.html:103
 msgid "Найкращі комплектуючі для вашого комп'ютера"
 msgstr "The best components for your PC"
 
-#: .\templates\base.html:88 .\templates\info\about.html:11
+#: .\templates\base.html:108 .\templates\info\about.html:11
 msgid "Про нас"
 msgstr "About us"
 
-#: .\templates\base.html:91 .\templates\info\contacts.html:11
+#: .\templates\base.html:111 .\templates\info\contacts.html:11
 msgid "Контакти"
 msgstr "Contacts"
 
-#: .\templates\base.html:94 .\templates\info\terms.html:11
+#: .\templates\base.html:114 .\templates\info\terms.html:11
 msgid "Угода користувача"
 msgstr "User Agreement"
 
-#: .\templates\base.html:100
+#: .\templates\base.html:120
 msgid "Всі права захищено."
 msgstr "All rights reserved."
 
@@ -130,14 +134,15 @@ msgstr "All rights reserved."
 msgid "Ваш кошик"
 msgstr "Your cart"
 
-#: .\templates\cart\cart.html:26
+#: .\templates\cart\cart.html:26 .\templates\users\wishlist.html:29
 msgid "Ціна:"
 msgstr "Price:"
 
 #: .\templates\cart\cart.html:26 .\templates\cart\cart.html:39
 #: .\templates\cart\cart.html:52 .\templates\orders\checkout.html:89
-#: .\templates\orders\checkout.html:93 .\templates\products\detail.html:26
-#: .\templates\products\products_list.html:99
+#: .\templates\orders\checkout.html:93 .\templates\products\detail.html:43
+#: .\templates\products\products_list.html:114
+#: .\templates\users\wishlist.html:29
 msgid "грн"
 msgstr "uah"
 
@@ -149,7 +154,7 @@ msgstr "Quantity:"
 msgid "Сума:"
 msgstr "Sum:"
 
-#: .\templates\cart\cart.html:45
+#: .\templates\cart\cart.html:45 .\templates\users\wishlist.html:35
 msgid "Видалити"
 msgstr "Delete"
 
@@ -165,11 +170,11 @@ msgstr "Place an order"
 msgid "Ваш кошик порожній"
 msgstr "Your cart is empty"
 
-#: .\templates\cart\cart.html:63
+#: .\templates\cart\cart.html:63 .\templates\users\wishlist.html:50
 msgid "Перейдіть до"
 msgstr "Go to"
 
-#: .\templates\cart\cart.html:63
+#: .\templates\cart\cart.html:63 .\templates\users\wishlist.html:51
 msgid "каталогу товарів"
 msgstr "product catalog"
 
@@ -369,7 +374,7 @@ msgstr "My orders"
 
 #: .\templates\orders\my_orders.html:10 .\templates\products\detail.html:12
 #: .\templates\products\products_list.html:11
-#: .\templates\products\products_list.html:120
+#: .\templates\products\products_list.html:135
 msgid "Назад"
 msgstr "Back"
 
@@ -426,36 +431,46 @@ msgid "Ми зв'яжемося з вами найближчим часом дл
 msgstr "We will contact you shortly to confirm delivery."
 
 #: .\templates\products\detail.html:20
-#: .\templates\products\products_list.html:89
+#: .\templates\products\products_list.html:104
 msgid "Немає зображення"
 msgstr "No image"
 
-#: .\templates\products\detail.html:29
-#| msgid "каталогу товарів"
+#: .\templates\products\detail.html:32
+#: .\templates\products\products_list.html:87
+msgid "Видалити з вибраного"
+msgstr "Remove from wishlist"
+
+#: .\templates\products\detail.html:37
+#: .\templates\products\products_list.html:91
+#| msgid "Додати в корзину"
+msgid "Додати в вибране"
+msgstr "Add to wishlist"
+
+#: .\templates\products\detail.html:46
 msgid "Опис товару"
 msgstr "Product description"
 
-#: .\templates\products\detail.html:34
+#: .\templates\products\detail.html:51
 msgid "Характеристики"
 msgstr "Characteristics"
 
-#: .\templates\products\detail.html:37
-#| msgid "Категорії"
+#: .\templates\products\detail.html:54
 msgid "Категорія:"
 msgstr "Category:"
 
-#: .\templates\products\detail.html:55
-#| msgid "Додати %(product_name)s в корзину"
+#: .\templates\products\detail.html:72
 msgid "Додати в корзину"
 msgstr "Add to cart"
 
-#: .\templates\products\detail.html:64
+#: .\templates\products\detail.html:81
 msgid "Продукт тимчасово недоступний"
 msgstr "Product temporarily unavailable"
 
-#: .\templates\products\detail.html:65
+#: .\templates\products\detail.html:82
 msgid "Цей товар наразі не доступний для покупки. Вибачте за незручності."
-msgstr "This product is currently not available for purchase. We apologize for the inconvenience."
+msgstr ""
+"This product is currently not available for purchase. We apologize for the "
+"inconvenience."
 
 #: .\templates\products\main_page.html:12
 msgid "Ознайомтесь з повним каталогом товарів"
@@ -518,11 +533,11 @@ msgstr "Apply"
 msgid "Категорії"
 msgstr "Categories"
 
-#: .\templates\products\products_list.html:109
+#: .\templates\products\products_list.html:124
 msgid "Товари не знайдені"
 msgstr "Products not found"
 
-#: .\templates\products\products_list.html:144
+#: .\templates\products\products_list.html:159
 msgid "Вперед"
 msgstr "Forward"
 
@@ -594,6 +609,25 @@ msgstr "Joining date:"
 #: .\templates\users\user_profile.html:36
 msgid "Історія замовлень"
 msgstr "Order history"
+
+#: .\templates\users\wishlist.html:14
+#| msgid "Ваш кошик порожній"
+msgid "Ваш список бажаного"
+msgstr "Your wish list"
+
+#: .\templates\users\wishlist.html:43
+msgid "Продовжити покупки"
+msgstr "Continue shopping"
+
+#: .\templates\users\wishlist.html:48
+#| msgid "Ваш кошик порожній"
+msgid "Список бажаного порожній"
+msgstr "The wish list is empty."
+
+#: .\templates\users\wishlist.html:52
+#| msgid "щоб додати щось."
+msgid "щоб додати щось в обране."
+msgstr "to add something to favorites."
 
 #: .\users\forms.py:13 .\users\forms.py:33
 msgid "Емаїл"
