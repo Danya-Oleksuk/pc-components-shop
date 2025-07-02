@@ -1,7 +1,7 @@
 
 # PC Components Shop
 
-**PC Components Shop** is an online store specializing in the sale of PC components, integrated with Stripe payment system and webhook handling. The project is built with Django and includes shopping cart functionality, order processing, and pagination support.
+**PC Components Shop** is an online store specializing in the sale of PC components, integrated with Stripe payment system and webhook handling. The project is built with Django and includes shopping cart functionality, wishlist, order processing, pagination support, price and category filters.
 
 ## 🔧 Technologies
 
