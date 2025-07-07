@@ -83,7 +83,7 @@
 
                             {% if user.is_authenticated %}
                                 <div class="position-absolute top-0 end-0 m-2 z-2">
-                                    {% if user in product.wished_by.all %}
+                                    {% if product.id in wishlist_products %}
                                         <a href="{% url 'products:remove_from_wishlist' product.id %}?from=catalog&{{ request.GET.urlencode|safe }}" class="btn btn-sm btn-danger rounded-circle" title="{% trans 'Видалити з вибраного' %}">
                                             <i class="bi bi-heart-fill"></i>
                                         </a>

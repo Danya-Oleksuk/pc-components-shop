@@ -26,7 +26,7 @@
                     <h1 class="fw-bold mb-0">{{ product.name }}</h1>
 
                     {% if user.is_authenticated %}
-                        {% if user in product.wished_by.all %}
+                        {% if product.id in wishlist_products %}
                             <a href="{% url 'products:remove_from_wishlist' product.id %}"
                                class="btn btn-outline-danger btn-sm">
                                ❤️ {% trans "Видалити з вибраного" %}
