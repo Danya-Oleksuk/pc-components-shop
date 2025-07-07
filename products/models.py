@@ -26,7 +26,6 @@ class Product(models.Model):
     available = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     category = models.ForeignKey("Category", on_delete=models.SET_NULL, null=True)
-    wished_by = models.ManyToManyField(User, related_name="wishlist", blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -57,3 +56,17 @@ class ProductSpecification(models.Model):
     class Meta:
         verbose_name_plural = "Product specifications"
         verbose_name = "Product specification"
+
+class Wishlist(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="wishlist")
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name_plural = "Wishlists"
+        verbose_name = "Wishlist"
+        ordering = ["-added_at"]
+        unique_together = ("user", "product")
+
+    def __str__(self):
+        return f"{self.user.username}: {self.product.name}"
