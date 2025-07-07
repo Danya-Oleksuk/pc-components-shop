@@ -2,10 +2,10 @@ from urllib.parse import urlencode
 
 from django.contrib.auth.decorators import login_required
 from django.core.cache import cache
-from django.shortcuts import get_object_or_404, redirect
+from django.shortcuts import get_object_or_404, redirect, render
 from django.views.generic import DetailView, ListView, TemplateView
 
-from .models import Category, Product
+from .models import Category, Product, Wishlist
 
 
 class MainPageView(TemplateView):
@@ -59,6 +59,11 @@ class ProductDetailView(DetailView):
             return context
 
         context["specs"] = product.productspecification_set.all()
+
+        if self.request.user.is_authenticated:
+            wishlist_products = Wishlist.objects.filter(user=self.request.user).values_list('product', flat=True)
+            context['wishlist_products'] = wishlist_products
+
         return context
 
 
@@ -97,16 +102,20 @@ class ProductsListView(ListView):
             cache.set("category_list", categories)
         context["categories"] = categories
 
+        if self.request.user.is_authenticated:
+            wishlist_products = Wishlist.objects.filter(user=self.request.user).values_list('product', flat=True)
+            context['wishlist_products'] = wishlist_products
+
         return context
 
 @login_required
 def add_to_wishlist(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    product.wished_by.add(request.user)
+    Wishlist.objects.get_or_create(user=request.user, product=product)
     return redirect(request.META.get('HTTP_REFERER', 'catalog'))
 
 @login_required
 def remove_from_wishlist(request, product_id):
     product = get_object_or_404(Product, id=product_id)
-    product.wished_by.remove(request.user)
+    Wishlist.objects.filter(user=request.user, product=product).delete()
     return redirect(request.META.get('HTTP_REFERER', 'catalog'))

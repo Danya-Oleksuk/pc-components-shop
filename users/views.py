@@ -7,6 +7,7 @@ from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, TemplateView
 
+from products.models import Wishlist
 from .forms import UserLoginForm, UserRegisterForm
 from .models import User
 
@@ -17,8 +18,9 @@ class UserWishlist(LoginRequiredMixin, TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        products = self.request.user.wishlist.all()
-        context['products'] = products
+        wishlist_items = Wishlist.objects.filter(user=self.request.user)
+        context['products'] = [item.product for item in wishlist_items]
+
 
         return context
 
