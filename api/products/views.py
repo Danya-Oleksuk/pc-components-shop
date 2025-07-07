@@ -1,8 +1,8 @@
 from rest_framework import viewsets, permissions
 
 from products.filters import ProductFilter
-from products.models import Product
-from .serializers import ProductSerializer
+from products.models import Product, Category
+from .serializers import ProductSerializer, CategorySerializer
 
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -12,3 +12,8 @@ class ProductViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAdminUser]
     filter_backends = [DjangoFilterBackend]
     filterset_class = ProductFilter
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+    permission_classes = [permissions.IsAdminUser]
