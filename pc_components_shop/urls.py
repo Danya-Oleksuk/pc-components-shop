@@ -18,6 +18,7 @@ urlpatterns = [
 
     path("", include("api.products.urls")),
     path("", include("api.cart.urls")),
+    path("", include("api.users.urls")),
 ]
 
 urlpatterns += i18n_patterns(
