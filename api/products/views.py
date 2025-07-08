@@ -1,8 +1,8 @@
 from rest_framework import viewsets, permissions
 
 from products.filters import ProductFilter
-from products.models import Product, Category
-from .serializers import ProductSerializer, CategorySerializer
+from products.models import Product, Category, Wishlist
+from .serializers import ProductSerializer, CategorySerializer, WishlistSerializer
 
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -17,3 +17,16 @@ class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
     permission_classes = [permissions.IsAdminUser]
+
+class WishlistViewSet(viewsets.ModelViewSet):
+    queryset = Wishlist.objects.all()
+    serializer_class = WishlistSerializer
+    permission_classes = [permissions.IsAdminUser]
+
+    def get_queryset(self):
+        user_id = self.kwargs['user_id']
+        return Wishlist.objects.filter(user_id=user_id)
+
+    def perform_create(self, serializer):
+        user_id = self.kwargs['user_id']
+        serializer.save(user_id=user_id)
