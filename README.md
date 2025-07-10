@@ -6,6 +6,7 @@
 ## 🔧 Technologies
 
 - **Django** — for backend development
+- **Django REST Framework (DRF)** — for building a modular and structured RESTful API
 - **Stripe API** — for payment integration
 - **PostgreSQL** — for data storage
 - **Redis** — for data caching and performance improvement
@@ -25,6 +26,13 @@
 - **Pagination**: Supports pagination for the product list
 - **Localization**: Support for Ukrainian and English languages with UI language switch
 - **Tests**: Unit tests for order processing, forms, and views
+- ### API - The project provides a RESTful API powered by Django REST Framework (DRF). The API is divided into modules for clear structure and scalability:
+
+- `/api/products/` — retrieve products, apply filters by category or price, and perform search queries  
+- `/api/cart/` — manage the shopping cart: add, update, or remove items  
+- `/api/users/` — handle user-related actions such as registration, authentication, wishlist, and viewing order history  
+
+---
 
 ## ▶️ Installation
 
