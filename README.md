@@ -38,7 +38,7 @@
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/Danya-Oleksuk/pc-components-shop
+   git clone https://github.com/Danya-Oleksuk/pc-components-shop.git
    cd pc-components-shop
    ```
 
