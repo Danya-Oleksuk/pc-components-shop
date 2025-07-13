@@ -63,14 +63,10 @@
    CELERY_BROKER_URL=redis://<your_host>:6379
    CELERY_RESULT_BACKEND=redis://<your_host>:6379
     
-   EMAIL_HOST_USER=<your_email>
-   EMAIL_HOST_PASSWORD=<email phrase>
-    
    DB_NAME=<your_db_name>
    DB_USER=<your_db_user>
    DB_PASSWORD=<your_db_password>
    DB_HOST=<your_db_host>
-
    
    DEBUG=False
    
