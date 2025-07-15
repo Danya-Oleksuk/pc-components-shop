@@ -1,5 +1,5 @@
 
-<h1 align="center">PC Components Shop </h1>
+<h1 align="center">💻 PC Components Shop </h1>
 
 <table align="center">
   <tr>
