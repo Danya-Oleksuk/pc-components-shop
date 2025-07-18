@@ -1,5 +1,12 @@
 
-<h1 align="center">PC Components Shop </h1>
+<h1 align="center">💻 PC Components Shop </h1>
+
+<table align="center">
+  <tr>
+    <td align="center"><img src="assets/screenshots/main-page.png" width="1111"/><br/>Main Page</td>
+    <td align="center"><img src="assets/screenshots/product-page.png" width="1111"/><br/>Product Page</td>
+  </tr>
+</table>
 
 **PC Components Shop** is an online store built with Django, featuring product catalog, search & filters, shopping cart, wishlist, order processing, Stripe payment integration, webhook handling, multi-language support, and user authentication, with Docker and NGINX for deployment and PostgreSQL for database storage.
 
