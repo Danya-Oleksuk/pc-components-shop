@@ -33,7 +33,7 @@
 - **Pagination**: Supports pagination for the product list
 - **Localization**: Support for Ukrainian and English languages with UI language switch
 - **Tests**: Unit tests for order processing, forms, and views
-- ### API - The project provides a RESTful API powered by Django REST Framework (DRF). The API is divided into modules for clear structure and scalability:
+  ### API:
 
 - `/api/products/` — retrieve products, apply filters by category or price, and perform search queries  
 - `/api/cart/` — manage the shopping cart: add, update, or remove items  
