@@ -36,6 +36,7 @@ jobs:
       POSTGRES_DB: test_db
       POSTGRES_HOST: localhost
       POSTGRES_PORT: 5432
+      NOVA_POSHTA_API_KEY: ${{ secrets.NOVA_POSHTA_API_KEY }}
 
     steps:
     - uses: actions/checkout@v4
