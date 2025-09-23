@@ -7,13 +7,13 @@ from .serializers import CartSerializer
 class CartViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticated]
 
 
 class CartItemViewSet(viewsets.ModelViewSet):
     queryset = Cart.objects.all()
     serializer_class = CartSerializer
-    permission_classes = [permissions.IsAdminUser]
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         user_id = self.kwargs["user_id"]
