@@ -61,8 +61,10 @@ class ProductDetailView(DetailView):
         context["specs"] = product.productspecification_set.all()
 
         if self.request.user.is_authenticated:
-            wishlist_products = Wishlist.objects.filter(user=self.request.user).values_list('product', flat=True)
-            context['wishlist_products'] = wishlist_products
+            wishlist_products = Wishlist.objects.filter(
+                user=self.request.user
+            ).values_list("product", flat=True)
+            context["wishlist_products"] = wishlist_products
 
         return context
 
@@ -103,19 +105,23 @@ class ProductsListView(ListView):
         context["categories"] = categories
 
         if self.request.user.is_authenticated:
-            wishlist_products = Wishlist.objects.filter(user=self.request.user).values_list('product', flat=True)
-            context['wishlist_products'] = wishlist_products
+            wishlist_products = Wishlist.objects.filter(
+                user=self.request.user
+            ).values_list("product", flat=True)
+            context["wishlist_products"] = wishlist_products
 
         return context
+
 
 @login_required
 def add_to_wishlist(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     Wishlist.objects.get_or_create(user=request.user, product=product)
-    return redirect(request.META.get('HTTP_REFERER', 'catalog'))
+    return redirect(request.META.get("HTTP_REFERER", "catalog"))
+
 
 @login_required
 def remove_from_wishlist(request, product_id):
     product = get_object_or_404(Product, id=product_id)
     Wishlist.objects.filter(user=request.user, product=product).delete()
-    return redirect(request.META.get('HTTP_REFERER', 'catalog'))
+    return redirect(request.META.get("HTTP_REFERER", "catalog"))

@@ -19,8 +19,7 @@ class UserWishlist(LoginRequiredMixin, TemplateView):
         context = super().get_context_data(**kwargs)
 
         wishlist_items = Wishlist.objects.filter(user=self.request.user)
-        context['products'] = [item.product for item in wishlist_items]
-
+        context["products"] = [item.product for item in wishlist_items]
 
         return context
 

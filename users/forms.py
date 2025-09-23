@@ -13,7 +13,10 @@ class UserLoginForm(AuthenticationForm):
         label=_("Емаїл"),
         max_length=254,
         widget=forms.EmailInput(
-            attrs={"class": "form-control", "placeholder": _("Введіть свою електронну адресу")}
+            attrs={
+                "class": "form-control",
+                "placeholder": _("Введіть свою електронну адресу"),
+            }
         ),
     )
     password = forms.CharField(
@@ -33,7 +36,10 @@ class UserRegisterForm(UserCreationForm):
         label=_("Емаїл"),
         max_length=254,
         widget=forms.EmailInput(
-            attrs={"class": "form-control", "placeholder": _("Введіть свою електронну адресу")}
+            attrs={
+                "class": "form-control",
+                "placeholder": _("Введіть свою електронну адресу"),
+            }
         ),
     )
     password1 = forms.CharField(

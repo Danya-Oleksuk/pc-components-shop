@@ -28,9 +28,10 @@ class ProductSpecificationAdmin(admin.ModelAdmin):
     list_display = ("product", "spec_name", "spec_value", "spec_value_numeric")
     search_fields = ("spec_name",)
 
+
 @admin.register(Wishlist)
 class WishlistAdmin(admin.ModelAdmin):
-    list_display = ('user', 'product', 'added_at')
-    list_filter = ('user',)
-    search_fields = ('user__username', 'product__name')
-    ordering = ('-added_at',)
+    list_display = ("user", "product", "added_at")
+    list_filter = ("user",)
+    search_fields = ("user__username", "product__name")
+    ordering = ("-added_at",)

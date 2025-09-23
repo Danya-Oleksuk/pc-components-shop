@@ -57,6 +57,7 @@ class ProductSpecification(models.Model):
         verbose_name_plural = "Product specifications"
         verbose_name = "Product specification"
 
+
 class Wishlist(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="wishlist")
     product = models.ForeignKey(Product, on_delete=models.CASCADE)

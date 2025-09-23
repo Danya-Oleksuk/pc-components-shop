@@ -13,9 +13,7 @@ urlpatterns = [
     path("", include("cart.urls")),
     path("", include("orders.urls")),
     path("", include("info.urls")),
-
-    path('i18n/', include('django.conf.urls.i18n')),
-
+    path("i18n/", include("django.conf.urls.i18n")),
     path("v1/", include("api.v1.products.urls")),
     path("v1/", include("api.v1.cart.urls")),
     path("v1/", include("api.v1.users.urls")),
