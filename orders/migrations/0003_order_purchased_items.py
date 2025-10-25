@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ("orders", "0002_remove_order_address_order_city_order_phone_and_more"),
     ]
