@@ -3,7 +3,6 @@ from django.urls import reverse
 
 
 class InfoViewsTestCase(TestCase):
-
     def test_about_view(self):
         response = self.client.get(reverse("info:about"))
         self.assertEqual(response.status_code, 200)

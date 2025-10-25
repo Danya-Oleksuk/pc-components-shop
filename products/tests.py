@@ -6,7 +6,6 @@ from .models import Category, Product
 
 
 class HomePageTest(TestCase):
-
     def test_home_page_status_code(self):
         response = self.client.get(reverse("products:main_page"))
         self.assertEqual(response.status_code, 200)
@@ -17,7 +16,6 @@ class HomePageTest(TestCase):
 
 
 class CatalogTest(TestCase):
-
     def test_catalog_page_status_code(self):
         response = self.client.get(reverse("products:catalog"))
         self.assertEqual(response.status_code, 200)
@@ -50,14 +48,12 @@ class CatalogTest(TestCase):
 
 
 class CategoryModelTest(TestCase):
-
     def test_category_str(self):
         category = Category.objects.create(name="Відеокарти")
         self.assertEqual(str(category), "Відеокарти")
 
 
 class ProductModelTest(TestCase):
-
     def setUp(self):
         self.category = Category.objects.create(name="Процесори")
 

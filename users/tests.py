@@ -5,7 +5,6 @@ from users.forms import UserLoginForm, UserRegisterForm
 
 
 class UserModelTest(TestCase):
-
     def test_create_user_with_email(self):
         email = "testuser@example.com"
         username = "testuser"

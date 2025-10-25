@@ -3,7 +3,6 @@ from django.urls import reverse
 
 
 class CartURLsTests(TestCase):
-
     def test_cart_list_url(self):
         url = reverse("cart:cart_list")
         response = self.client.get(url)

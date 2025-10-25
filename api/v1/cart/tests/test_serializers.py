@@ -4,12 +4,10 @@ from django.utils.text import slugify
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 from ..serializers import CartSerializer
-from users.models import User
 from products.models import Category, Product
 
 
 class CartSerializerTestCase(APITestCase):
-
     def setUp(self):
         self.category = Category.objects.create(name="Test Category")
 
