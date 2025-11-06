@@ -17,6 +17,7 @@ urlpatterns = [
     path("v1/", include("api.v1.products.urls")),
     path("v1/", include("api.v1.cart.urls")),
     path("v1/", include("api.v1.users.urls")),
+    path("api/v2/", include(("api.urls", "v2"), namespace="v2")),
 ]
 
 urlpatterns += i18n_patterns(
