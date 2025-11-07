@@ -154,5 +154,5 @@ python manage.py test
 - `templates/` — HTML templates.
 - `static/` — static files (CSS, JavaScript, images).
 - `media/` — user-uploaded files (e.g., product images).
-- `api/` — application for managing API endpoints for products, users, and orders.
+- `api/` — application for managing API endpoints(v1/v2) for products, users, and orders. 
 - `requirements.txt` — list of dependencies.
