@@ -1,8 +1,13 @@
 from rest_framework import serializers
-from api.v2.mixins import (
+from api.mixins import (
     ReadOnlySerializerMixin,
+    UpdateOnlySerializerMixin,
 )
-from products.models import Product
+from products.services.crud import (
+    product_update,
+)
+
+from products.models import Category, Product
 
 
 class ProductDisplaySerializer(ReadOnlySerializerMixin, serializers.ModelSerializer):
@@ -18,3 +23,17 @@ class ProductDisplaySerializer(ReadOnlySerializerMixin, serializers.ModelSeriali
             "created_at",
             "category",
         )
+
+
+class ProductUpdateSerializer(UpdateOnlySerializerMixin, serializers.Serializer):
+    name = serializers.CharField(max_length=255, required=False)
+    category = serializers.PrimaryKeyRelatedField(
+        queryset=Category.objects.all(), required=False
+    )
+    description = serializers.CharField(required=False)
+    price = serializers.DecimalField(max_digits=10, decimal_places=2, required=False)
+    available = serializers.BooleanField(required=False)
+    image = serializers.ImageField(required=False)
+
+    def update(self, instance, validated_data):
+        return product_update(product=instance, **validated_data)
