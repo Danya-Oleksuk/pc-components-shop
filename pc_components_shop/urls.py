@@ -6,22 +6,24 @@ from django.urls import include, path
 
 handler404 = "errors.views.custom_404"
 handler500 = "errors.views.custom_500"
+
 urlpatterns = [
+    path("admin/", admin.site.urls),
+    path("i18n/", include("django.conf.urls.i18n")),
+    path("v1/", include("api.v1.products.urls")),
+    path("v1/", include("api.v1.cart.urls")),
+    path("v1/", include("api.v1.users.urls")),
+    path("api/v2/", include("api.v2.urls")),
+]
+
+
+urlpatterns += i18n_patterns(
     path("admin/", admin.site.urls),
     path("", include("products.urls")),
     path("", include("users.urls")),
     path("", include("cart.urls")),
     path("", include("orders.urls")),
     path("", include("info.urls")),
-    path("i18n/", include("django.conf.urls.i18n")),
-    path("v1/", include("api.v1.products.urls")),
-    path("v1/", include("api.v1.cart.urls")),
-    path("v1/", include("api.v1.users.urls")),
-    path("api/v2/", include(("api.urls", "v2"), namespace="v2")),
-]
-
-urlpatterns += i18n_patterns(
-    path("", include("products.urls")),
 )
 
 if settings.DEBUG:
