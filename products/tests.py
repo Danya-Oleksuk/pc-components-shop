@@ -2,7 +2,8 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 from django.test import TestCase
 from django.urls import reverse
 
-from .models import Category, Product
+from products.models.product import Product
+from products.models.category import Category
 
 
 class HomePageTest(TestCase):
