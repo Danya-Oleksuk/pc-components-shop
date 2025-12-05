@@ -7,7 +7,8 @@ from django.core.files.uploadedfile import SimpleUploadedFile
 
 from users.models import User
 from cart.models import Cart
-from products.models import Product, Category
+from products.models.product import Product
+from products.models.category import Category
 
 
 class CartViewSetTestCase(APITestCase):
