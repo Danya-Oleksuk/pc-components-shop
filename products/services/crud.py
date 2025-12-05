@@ -4,7 +4,7 @@ from typing import Any
 from django.db import transaction
 
 from pc_components_shop.services.crud import model_update
-from products.models import Product
+from products.models.product import Product
 
 
 @transaction.atomic
