@@ -7,7 +7,8 @@ from products.services.crud import (
     product_update,
 )
 
-from products.models import Category, Product
+from products.models.product import Product
+from products.models.category import Category
 
 
 class ProductDisplaySerializer(ReadOnlySerializerMixin, serializers.ModelSerializer):
