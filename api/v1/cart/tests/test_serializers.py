@@ -4,7 +4,8 @@ from django.utils.text import slugify
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 from ..serializers import CartSerializer
-from products.models import Category, Product
+from products.models.product import Product
+from products.models.category import Category
 
 
 class CartSerializerTestCase(APITestCase):
