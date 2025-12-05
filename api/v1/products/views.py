@@ -1,7 +1,9 @@
 from rest_framework import viewsets, permissions
 
 from products.filters import ProductFilter
-from products.models import Product, Category, Wishlist
+from products.models.product import Product
+from products.models.category import Category
+from products.models.wishlist import Wishlist
 from .serializers import ProductSerializer, CategorySerializer, WishlistSerializer
 
 from django_filters.rest_framework import DjangoFilterBackend

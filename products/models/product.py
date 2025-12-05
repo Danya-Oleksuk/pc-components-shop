@@ -1,20 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 
-from users.models import User
-
-
-class Category(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    name = models.CharField(max_length=200, unique=True, db_index=True)
-    description = models.TextField(null=True, blank=True)
-
-    class Meta:
-        verbose_name = "Category"
-        verbose_name_plural = "Categories"
-
-    def __str__(self):
-        return self.name
+from products.models.category import Category
 
 
 class Product(models.Model):
@@ -66,35 +53,3 @@ class ProductSpecification(models.Model):
 
     def __str__(self):
         return f"{self.spec_name}: {self.spec_value}"
-
-
-class Wishlist(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    user = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name="wishlist_items",
-    )
-    product = models.ForeignKey(
-        Product,
-        on_delete=models.CASCADE,
-        related_name="wishlisted_by",
-    )
-    added_at = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        verbose_name = "Wishlist"
-        verbose_name_plural = "Wishlists"
-        ordering = ("-added_at",)
-        constraints = [
-            models.UniqueConstraint(
-                fields=(
-                    "user",
-                    "product",
-                ),
-                name="unique_user_product_wishlist",
-            )
-        ]
-
-    def __str__(self):
-        return f"{self.user.username}: {self.product.name}"

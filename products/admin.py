@@ -1,6 +1,8 @@
 from django.contrib import admin
 
-from .models import Category, Product, ProductSpecification, Wishlist
+from products.models.product import Product, ProductSpecification
+from products.models.category import Category
+from products.models.wishlist import Wishlist
 
 
 @admin.register(Category)

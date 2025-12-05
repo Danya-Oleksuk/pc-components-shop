@@ -5,7 +5,7 @@ from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, TemplateView
 
-from products.models import Wishlist
+from products.models.wishlist import Wishlist
 from .forms import UserLoginForm, UserRegisterForm
 from .models import User
 

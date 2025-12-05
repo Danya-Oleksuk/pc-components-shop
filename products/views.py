@@ -5,7 +5,9 @@ from django.core.cache import cache
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import DetailView, ListView, TemplateView
 
-from .models import Category, Product, Wishlist
+from products.models.product import Product
+from products.models.category import Category
+from products.models.wishlist import Wishlist
 
 
 class MainPageView(TemplateView):
