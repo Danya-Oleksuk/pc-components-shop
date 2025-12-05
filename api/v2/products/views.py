@@ -9,7 +9,7 @@ from api.v2.products.serializers import (
     ProductDisplaySerializer,
     ProductUpdateSerializer,
 )
-from products.models import Product
+from products.models.product import Product
 
 
 class ProductListApi(ListAPIView):
