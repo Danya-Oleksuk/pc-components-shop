@@ -1,7 +1,7 @@
 from django.db import models
 
 from products.models.product import Product
-from users.models import User
+from users.models.users import User
 
 
 class Wishlist(models.Model):
