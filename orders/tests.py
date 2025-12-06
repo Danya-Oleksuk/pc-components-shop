@@ -3,7 +3,7 @@ from django.test import Client, TestCase
 from django.urls import resolve, reverse
 
 from orders.forms import OrderForm
-from users.models import User
+from users.models.users import User
 
 from . import views
 
