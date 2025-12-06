@@ -4,7 +4,7 @@ from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from users.models import User
+from users.models.users import User
 from .serializers import UserSerializer, UserRegisterSerializer
 
 
