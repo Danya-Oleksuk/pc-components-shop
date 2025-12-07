@@ -1,5 +1,6 @@
 from django.db import models
 from django.db import transaction
+from decimal import Decimal
 from cart.models import Cart
 
 
@@ -25,8 +26,11 @@ class Order(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-    total_price = models.DecimalField(max_digits=10, decimal_places=2, default=0)
+    total_price = models.DecimalField(
+        max_digits=10,
+        decimal_places=2,
+        default=Decimal("0.00"),
+    )
     basket_history = models.JSONField(default=dict)
     purchased_items = models.TextField(default="")
     notes = models.TextField(blank=True)
