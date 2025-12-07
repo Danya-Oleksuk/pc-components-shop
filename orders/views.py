@@ -12,7 +12,7 @@ from cart.models import Cart
 from pc_components_shop import settings
 
 from .forms import OrderForm
-from .models import Order
+from orders.models.order import Order
 from .novaposhta_service import get_city_suggestions, get_warehouse_suggestions
 
 stripe.api_key = settings.STRIPE_SECRET_KEY

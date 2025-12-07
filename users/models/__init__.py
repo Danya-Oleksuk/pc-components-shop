@@ -2,4 +2,4 @@ __all__ = [
     "User",
 ]
 
-from models.users import User
+from .users import User
