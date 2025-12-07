@@ -4,10 +4,10 @@ from cart.models import Cart
 
 
 class OrderStatus(models.TextChoices):
-    CREATED = 0, "Створено"
-    PAID = 1, "Сплачено"
-    ON_WAY = 2, "У дорозі"
-    DELIVERED = 3, "Доставлений"
+    CREATED = "Створено"
+    PAID = "Сплачено"
+    ON_WAY = "У дорозі"
+    DELIVERED = "Доставлений"
 
 
 class Order(models.Model):
@@ -45,7 +45,7 @@ class Order(models.Model):
 
     @property
     def is_paid(self):
-        return self.status >= OrderStatus.PAID
+        return self.status == OrderStatus.PAID
 
     @property
     def is_delivered(self):
