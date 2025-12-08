@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Cart
+from cart.models.cart import Cart
 
 
 @admin.register(Cart)

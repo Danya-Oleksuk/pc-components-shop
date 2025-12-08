@@ -1,4 +1,4 @@
-from .models import Cart
+from cart.models.cart import Cart
 
 
 def cart_item_count(request):

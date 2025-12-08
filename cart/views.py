@@ -4,7 +4,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.views import View
 from django.views.generic import ListView
 
-from .models import Cart
+from cart.models.cart import Cart
 
 
 class CartListView(LoginRequiredMixin, ListView):

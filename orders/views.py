@@ -8,7 +8,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.views.decorators.http import require_GET
 from django.views.generic import FormView, TemplateView
 
-from cart.models import Cart
+from cart.models.cart import Cart
 from pc_components_shop import settings
 
 from .forms import OrderForm
