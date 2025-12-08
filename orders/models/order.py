@@ -1,7 +1,7 @@
 from django.db import models
 from django.db import transaction
 from decimal import Decimal
-from cart.models import Cart
+from cart.models.cart import Cart
 
 
 class OrderStatus(models.TextChoices):
