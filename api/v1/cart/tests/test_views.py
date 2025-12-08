@@ -6,7 +6,7 @@ from django.utils.text import slugify
 from django.core.files.uploadedfile import SimpleUploadedFile
 
 from users.models.users import User
-from cart.models import Cart
+from cart.models.cart import Cart
 from products.models.product import Product
 from products.models.category import Category
 
