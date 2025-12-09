@@ -3,7 +3,7 @@ from django.views.generic import TemplateView
 from django.views.generic.edit import CreateView
 
 from .forms import ContactForm
-from .models import ContactMessage
+from info.models import ContactMessage
 
 
 class AboutView(TemplateView):
