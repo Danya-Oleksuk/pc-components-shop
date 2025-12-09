@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ContactMessage
+from info.models import ContactMessage
 
 
 @admin.register(ContactMessage)
