@@ -1,2 +1,9 @@
 [tool.ruff]
-exclude = ["*/migrations/*"]
+exclude = [
+    "venv",
+    ".vscode",
+    ".pytest_cache",
+    "**/migrations/**",
+    ".mypy_cache",
+    ".ruff_cache",
+]
