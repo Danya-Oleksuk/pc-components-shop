@@ -60,7 +60,7 @@ class ProductDetailView(DetailView):
             context["not_available"] = True
             return context
 
-        context["specs"] = product.productspecification_set.all()
+        context["specs"] = product.specifications.all()
 
         if self.request.user.is_authenticated:
             wishlist_products = Wishlist.objects.filter(
