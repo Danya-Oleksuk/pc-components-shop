@@ -5,53 +5,56 @@
 {% block title %}{% trans "Вибране" %}{% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
+<link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="container cart-container">
     {% if products %}
-        <h1 class="mb-4 text-center">💖 {% trans "Ваш список бажаного" %}</h1>
-        {% for product in products %}
-            <div class="cart-item-card d-flex flex-column flex-md-row align-items-md-center">
-                <img src="{{ product.image.url|default:'https://via.placeholder.com/100' }}"
-                     alt="{{ product.name }}"
-                     class="cart-item-img">
+    <h1 class="mb-4 text-center">💖 {% trans "Ваш список бажаного" %}</h1>
+    {% for product in products %}
+    <div class="cart-item-card d-flex flex-column flex-md-row align-items-md-center">
+        {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="cart-item-img">
+        {% else %}
+        <img src="https://via.placeholder.com/100" alt="{% trans 'Немає зображення' %}" class="cart-item-img">
+        {% endif %}
 
-                <div class="flex-grow-1">
-                    <div class="cart-item-header">
-                        <a href="{% url 'products:product_detail' product.slug %}?from=wishlist">
-                            {{ product.name }}
-                        </a>
-                    </div>
 
-                    <div class="cart-item-info">
-                        <p>{% trans "Ціна:" %} <strong>{{ product.price }} {% trans "грн" %}</strong></p>
-                    </div>
-                </div>
-
-                <div class="ms-md-4 mt-3 mt-md-0 text-md-end">
-                    <a href="{% url 'products:remove_from_wishlist' product.id %}" class="remove-btn">
-                        <i class="bi bi-trash3-fill"></i> {% trans "Видалити" %}
-                    </a>
-                </div>
+        <div class="flex-grow-1">
+            <div class="cart-item-header">
+                <a href="{% url 'products:product_detail' product.slug %}?from=wishlist">
+                    {{ product.name }}
+                </a>
             </div>
-        {% endfor %}
 
-        <div class="text-end mt-4">
-            <a href="{% url 'products:catalog' %}" class="btn btn-primary btn-lg px-4 py-2">
-                {% trans "Продовжити покупки" %}
+            <div class="cart-item-info">
+                <p>{% trans "Ціна:" %} <strong>{{ product.price }} {% trans "грн" %}</strong></p>
+            </div>
+        </div>
+
+        <div class="ms-md-4 mt-3 mt-md-0 text-md-end">
+            <a href="{% url 'products:remove_from_wishlist' product.id %}" class="remove-btn">
+                <i class="bi bi-trash3-fill"></i> {% trans "Видалити" %}
             </a>
         </div>
+    </div>
+    {% endfor %}
+
+    <div class="text-end mt-4">
+        <a href="{% url 'products:catalog' %}" class="btn btn-primary btn-lg px-4 py-2">
+            {% trans "Продовжити покупки" %}
+        </a>
+    </div>
     {% else %}
-        <div class="text-center mt-5">
-            <h3>💔 {% trans "Список бажаного порожній" %}</h3>
-            <p class="lead">
-                {% trans "Перейдіть до" %}
-                <a href="{% url 'products:catalog' %}">{% trans "каталогу товарів" %}</a>,
-                {% trans "щоб додати щось в обране." %}
-            </p>
-        </div>
+    <div class="text-center mt-5">
+        <h3>💔 {% trans "Список бажаного порожній" %}</h3>
+        <p class="lead">
+            {% trans "Перейдіть до" %}
+            <a href="{% url 'products:catalog' %}">{% trans "каталогу товарів" %}</a>,
+            {% trans "щоб додати щось в обране." %}
+        </p>
+    </div>
     {% endif %}
 </div>
 {% endblock %}
