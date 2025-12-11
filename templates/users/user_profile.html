@@ -5,7 +5,7 @@
 {% block title %}{% trans "Профіль" %}{% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/users/user_profile.css' %}">
+<link rel="stylesheet" href="{% static 'css/users/user_profile.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -17,17 +17,18 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
-            <a href="{% url 'products:main_page' %}" class="back-btn d-inline-flex align-items-center text-decoration-none">
+            <a href="{% url 'products:main_page' %}"
+                class="back-btn d-inline-flex align-items-center text-decoration-none">
                 <i class="bi bi-arrow-left-short fs-4"></i>
                 <span class="ms-2">{% trans "На головну" %}</span>
             </a>
 
             <div class="profile-card text-center">
-                <h4>{{ user.get_full_name|default:user.username }}</h4>
+                <h4>{{ user.get_full_name|default:user.email }}</h4>
 
                 <div class="profile-info text-start mt-4">
                     <p><strong>{% trans "Емаїл:" %}</strong> {{ user.email }}</p>
-                    <p><strong>{% trans "Ім’я користувача:" %}</strong> {{ user.username }}</p>
+                    <p><strong>{% trans "Ім’я користувача:" %}</strong> {{ user.email }}</p>
                     <p><strong>{% trans "Дата приєднання:" %}</strong> {{ user.date_joined|date:"d.m.Y" }}</p>
                 </div>
 
