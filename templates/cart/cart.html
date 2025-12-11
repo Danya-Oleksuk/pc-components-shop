@@ -3,65 +3,71 @@
 {% load i18n %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
+<link rel="stylesheet" href="{% static 'css/cart/cart.css' %}">
 {% endblock %}
 
 {% block content %}
 <div class="container cart-container">
 
     {% if cart %}
-        <h1 class="mb-4 text-center">🛒 {% trans "Ваш кошик" %}</h1>
-        {% for cart_item in cart %}
-            <div class="cart-item-card d-flex flex-column flex-md-row align-items-md-center">
-                <img src="{{ cart_item.product.image.url|default:'https://via.placeholder.com/100' }}" alt="{{ cart_item.product.name }}" class="cart-item-img">
+    <h1 class="mb-4 text-center">🛒 {% trans "Ваш кошик" %}</h1>
+    {% for cart_item in cart %}
+    <div class="cart-item-card d-flex flex-column flex-md-row align-items-md-center">
+        {% if cart_item.product.image %}
+        <img src="{{ cart_item.product.image.url }}" alt="{{ cart_item.product.name }}" class="cart-item-img">
+        {% else %}
+        <img src="" alt="{% trans 'Немає зображення' %}" class="cart-item-img">
+        {% endif %}
 
-                <div class="flex-grow-1">
-                    <div class="cart-item-header">
-                        <a href="{% url 'products:product_detail' product_slug=cart_item.product.slug %}?from=cart">
-                            {{ cart_item.product.name }}
-                        </a>
-                    </div>
-
-                    <div class="cart-item-info">
-                        <p>{% trans "Ціна:" %} <strong>{{ cart_item.product.price }} {% trans "грн" %}</strong></p>
-
-                        <p>{% trans "Кількість:" %}
-                            <span class="quantity-controls">
-                                <button {% if cart_item.quantity <= 1 %} disabled {% endif %}
-                                    onclick="location.href='{% url 'cart:cart_add' product_id=cart_item.product.id %}?action=decrease'">
-                                    -
-                                </button>
-                                <span class="quantity-display">{{ cart_item.quantity }}</span>
-                                <button onclick="location.href='{% url 'cart:cart_add' product_id=cart_item.product.id %}?action=increase'">+</button>
-                            </span>
-                        </p>
-
-                        <p>{% trans "Сума:" %} <strong>{{ cart_item.total_price }} {% trans "грн" %}</strong></p>
-                    </div>
-                </div>
-
-                <div class="ms-md-4 mt-3 mt-md-0 text-md-end">
-                    <a href="{% url 'cart:cart_remove' cart_item.id %}" class="remove-btn">
-                        <i class="bi bi-trash3-fill"></i> {% trans "Видалити" %}
-                    </a>
-                </div>
+        <div class="flex-grow-1">
+            <div class="cart-item-header">
+                <a href="{% url 'products:product_detail' product_slug=cart_item.product.slug %}?from=cart">
+                    {{ cart_item.product.name }}
+                </a>
             </div>
-        {% endfor %}
 
-        <div class="cart-total">
-            {% trans "Загальна сума:" %} {{ user_cart_total }} {% trans "грн" %}
+            <div class="cart-item-info">
+                <p>{% trans "Ціна:" %} <strong>{{ cart_item.product.price }} {% trans "грн" %}</strong></p>
+
+                <p>{% trans "Кількість:" %}
+                    <span class="quantity-controls">
+                        <button {% if cart_item.quantity|add:'-1' < 1 %} disabled {% endif %}
+                            onclick="location.href='{% url 'cart:cart_add' product_id=cart_item.product.id %}?action=decrease'">
+                            -
+                        </button>
+                        <span class="quantity-display">{{ cart_item.quantity }}</span>
+                        <button
+                            onclick="location.href='{% url 'cart:cart_add' product_id=cart_item.product.id %}?action=increase'">+</button>
+                    </span>
+                </p>
+
+                <p>{% trans "Сума:" %} <strong>{{ cart_item.total_price }} {% trans "грн" %}</strong></p>
+            </div>
         </div>
 
-        <div class="text-end mt-4">
-            <a href="{% url 'orders:checkout' %}" class="btn btn-success btn-lg px-4 py-2">
-                {% trans "Оформити замовлення" %}
+        <div class="ms-md-4 mt-3 mt-md-0 text-md-end">
+            <a href="{% url 'cart:cart_remove' cart_item.id %}" class="remove-btn">
+                <i class="bi bi-trash3-fill"></i> {% trans "Видалити" %}
             </a>
         </div>
+    </div>
+    {% endfor %}
+
+    <div class="cart-total">
+        {% trans "Загальна сума:" %} {{ user_cart_total }} {% trans "грн" %}
+    </div>
+
+    <div class="text-end mt-4">
+        <a href="{% url 'orders:checkout' %}" class="btn btn-success btn-lg px-4 py-2">
+            {% trans "Оформити замовлення" %}
+        </a>
+    </div>
     {% else %}
-        <div class="text-center mt-5">
-            <h3>🛒 {% trans "Ваш кошик порожній" %}</h3>
-            <p class="lead">{% trans "Перейдіть до" %} <a href="{% url 'products:catalog' %}">{% trans "каталогу товарів" %}</a>, {% trans "щоб додати щось." %}</p>
-        </div>
+    <div class="text-center mt-5">
+        <h3>🛒 {% trans "Ваш кошик порожній" %}</h3>
+        <p class="lead">{% trans "Перейдіть до" %} <a href="{% url 'products:catalog' %}">{% trans "каталогу товарів"
+                %}</a>, {% trans "щоб додати щось." %}</p>
+    </div>
     {% endif %}
 </div>
 {% endblock %}
