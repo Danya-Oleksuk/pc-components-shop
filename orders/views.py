@@ -12,7 +12,7 @@ from cart.models.cart import Cart
 from pc_components_shop import settings
 
 from .forms import OrderForm
-from orders.models.order import Order
+from orders.models.order import Order, OrderStatus
 from .novaposhta_service import get_city_suggestions, get_warehouse_suggestions
 
 stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -85,7 +85,7 @@ class CheckoutView(LoginRequiredMixin, FormView):
         order.phone = form.cleaned_data["phone"]
         order.city = form.cleaned_data["city"]
         order.warehouse = form.cleaned_data["warehouse"]
-        order.status = Order.CREATED
+        order.status = OrderStatus.CREATED
         order.save()
 
         cart = Cart.objects.filter(user=self.request.user)
@@ -118,8 +118,8 @@ class CheckoutView(LoginRequiredMixin, FormView):
                     reverse("orders:order_cancel")
                 ),
             )
-        except Exception as e:
-            return str(e)
+        except Exception:
+            return redirect("orders:order_cancel")
 
         return redirect(checkout_session.url, code=303)
 
@@ -156,7 +156,7 @@ def stripe_webhook(request):
             from .models import Order
 
             try:
-                order = Order.objects.get(id=order_id, status=Order.CREATED)
+                order = Order.objects.get(id=order_id, status=OrderStatus.CREATED)
                 order.update_after_payment()
                 cache.delete("orders")
                 print("✅ Order updated successfully")

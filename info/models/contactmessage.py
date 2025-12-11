@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.db import models
 from django.utils import timezone
 
@@ -23,7 +24,7 @@ class ContactMessage(models.Model):
     )
     response = models.TextField(blank=True)
     answered_by = models.ForeignKey(
-        "auth.User",
+        settings.AUTH_USER_MODEL,
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -35,7 +36,7 @@ class ContactMessage(models.Model):
     class Meta:
         verbose_name_plural = "Contact Messages"
         verbose_name = "Contact Message"
-        ordering = ("-sent_at",)
+        ordering = ("-created_at",)
 
     def __str__(self):
         return f"{self.name} - {self.email} - {self.status}"
