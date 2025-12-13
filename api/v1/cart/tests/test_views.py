@@ -13,9 +13,9 @@ from products.models.category import Category
 
 class CartViewSetTestCase(APITestCase):
     def setUp(self):
-        self.user = User.objects.create_user(
-            username="testuser", email="testuseremail@gmail.com", password="testpass"
-        )
+        self.user = User.objects.create(email="testuseremail@gmail.com")
+        self.user.set_password("testpassword")
+        self.user.save()
 
         self.category = Category.objects.create(name="Test Category")
 
