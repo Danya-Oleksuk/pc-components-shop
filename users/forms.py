@@ -26,10 +26,6 @@ class UserLoginForm(AuthenticationForm):
         ),
     )
 
-    class Meta:
-        model = User
-        fields = ("username", "password")
-
 
 class UserRegisterForm(UserCreationForm):
     email = forms.EmailField(

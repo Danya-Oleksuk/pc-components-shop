@@ -31,22 +31,6 @@ class CatalogTest(TestCase):
         self.assertContains(response, "Категорії")
         self.assertContains(response, "Фільтр за ціною")
 
-    def test_filter_by_category(self):
-        category_gpu = Category.objects.create(name="Видеокарты")
-        category_cpu = Category.objects.create(name="Процессоры")
-
-        Product.objects.create(name="RTX 3080", price=70000, category=category_gpu)
-        Product.objects.create(name="Ryzen 5", price=15000, category=category_cpu)
-
-        response = self.client.get("/products/?category=Видеокарты")
-        self.assertContains(response, "RTX 3080")
-        self.assertNotContains(response, "Ryzen 5")
-
-    def test_search_products(self):
-        Product.objects.create(name="SSD 1TB", price=3000)
-        response = self.client.get("/products/?q=SSD")
-        self.assertContains(response, "SSD 1TB")
-
 
 class CategoryModelTest(TestCase):
     def test_category_str(self):

@@ -85,9 +85,7 @@ class OrdersURLTests(TestCase):
 class OrdersViewsTests(TestCase):
     def setUp(self):
         self.client = Client()
-        self.user = User.objects.create_user(
-            username="testuser", email="test@gmail.com", password="testpass"
-        )
+        self.user = User.objects.create(email="test@gmail.com", password="testpass")
         self.client.login(username="testuser", password="testpass")
 
     def test_checkout_view_get(self):
