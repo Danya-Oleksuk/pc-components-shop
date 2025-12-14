@@ -5,6 +5,7 @@ from api.mixins import (
     UpdateOnlySerializerMixin,
 )
 from products.services.crud import (
+    product_create,
     product_update,
 )
 
@@ -56,7 +57,7 @@ class ProductCreateSerializer(CreateOnlySerializerMixin, serializers.Serializer)
         return attrs
 
     def create(self, validated_data):
-        return Product.objects.create(**validated_data)
+        return product_create(**validated_data)
 
 
 class ProductUpdateSerializer(UpdateOnlySerializerMixin, serializers.Serializer):
