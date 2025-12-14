@@ -1,6 +1,7 @@
 from rest_framework import serializers
 from api.mixins import (
     ReadOnlySerializerMixin,
+    CreateOnlySerializerMixin,
     UpdateOnlySerializerMixin,
 )
 from products.services.crud import (
@@ -24,6 +25,38 @@ class ProductDisplaySerializer(ReadOnlySerializerMixin, serializers.ModelSeriali
             "created_at",
             "category",
         )
+
+
+class ProductCreateSerializer(CreateOnlySerializerMixin, serializers.Serializer):
+    name = serializers.CharField(max_length=255)
+    category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
+    description = serializers.CharField(required=False)
+    price = serializers.DecimalField(max_digits=10, decimal_places=2)
+    available = serializers.BooleanField()
+    image = serializers.ImageField(required=False)
+
+    def validate(self, attrs):
+        request = self.context.get("request")
+        assert request is not None, "Request is required"
+        user = request.user
+
+        if not user.is_staff:
+            raise serializers.ValidationError(
+                {"permission": "You do not have permission to create a product."}
+            )
+
+        if attrs.get("price", 0) < 0:
+            raise serializers.ValidationError(
+                {"price": "Price must be a non-negative value."}
+            )
+
+        if not attrs.get("name"):
+            raise serializers.ValidationError({"name": "Product name cannot be empty."})
+
+        return attrs
+
+    def create(self, validated_data):
+        return Product.objects.create(**validated_data)
 
 
 class ProductUpdateSerializer(UpdateOnlySerializerMixin, serializers.Serializer):
