@@ -8,5 +8,7 @@ app_name = "products"
 urlpatterns = [
     path("", views.ProductListApi.as_view(), name="product-list"),
     path("<int:pk>/", views.ProductDetailApi.as_view(), name="product-detail"),
+    path("create/", views.ProductCreateApi.as_view(), name="product-create"),
     path("<int:pk>/update/", views.ProductUpdateApi.as_view(), name="product-update"),
+    path("<int:pk>/delete/", views.ProductDeleteApi.as_view(), name="product-delete"),
 ]

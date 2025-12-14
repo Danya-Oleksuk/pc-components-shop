@@ -1,14 +1,16 @@
 from rest_framework.request import Request
+from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
 from rest_framework.generics import GenericAPIView
 
 from api.v2.products.serializers import (
+    ProductCreateSerializer,
     ProductDisplaySerializer,
     ProductUpdateSerializer,
 )
+from products.services.crud import product_delete
 from products.models.product import Product
 
 
@@ -34,6 +36,28 @@ class ProductDetailApi(GenericAPIView):
             )
         serializer = ProductDisplaySerializer(product)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class ProductCreateApi(GenericAPIView):
+    input_serializer_class = ProductCreateSerializer
+    output_serializer_class = ProductDisplaySerializer
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request: Request) -> Response:
+        if not request.data:
+            return Response(
+                {"message": "No data provided"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        serializer = self.input_serializer_class(
+            data=request.data, context={"request": request}
+        )
+        serializer.is_valid(raise_exception=True)
+        product = serializer.save()
+
+        display_serializer = self.output_serializer_class(product)
+        return Response(display_serializer.data, status=status.HTTP_201_CREATED)
 
 
 class ProductUpdateApi(GenericAPIView):
@@ -63,3 +87,23 @@ class ProductUpdateApi(GenericAPIView):
         display_serializer = self.output_serializer_class(product)
 
         return Response(display_serializer.data, status=status.HTTP_200_OK)
+
+
+class ProductDeleteApi(GenericAPIView):
+    serializer_class = None
+    permission_classes = (IsAuthenticated,)
+    queryset = Product.objects.none()
+
+    def get_queryset(self):
+        user = self.request.user
+        assert user.is_anonymous is False
+
+        queryset = Product.objects.all()
+
+        return queryset
+
+    def delete(self, request: Request, pk: int) -> Response:
+        product = self.get_object()
+        assert self.request.user.is_anonymous is False
+        product_delete(product=product)
+        return Response(status=status.HTTP_204_NO_CONTENT)
