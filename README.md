@@ -20,7 +20,7 @@
 - **Nova Poshta API** — integration for searching for branches and delivery addresses
 - **Gunicorn + Nginx** — gunicorn serves the app, while Nginx acts as a reverse proxy and handles static/media files
 - **Docker & Docker Compose** — for easy deployment and service management
-- **ruff ** — for code formatting and adhering to standards
+- **ruff** — for code formatting and adhering to standards
 
 
 ## ✨ Features
