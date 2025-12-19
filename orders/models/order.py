@@ -31,8 +31,8 @@ class Order(models.Model):
         decimal_places=2,
         default=Decimal("0.00"),
     )
-    basket_history = models.JSONField(default=dict)
-    purchased_items = models.TextField(default="")
+    basket_history = models.JSONField(default=dict, blank=True)
+    purchased_items = models.TextField(default="", blank=True)
     notes = models.TextField(blank=True)
 
     class Meta:
