@@ -55,7 +55,7 @@ class OrderCreateSerializer(CreateOnlySerializerMixin, serializers.Serializer):
                 }
             )
 
-        if user.is_staff and "user" not in attrs:
+        if not user.is_staff:
             attrs["user"] = user
 
         if attrs.get("total_price", 0) < 0:
