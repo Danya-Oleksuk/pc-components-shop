@@ -19,6 +19,8 @@ class OrderDisplaySerializer(ReadOnlySerializerMixin, serializers.ModelSerialize
             "last_name",
             "total_price",
             "status",
+            "city",
+            "warehouse",
             "basket_history",
             "purchased_items",
             "notes",
