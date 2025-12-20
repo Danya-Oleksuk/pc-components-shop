@@ -5,6 +5,7 @@ from users.models.users import User
 from orders.models.order import Order
 from orders.services.crud import (
     order_create,
+    order_update,
 )
 
 
@@ -18,6 +19,8 @@ class OrderDisplaySerializer(ReadOnlySerializerMixin, serializers.ModelSerialize
             "last_name",
             "total_price",
             "status",
+            "city",
+            "warehouse",
             "basket_history",
             "purchased_items",
             "notes",
@@ -84,3 +87,40 @@ class OrderCreateSerializer(CreateOnlySerializerMixin, serializers.Serializer):
 
     def create(self, validated_data):
         return order_create(**validated_data)
+
+
+class OrderUpdateSerializer(CreateOnlySerializerMixin, serializers.Serializer):
+    user = serializers.PrimaryKeyRelatedField(
+        queryset=User.objects.all(),
+        required=False,
+    )
+    first_name = serializers.CharField(max_length=30, required=False)
+    last_name = serializers.CharField(max_length=30, required=False)
+    city = serializers.CharField(max_length=100, required=False)
+    warehouse = serializers.CharField(max_length=100, required=False)
+    total_price = serializers.DecimalField(
+        max_digits=10, decimal_places=2, required=False
+    )
+    phone = serializers.CharField(max_length=20, required=False)
+    notes = serializers.CharField(allow_blank=True, required=False)
+
+    def validate(self, attrs):
+        request = self.context.get("request")
+        assert request is not None, "Request is required"
+        user = request.user
+
+        if not user.is_staff and attrs.get("user") is not None:
+            raise serializers.ValidationError(
+                {
+                    "permission": "You do not have permission "
+                    "to create an order for another user."
+                }
+            )
+
+        if user.is_staff and "user" not in attrs:
+            attrs["user"] = user
+
+        return attrs
+
+    def update(self, instance, validated_data):
+        return order_update(order=instance, **validated_data)

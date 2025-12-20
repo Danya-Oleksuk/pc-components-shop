@@ -33,3 +33,24 @@ def order_create(
     order.save()
     order.refresh_from_db()
     return order
+
+
+@transaction.atomic
+def order_update(
+    *,
+    order: Order,
+    **fields: Any,
+) -> Order:
+    for key, value in fields.items():
+        setattr(order, key, value)
+
+    order.full_clean()
+    order.save()
+    order.refresh_from_db()
+    return order
+
+
+@transaction.atomic
+def order_delete(*, order: Order) -> None:
+    order.delete()
+    return

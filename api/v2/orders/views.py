@@ -6,7 +6,9 @@ from rest_framework.generics import GenericAPIView
 from api.v2.orders.serializers import (
     OrderCreateSerializer,
     OrderDisplaySerializer,
+    OrderUpdateSerializer,
 )
+from orders.services.crud import order_delete
 from orders.models.order import Order
 
 
@@ -48,3 +50,46 @@ class OrderCreateApi(GenericAPIView):
 
         display_serializer = self.output_serializer_class(order)
         return Response(display_serializer.data, status=status.HTTP_201_CREATED)
+
+
+class OrderUpdateApi(GenericAPIView):
+    input_serializer_class = OrderUpdateSerializer
+    output_serializer_class = OrderDisplaySerializer
+    permission_classes = (IsAuthenticated,)
+    queryset = Order.objects.all()
+
+    def get_object(self, pk: int) -> Order:
+        try:
+            return Order.objects.get(pk=pk)
+        except Order.DoesNotExist:
+            raise Order.DoesNotExist("Order not found")
+
+    def patch(self, request, pk: int):
+        order = self.get_object(pk)
+
+        serializer = self.input_serializer_class(
+            instance=order,
+            data=request.data,
+            partial=True,
+            context={"request": request},
+        )
+        serializer.is_valid(raise_exception=True)
+
+        order = serializer.update(
+            instance=order, validated_data=serializer.validated_data
+        )
+
+        display_serializer = self.output_serializer_class(order)
+        return Response(display_serializer.data, status=status.HTTP_200_OK)
+
+
+class OrderDeleteApi(GenericAPIView):
+    permission_classes = (IsAuthenticated,)
+    queryset = Order.objects.all()
+
+    def delete(self, request, pk: int):
+        order = self.get_object()
+        assert self.request.user.is_anonymous is False
+
+        order_delete(order=order)
+        return Response(status=status.HTTP_204_NO_CONTENT)
