@@ -1,4 +1,5 @@
-from rest_framework.generics import ListAPIView
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.generics import ListAPIView, RetrieveAPIView
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.authtoken.views import ObtainAuthToken
 
@@ -20,6 +21,15 @@ class UserListApi(ListAPIView):
         "first_name",
         "last_name",
     )
+
+
+class UserApiView(RetrieveAPIView):
+    serializer_class = UserDisplaySerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get_object(self):
+        return self.request.user
 
 
 class AuthTokenObtainView(ObtainAuthToken):
