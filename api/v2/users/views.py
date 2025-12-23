@@ -1,7 +1,9 @@
 from rest_framework.generics import ListAPIView
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.authtoken.views import ObtainAuthToken
 
 from api.v2.users.serializers import (
+    TokenObtainSerializer,
     UserDisplaySerializer,
 )
 
@@ -18,3 +20,7 @@ class UserListApi(ListAPIView):
         "first_name",
         "last_name",
     )
+
+
+class AuthTokenObtainView(ObtainAuthToken):
+    serializer_class = TokenObtainSerializer
