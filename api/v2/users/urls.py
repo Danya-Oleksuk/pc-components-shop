@@ -14,6 +14,8 @@ app_name = "users"
 urlpatterns = [
     path("", views.UserListApi.as_view(), name="user-list"),
     path("me/", views.UserApiView.as_view(), name="user-me"),
+    path("create/", views.UserCreateView.as_view(), name="user-create"),
+    path("me/update/", views.UserUpdateView.as_view(), name="user-update"),
     path(
         "token/obtain/", views.AuthTokenObtainView.as_view(), name="user-token-obtain"
     ),
@@ -32,4 +34,5 @@ urlpatterns = [
         reset_password_validate_token,
         name="user-password-reset-validate",
     ),
+    path("<int:pk>/delete/", views.UserDeleteView.as_view(), name="user-delete"),
 ]
