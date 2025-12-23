@@ -13,6 +13,7 @@ app_name = "users"
 
 urlpatterns = [
     path("", views.UserListApi.as_view(), name="user-list"),
+    path("me/", views.UserApiView.as_view(), name="user-me"),
     path(
         "token/obtain/", views.AuthTokenObtainView.as_view(), name="user-token-obtain"
     ),
