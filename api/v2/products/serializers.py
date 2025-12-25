@@ -72,3 +72,13 @@ class ProductUpdateSerializer(UpdateOnlySerializerMixin, serializers.Serializer)
 
     def update(self, instance, validated_data):
         return product_update(product=instance, **validated_data)
+
+
+class CategoryDisplaySerializer(ReadOnlySerializerMixin, serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = (
+            "id",
+            "name",
+            "description",
+        )
