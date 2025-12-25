@@ -8,6 +8,7 @@ from products.services.crud import (
     product_create,
     product_update,
     category_create,
+    category_update,
 )
 
 from products.models.product import Product
@@ -91,3 +92,11 @@ class CategoryCreateSerializer(CreateOnlySerializerMixin, serializers.Serializer
 
     def create(self, validated_data):
         return category_create(**validated_data)
+
+
+class CategoryUpdateSerializer(UpdateOnlySerializerMixin, serializers.Serializer):
+    name = serializers.CharField(max_length=255, required=False)
+    description = serializers.CharField(required=False)
+
+    def update(self, instance, validated_data):
+        return category_update(category=instance, **validated_data)
