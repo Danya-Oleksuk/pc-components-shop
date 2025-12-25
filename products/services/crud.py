@@ -4,6 +4,7 @@ from typing import Any
 from django.db import transaction
 
 from pc_components_shop.services.crud import model_update
+from products.models.category import Category
 from products.models.product import Product
 
 
@@ -46,3 +47,35 @@ def product_delete(
     product: Product,
 ) -> None:
     product.delete()
+
+
+def category_create(
+    *,
+    name: str,
+    description: str = "",
+) -> Category:
+    category = Category.objects.create(
+        name=name,
+        description=description,
+    )
+
+    category.full_clean()
+    category.save()
+    category.refresh_from_db()
+    return category
+
+
+def category_update(
+    *,
+    category: Category,
+    **fields: Any,
+) -> Category:
+    category, updates = model_update(model=category, **fields)
+    return category
+
+
+def category_delete(
+    *,
+    category: Category,
+) -> None:
+    category.delete()
