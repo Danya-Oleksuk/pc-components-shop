@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import GenericAPIView
 
 from api.v2.products.serializers import (
+    CategoryCreateSerializer,
     CategoryDisplaySerializer,
     ProductCreateSerializer,
     ProductDisplaySerializer,
@@ -116,6 +117,28 @@ class CategoryListApi(ListAPIView):
     permission_classes = (IsAuthenticated,)
     queryset = Category.objects.all()
     search_fields = ("name", "description")
+
+
+class CategoryCreateApi(GenericAPIView):
+    input_serializer_class = CategoryCreateSerializer
+    output_serializer_class = CategoryDisplaySerializer
+    permission_classes = (IsAuthenticated,)
+
+    def post(self, request: Request) -> Response:
+        if not request.data:
+            return Response(
+                {"message": "No data provided"},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        serializer = self.input_serializer_class(
+            data=request.data, context={"request": request}
+        )
+        serializer.is_valid(raise_exception=True)
+        category = serializer.save()
+
+        display_serializer = self.output_serializer_class(category)
+        return Response(display_serializer.data, status=status.HTTP_201_CREATED)
 
 
 class CategoryDeleteApi(GenericAPIView):
