@@ -6,12 +6,14 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.generics import GenericAPIView
 
 from api.v2.products.serializers import (
+    CategoryDisplaySerializer,
     ProductCreateSerializer,
     ProductDisplaySerializer,
     ProductUpdateSerializer,
 )
-from products.services.crud import product_delete
+from products.services.crud import product_delete, category_delete
 from products.models.product import Product
+from products.models.category import Category
 
 
 class ProductListApi(ListAPIView):
@@ -106,4 +108,31 @@ class ProductDeleteApi(GenericAPIView):
         product = self.get_object()
         assert self.request.user.is_anonymous is False
         product_delete(product=product)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+class CategoryListApi(ListAPIView):
+    serializer_class = CategoryDisplaySerializer
+    permission_classes = (IsAuthenticated,)
+    queryset = Category.objects.all()
+    search_fields = ("name", "description")
+
+
+class CategoryDeleteApi(GenericAPIView):
+    serializer_class = None
+    permission_classes = (IsAuthenticated,)
+    queryset = Category.objects.none()
+
+    def get_queryset(self):
+        user = self.request.user
+        assert user.is_anonymous is False
+
+        queryset = Category.objects.all()
+
+        return queryset
+
+    def delete(self, request: Request, pk: int) -> Response:
+        category = self.get_object()
+        assert self.request.user.is_anonymous is False
+        category_delete(category=category)
         return Response(status=status.HTTP_204_NO_CONTENT)
