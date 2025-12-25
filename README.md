@@ -118,7 +118,7 @@ cd pc-components-shop
 In the root directory of your project, run:
 
 ```bash
-docker-compose up --build -d
+docker compose up -d --build
 ```
 
 ### 4. Apply database migrations:
