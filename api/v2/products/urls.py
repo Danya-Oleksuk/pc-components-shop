@@ -11,4 +11,10 @@ urlpatterns = [
     path("create/", views.ProductCreateApi.as_view(), name="product-create"),
     path("<int:pk>/update/", views.ProductUpdateApi.as_view(), name="product-update"),
     path("<int:pk>/delete/", views.ProductDeleteApi.as_view(), name="product-delete"),
+    path("category/", views.CategoryListApi.as_view(), name="category-list"),
+    path(
+        "category/<int:pk>/delete/",
+        views.CategoryDeleteApi.as_view(),
+        name="category-delete",
+    ),
 ]
