@@ -7,6 +7,7 @@ from api.mixins import (
 from products.services.crud import (
     product_create,
     product_update,
+    category_create,
 )
 
 from products.models.product import Product
@@ -82,3 +83,11 @@ class CategoryDisplaySerializer(ReadOnlySerializerMixin, serializers.ModelSerial
             "name",
             "description",
         )
+
+
+class CategoryCreateSerializer(CreateOnlySerializerMixin, serializers.Serializer):
+    name = serializers.CharField(max_length=255)
+    description = serializers.CharField(required=False)
+
+    def create(self, validated_data):
+        return category_create(**validated_data)
