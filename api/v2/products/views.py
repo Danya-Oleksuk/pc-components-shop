@@ -8,6 +8,7 @@ from rest_framework.generics import GenericAPIView
 from api.v2.products.serializers import (
     CategoryCreateSerializer,
     CategoryDisplaySerializer,
+    CategoryUpdateSerializer,
     ProductCreateSerializer,
     ProductDisplaySerializer,
     ProductUpdateSerializer,
@@ -119,6 +120,23 @@ class CategoryListApi(ListAPIView):
     search_fields = ("name", "description")
 
 
+class CategoryDetailApi(GenericAPIView):
+    serializer_class = CategoryDisplaySerializer
+    permission_classes = (IsAuthenticated,)
+    queryset = Category.objects.none()
+
+    def get(self, request: Request, pk: int) -> Response:
+        try:
+            category = Category.objects.get(pk=pk)
+        except Category.DoesNotExist:
+            return Response(
+                {"message": "Category not found"},
+                status=status.HTTP_404_NOT_FOUND,
+            )
+        serializer = CategoryDisplaySerializer(category)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
 class CategoryCreateApi(GenericAPIView):
     input_serializer_class = CategoryCreateSerializer
     output_serializer_class = CategoryDisplaySerializer
@@ -139,6 +157,34 @@ class CategoryCreateApi(GenericAPIView):
 
         display_serializer = self.output_serializer_class(category)
         return Response(display_serializer.data, status=status.HTTP_201_CREATED)
+
+
+class CategoryUpdateApi(GenericAPIView):
+    input_serializer_class = CategoryUpdateSerializer
+    output_serializer_class = CategoryDisplaySerializer
+    permission_classes = (IsAuthenticated,)
+    queryset = Category.objects.all()
+
+    def get_object(self, pk: int) -> Category:
+        try:
+            return Category.objects.get(pk=pk)
+        except Category.DoesNotExist:
+            raise Category.DoesNotExist("Category not found")
+
+    def patch(self, request: Request, pk: int) -> Response:
+        categories = self.get_object(pk)
+
+        serializer = self.input_serializer_class(
+            instance=categories, data=request.data, partial=True
+        )
+        serializer.is_valid(raise_exception=True)
+
+        category = serializer.update(
+            instance=categories, validated_data=serializer.validated_data
+        )
+
+        display_serializer = self.output_serializer_class(category)
+        return Response(display_serializer.data, status=status.HTTP_200_OK)
 
 
 class CategoryDeleteApi(GenericAPIView):
