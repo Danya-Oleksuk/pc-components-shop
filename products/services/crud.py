@@ -63,3 +63,19 @@ def category_create(
     category.save()
     category.refresh_from_db()
     return category
+
+
+def category_update(
+    *,
+    category: Category,
+    **fields: Any,
+) -> Category:
+    category, updates = model_update(model=category, **fields)
+    return category
+
+
+def category_delete(
+    *,
+    category: Category,
+) -> None:
+    category.delete()
