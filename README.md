@@ -10,7 +10,7 @@
 
 **PC Components Shop** is an online store built with Django, featuring product catalog, search & filters, shopping cart, wishlist, order processing, Stripe payment integration, webhook handling, multi-language support, and user authentication, with Docker and NGINX for deployment and PostgreSQL for database storage.
 
-## 🔧 Technologies
+## Technologies
 
 - **Django** — for backend development
 - **Django REST Framework (DRF)** — for building a modular and structured RESTful API
@@ -23,7 +23,7 @@
 - **ruff** — for code formatting and adhering to standards
 
 
-## ✨ Features
+## Features
 
 - **Product Catalog**: Display all available components with sorting and filtering options
 - **Shopping Cart**: Ability to add, remove items, and view the total cost of the order
@@ -100,7 +100,7 @@
    ```
 
 
-## 🚀 **Run with Docker**
+##  **Run with Docker**
 
 ### 1. Clone the repository (if you haven't already):
 
@@ -143,7 +143,7 @@ The project includes unit and integration tests for order forms, views, and URL 
 python manage.py test
    ```
 
-## 📁 Project Structure
+##  Project Structure
 
 - `pc_components_shop/` — main project folder.
 - `orders/` — application for handling orders.
