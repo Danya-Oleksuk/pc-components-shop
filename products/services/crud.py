@@ -6,6 +6,8 @@ from django.db import transaction
 from pc_components_shop.services.crud import model_update
 from products.models.category import Category
 from products.models.product import Product
+from products.models.wishlist import Wishlist
+from users.models.users import User
 
 
 @transaction.atomic
@@ -79,3 +81,35 @@ def category_delete(
     category: Category,
 ) -> None:
     category.delete()
+
+
+def wishlist_create(
+    *,
+    user: User,
+    product: Product,
+) -> Wishlist:
+    wishlist = Wishlist.objects.create(
+        user=user,
+        product=product,
+    )
+
+    wishlist.full_clean()
+    wishlist.save()
+    wishlist.refresh_from_db()
+    return wishlist
+
+
+def wishlist_update(
+    *,
+    wishlist: Wishlist,
+    **fields: Any,
+) -> Wishlist:
+    wishlist, updates = model_update(model=wishlist, **fields)
+    return wishlist
+
+
+def wishlist_delete(
+    *,
+    wishlist: Wishlist,
+) -> None:
+    wishlist.delete()
