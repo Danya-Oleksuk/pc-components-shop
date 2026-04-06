@@ -132,7 +132,7 @@ docker-compose exec web python manage.py migrate
 ### Access the application:
 
 ```
-http://<server_ip_or_host_domen>:8000
+http://<server_ip_or_host_domen>
 ```
 ---
    
